@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application - Step 2 | TrustBank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #0066cc, #00aaff);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #0066cc;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .step.completed .step-number {
+            background: #28a745;
+        }
+        
+        .step.active .step-number {
+            background: #00aaff;
+            box-shadow: 0 0 0 4px rgba(0,102,204,0.2);
+        }
+        
+        .step.active .step-text {
+            color: #0066cc;
+            font-weight: bold;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 900px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .loan-details, .payment-info {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+        }
+        
+        .loan-details h3, .payment-info h3 {
+            color: #0066cc;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e1e5eb;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #dc3545;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5eb;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0,102,204,0.1);
+        }
+        
+        .amount-display {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #0066cc;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .amount-display h4 {
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+        
+        .deposit-amount {
+            font-size: 32px;
+            font-weight: bold;
+            color: #28a745;
+            margin: 10px 0;
+        }
+        
+        .payment-method-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .payment-method-card {
+            border: 2px solid #e1e5eb;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .payment-method-card:hover {
+            border-color: #0066cc;
+            background: #f0f8ff;
+        }
+        
+        .payment-method-card.selected {
+            border-color: #0066cc;
+            background: #e8f4fe;
+            box-shadow: 0 0 0 3px rgba(0,102,204,0.1);
+        }
+        
+        .payment-method-card i {
+            font-size: 24px;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+        
+        .payment-details {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #e1e5eb;
+            margin: 20px 0;
+        }
+        
+        .payment-instructions {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .payment-instructions h4 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+        
+        .upload-area {
+            border: 2px dashed #0066cc;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 20px 0;
+        }
+        
+        .upload-area:hover {
+            background: #e8f4fe;
+        }
+        
+        .upload-area i {
+            font-size: 48px;
+            color: #0066cc;
+            margin-bottom: 15px;
+        }
+        
+        .upload-area p {
+            margin: 10px 0;
+            color: #666;
+        }
+        
+        .file-types {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .btn-upload {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .file-preview {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e1e5eb;
+        }
+        
+        .preview-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .preview-content i {
+            font-size: 32px;
+            color: #0066cc;
+        }
+        
+        .btn-remove {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(90deg, #0066cc, #00aaff);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,102,204,0.2);
+        }
+        
+        .btn-next {
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .btn-back {
+            background: #6c757d;
+            margin-right: 15px;
+        }
+        
+        .error {
+            background: #fee;
+            color: #c00;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c00;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c3e6cb;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .sender-details {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-hand-holding-usd"></i> Loan Details & Payment</h1>
+            <p>Step 2: Enter loan amount and submit deposit payment</p>
+        </div>
+        
+        <div class="step-indicator">
+            <div class="step completed">
+                <div class="step-number"><i class="fas fa-check"></i></div>
+                <div class="step-text">Personal Info</div>
+            </div>
+            <div class="step active">
+                <div class="step-number">2</div>
+                <div class="step-text">Loan Details</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text">Confirmation</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            {% if error %}
+                <div class="error">
+                    <i class="fas fa-exclamation-circle"></i> {{ error }}
+                </div>
+            {% endif %}
+            
+            <div class="info-box">
+                <i class="fas fa-info-circle"></i> 
+                <strong>Note:</strong> A 10% deposit is required to secure your loan application. 
+                Your loan will be approved once payment is verified.
+            </div>
+            
+            {% if payment_methods %}
+            <form method="POST" enctype="multipart/form-data" id="loanForm">
+                {% csrf_token %}
+                
+                <div class="form-grid">
+                    <div class="loan-details">
+                        <h3><i class="fas fa-file-invoice-dollar"></i> Loan Details</h3>
+                        
+                        <div class="form-group">
+                            <label for="loan_amount" class="required"><i class="fas fa-money-bill-wave"></i> Loan Amount ($)</label>
+                            <input type="number" id="loan_amount" name="loan_amount" 
+                                   min="100" max="100000" step="100" 
+                                   placeholder="Enter amount (min: $100)" 
+                                   oninput="calculateDeposit()" required>
+                            <small style="color: #666; display: block; margin-top: 5px;">Minimum: $100 | Maximum: $100,000</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="loan_purpose" class="required"><i class="fas fa-bullseye"></i> Loan Purpose</label>
+                            <textarea id="loan_purpose" name="loan_purpose" 
+                                      rows="3" placeholder="What do you need the loan for?" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="loan_term" class="required"><i class="fas fa-calendar-alt"></i> Loan Term (Months)</label>
+                            <select id="loan_term" name="loan_term" required>
+                                <option value="">Select term</option>
+                                <option value="6">6 Months</option>
+                                <option value="12">12 Months</option>
+                                <option value="24">24 Months</option>
+                                <option value="36">36 Months</option>
+                                <option value="48">48 Months</option>
+                                <option value="60">60 Months</option>
+                            </select>
+                        </div>
+                        
+                        <div class="amount-display">
+                            <h4>10% Deposit Required</h4>
+                            <div class="deposit-amount" id="depositDisplay">$0.00</div>
+                            <p style="color: #666; font-size: 14px;">This deposit secures your loan application</p>
+                        </div>
+                        
+                        <div class="info-box">
+                            <h4><i class="fas fa-user-check"></i> Your Information</h4>
+                            <p><strong>Name:</strong> {{ loan_data.full_name }}</p>
+                            <p><strong>Email:</strong> {{ loan_data.email }}</p>
+                            <p><strong>Phone:</strong> {{ loan_data.phone }}</p>
+                            <p><strong>Address:</strong> {{ loan_data.full_address }}</p>
+                            <p><strong>Date of Birth:</strong> {{ loan_data.date_of_birth }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-info">
+                        <h3><i class="fas fa-credit-card"></i> Payment Details</h3>
+                        
+                        <!-- Payment Method Selection -->
+                        <div class="form-group">
+                            <label class="required">Select Payment Method</label>
+                            <div class="payment-method-options" id="paymentMethods">
+                                {% for method in payment_methods %}
+                                <div class="payment-method-card" data-method-id="{{ method.id }}" onclick="selectPaymentMethod(this)">
+                                    {% if method.payment_type == 'walmart' %}
+                                        <i class="fas fa-store"></i>
+                                        <h4>Walmart</h4>
+                                        <p>Money Transfer</p>
+                                    {% elif method.payment_type == 'bank_transfer' %}
+                                        <i class="fas fa-university"></i>
+                                        <h4>Bank Transfer</h4>
+                                        <p>Direct Deposit</p>
+                                    {% elif method.payment_type == 'western_union' %}
+                                        <i class="fas fa-globe-americas"></i>
+                                        <h4>Western Union</h4>
+                                        <p>Money Transfer</p>
+                                    {% elif method.payment_type == 'moneygram' %}
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <h4>MoneyGram</h4>
+                                        <p>Money Transfer</p>
+                                    {% elif method.payment_type == 'crypto' %}
+                                        <i class="fas fa-coins"></i>
+                                        <h4>Crypto</h4>
+                                        <p>USDT/BTC</p>
+                                    {% else %}
+                                        <i class="fas fa-money-check-alt"></i>
+                                        <h4>{{ method.name }}</h4>
+                                        <p>{{ method.get_payment_type_display }}</p>
+                                    {% endif %}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <input type="hidden" id="payment_method" name="payment_method" required>
+                        </div>
+                        
+                        <!-- Payment Instructions (Dynamic) -->
+                        <div id="paymentInstructions" style="display: none;">
+                            <div class="payment-instructions">
+                                <h4><i class="fas fa-info-circle"></i> Payment Instructions</h4>
+                                <div id="instructionsContent"></div>
+                                <div id="accountDetails"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sender Details -->
+                        <div class="sender-details">
+                            <h4><i class="fas fa-user-edit"></i> Sender Information</h4>
+                            <p style="color: #666; margin-bottom: 15px;">Enter the details of the person sending the payment</p>
+                            
+                            <div class="form-group">
+                                <label for="sender_name" class="required">Sender's Full Name</label>
+                                <input type="text" id="sender_name" name="sender_name" 
+                                       placeholder="Name as shown on ID" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="sender_address" class="required">Sender's Address</label>
+                                <textarea id="sender_address" name="sender_address" 
+                                          rows="2" placeholder="Full address of the sender" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="sender_phone" class="required">Sender's Phone Number</label>
+                                <input type="tel" id="sender_phone" name="sender_phone" 
+                                       placeholder="Sender's contact number" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Transaction Details -->
+                        <div class="form-group">
+                            <label for="transaction_id" class="required"><i class="fas fa-receipt"></i> Transaction ID/Reference</label>
+                            <input type="text" id="transaction_id" name="transaction_id" 
+                                   placeholder="Enter transaction ID or MTCN number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="payment_date" class="required"><i class="fas fa-calendar-day"></i> Payment Date</label>
+                            <input type="date" id="payment_date" name="payment_date" 
+                                   value="{{ today|date:'Y-m-d' }}" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Proof Upload -->
+                <div class="payment-details">
+                    <h3><i class="fas fa-file-upload"></i> Payment Proof Upload</h3>
+                    <p style="margin-bottom: 20px; color: #666;">Upload proof of your 10% deposit payment (receipt/screenshot)</p>
+                    
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag & drop your payment proof here or click to browse</p>
+                        <p class="file-types">Accepted: JPG, PNG, PDF (Max: 5MB)</p>
+                        <input type="file" id="payment_proof" name="payment_proof" 
+                               accept=".jpg,.jpeg,.png,.pdf,.webp" 
+                               style="display: none;" 
+                               onchange="previewFile()">
+                        <button type="button" class="btn-upload" onclick="document.getElementById('payment_proof').click()">
+                            <i class="fas fa-folder-open"></i> Choose File
+                        </button>
+                    </div>
+                    
+                    <div class="file-preview" id="filePreview" style="display: none;">
+                        <h4>Selected File:</h4>
+                        <div class="preview-content">
+                            <i class="fas fa-file-invoice" id="fileIcon"></i>
+                            <div class="file-info">
+                                <strong id="fileName"></strong>
+                                <span id="fileSize"></span>
+                                <button type="button" class="btn-remove" onclick="removeFile()">
+                                    <i class="fas fa-times"></i> Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <i class="fas fa-exclamation-triangle"></i> 
+                    <strong>Important:</strong> 
+                    <ul style="margin: 10px 0 0 20px;">
+                        <li>Include your Application ID in the payment reference</li>
+                        <li>Payment proof must clearly show transaction details</li>
+                        <li>Your loan will be processed after payment verification</li>
+                        <li>Verification usually takes 24-48 hours</li>
+                    </ul>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="{% url 'loan_step1' %}" class="btn btn-back">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                    <button type="submit" class="btn btn-next" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Submit Application & Payment
+                    </button>
+                </div>
+            </form>
+            {% else %}
+                <div class="error">
+                    <i class="fas fa-exclamation-triangle"></i> 
+                    <h3>No Payment Methods Available</h3>
+                    <p>There are currently no payment methods configured. Please contact customer support.</p>
+                    <p>In the meantime, you can <a href="{% url 'dashboard' %}">return to dashboard</a> or 
+                    <a href="{% url 'loan_step1' %}">go back to step 1</a>.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <script>
+        // Store payment methods data
+        const paymentMethodsData = {
+            {% for method in payment_methods %}
+                "{{ method.id }}": {
+                    name: "{{ method.name|escapejs }}",
+                    type: "{{ method.payment_type|escapejs }}",
+                    instructions: `{{ method.instructions|escapejs }}`,
+                    account_name: "{{ method.account_name|escapejs }}",
+                    account_number: "{{ method.account_number|escapejs }}",
+                    wallet_address: "{{ method.wallet_address|escapejs }}"
+                },
+            {% endfor %}
+        };
+        
+        // Deposit calculation
+        function calculateDeposit() {
+            const loanAmount = document.getElementById('loan_amount').value;
+            if (loanAmount) {
+                const deposit = loanAmount * 0.10;
+                document.getElementById('depositDisplay').textContent = '$' + deposit.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            } else {
+                document.getElementById('depositDisplay').textContent = '$0.00';
+            }
+        }
+        
+        // Payment method selection
+        let selectedMethod = null;
+        
+        function selectPaymentMethod(card) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.payment-method-card').forEach(c => {
+                c.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked card
+            card.classList.add('selected');
+            
+            // Get method ID
+            const methodId = card.getAttribute('data-method-id');
+            document.getElementById('payment_method').value = methodId;
+            
+            // Store selected method
+            selectedMethod = card;
+            
+            // Show payment instructions
+            showPaymentInstructions(methodId);
+        }
+        
+        // Show payment instructions
+        function showPaymentInstructions(methodId) {
+            const instructionsDiv = document.getElementById('paymentInstructions');
+            const instructionsContent = document.getElementById('instructionsContent');
+            const accountDetails = document.getElementById('accountDetails');
+            
+            if (paymentMethodsData[methodId]) {
+                const method = paymentMethodsData[methodId];
+                instructionsDiv.style.display = 'block';
+                
+                // Set instructions
+                instructionsContent.innerHTML = `
+                    <p><strong>How to pay via ${method.name}:</strong></p>
+                    <p>${method.instructions.replace(/\n/g, '<br>')}</p>
+                `;
+                
+                // Set account details
+                let accountHTML = '<p><strong>Account Details:</strong></p>';
+                if (method.account_name && method.account_name.trim() !== '') {
+                    accountHTML += `<p><strong>Account Name:</strong> ${method.account_name}</p>`;
+                }
+                if (method.account_number && method.account_number.trim() !== '') {
+                    accountHTML += `<p><strong>Account Number:</strong> ${method.account_number}</p>`;
+                }
+                if (method.wallet_address && method.wallet_address.trim() !== '') {
+                    accountHTML += `<p><strong>Wallet Address:</strong> ${method.wallet_address}</p>`;
+                }
+                
+                if (accountHTML !== '<p><strong>Account Details:</strong></p>') {
+                    accountDetails.innerHTML = accountHTML;
+                } else {
+                    accountDetails.innerHTML = '<p><em>No account details provided.</em></p>';
+                }
+            }
+        }
+        
+        // File upload functionality
+        function previewFile() {
+            const fileInput = document.getElementById('payment_proof');
+            const filePreview = document.getElementById('filePreview');
+            const fileName = document.getElementById('fileName');
+            const fileSize = document.getElementById('fileSize');
+            const fileIcon = document.getElementById('fileIcon');
+            
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+                
+                // Check file size
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size exceeds 5MB limit. Please choose a smaller file.');
+                    fileInput.value = '';
+                    return;
+                }
+                
+                // Set file info
+                fileName.textContent = file.name;
+                fileSize.textContent = `(${fileSizeMB} MB)`;
+                
+                // Set icon based on file type
+                if (file.type.includes('image')) {
+                    fileIcon.className = 'fas fa-file-image';
+                } else if (file.type.includes('pdf')) {
+                    fileIcon.className = 'fas fa-file-pdf';
+                } else {
+                    fileIcon.className = 'fas fa-file';
+                }
+                
+                // Show preview
+                filePreview.style.display = 'block';
+                
+                // Update upload area text
+                document.querySelector('#uploadArea p').textContent = 'File selected. Click "Choose File" to change.';
+            }
+        }
+        
+        function removeFile() {
+            const fileInput = document.getElementById('payment_proof');
+            const filePreview = document.getElementById('filePreview');
+            
+            fileInput.value = '';
+            filePreview.style.display = 'none';
+            document.querySelector('#uploadArea p').textContent = 'Drag & drop your payment proof here or click to browse';
+        }
+        
+        // Form validation
+        document.getElementById('loanForm').addEventListener('submit', function(e) {
+            const loanAmount = document.getElementById('loan_amount').value;
+            const loanTerm = document.getElementById('loan_term').value;
+            const paymentMethod = document.getElementById('payment_method').value;
+            const senderName = document.getElementById('sender_name').value;
+            const transactionId = document.getElementById('transaction_id').value;
+            const paymentProof = document.getElementById('payment_proof').files.length;
+            
+            if (!loanAmount || loanAmount < 100) {
+                e.preventDefault();
+                alert('Please enter a valid loan amount (minimum $100).');
+                return;
+            }
+            
+            if (!loanTerm) {
+                e.preventDefault();
+                alert('Please select a loan term.');
+                return;
+            }
+            
+            if (!paymentMethod) {
+                e.preventDefault();
+                alert('Please select a payment method.');
+                return;
+            }
+            
+            if (!senderName) {
+                e.preventDefault();
+                alert('Please enter sender\'s name.');
+                return;
+            }
+            
+            if (!transactionId) {
+                e.preventDefault();
+                alert('Please enter transaction ID/reference.');
+                return;
+            }
+            
+            if (!paymentProof) {
+                e.preventDefault();
+                alert('Please upload payment proof.');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+        });
+        
+        // Drag and drop functionality
+        const uploadArea = document.getElementById('uploadArea');
+        const paymentProofInput = document.getElementById('payment_proof');
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.backgroundColor = '#e8f4fe';
+        });
+        
+        uploadArea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            uploadArea.style.backgroundColor = '';
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.backgroundColor = '';
+            
+            if (e.dataTransfer.files.length) {
+                paymentProofInput.files = e.dataTransfer.files;
+                previewFile();
+            }
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            calculateDeposit();
+            
+            // Set payment date to today if not set
+            if (!document.getElementById('payment_date').value) {
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('payment_date').value = today;
+                document.getElementById('payment_date').max = today;
+            }
+        });
+    </script>
+</body>
+</html>

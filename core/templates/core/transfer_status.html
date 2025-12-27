@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transfer Status - {{ transfer.reference_number }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #333;
+        }
+        
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-btn {
+            color: #0466c8;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border: 1px solid #0466c8;
+            border-radius: 5px;
+        }
+        
+        .status-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .status-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-processing {
+            background: #cce5ff;
+            color: #004085;
+        }
+        
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-failed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-cancelled {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .detail-box {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .detail-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .detail-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .timeline {
+            margin: 30px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #dee2e6;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -16px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #0466c8;
+        }
+        
+        .timeline-item.completed::before {
+            background: #28a745;
+        }
+        
+        .timeline-date {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-status {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-notes {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: #0466c8;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .amount-highlight {
+            background: linear-gradient(135deg, #0466c8, #00aaff);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .amount-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .amount-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 style="margin: 0; color: #04293a;">Transfer Status</h1>
+        <a href="{% url 'send_money' %}" class="back-btn">← New Transfer</a>
+    </div>
+    
+    {% if error %}
+    <div class="error-message">
+        <strong>Error:</strong> {{ error }}
+    </div>
+    {% else %}
+    
+    <div class="status-card">
+        <div class="status-header">
+            <div class="status-badge status-{{ transfer.status }}">
+                {{ transfer.status|upper }}
+            </div>
+            <h2 style="margin: 10px 0 5px 0;">Reference: {{ transfer.reference_number }}</h2>
+            <p style="color: #666; margin: 0;">Created: {{ transfer.created_at|date:"F d, Y H:i" }}</p>
+        </div>
+        
+        <!-- Amount Display -->
+        <div class="amount-highlight">
+            <div class="amount-label">Transfer Amount</div>
+            <div class="amount-number">${{ transfer.amount|floatformat:2 }}</div>
+            {% if transfer.transfer_fee > 0 %}
+                <div style="font-size: 14px; margin-top: 5px;">
+                    + ${{ transfer.transfer_fee|floatformat:2 }} fee = ${{ transfer.total_amount|floatformat:2 }} total
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- Transfer Details -->
+        <div class="details-grid">
+            <div class="detail-box">
+                <div class="detail-label">Sender</div>
+                <div class="detail-value">{{ transfer.sender_name }}</div>
+                <div style="font-size: 14px; color: #666; margin-top: 5px;">{{ transfer.sender_email }}</div>
+            </div>
+            
+            <div class="detail-box">
+                <div class="detail-label">Recipient</div>
+                <div class="detail-value">{{ transfer.recipient_name }}</div>
+                <div style="font-size: 14px; color: #666; margin-top: 5px;">
+                    Account: ••••{{ transfer.recipient_account_number|slice:"-4:" }}
+                </div>
+            </div>
+            
+            <div class="detail-box">
+                <div class="detail-label">Bank</div>
+                <div class="detail-value">{{ transfer.recipient_bank_name }}</div>
+                <div style="font-size: 14px; color: #666; margin-top: 5px;">
+                    Routing: {{ transfer.recipient_routing_number }}
+                </div>
+            </div>
+            
+            <div class="detail-box">
+                <div class="detail-label">Transfer Type</div>
+                <div class="detail-value">
+                    {% if transfer.transfer_type == 'standard' %}
+                        Standard (2-3 days)
+                    {% elif transfer.transfer_type == 'express' %}
+                        Express (24 hours)
+                    {% elif transfer.transfer_type == 'instant' %}
+                        Instant (Minutes)
+                    {% else %}
+                        {{ transfer.transfer_type|title }}
+                    {% endif %}
+                </div>
+                <div style="font-size: 14px; color: #666; margin-top: 5px;">
+                    Reference: {{ transfer.purpose|default:"No reference" }}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Status History -->
+        {% if status_history %}
+        <div style="margin-top: 30px;">
+            <h3 style="color: #04293a; margin-bottom: 15px;">Status History</h3>
+            <div class="timeline">
+                {% for history in status_history %}
+                <div class="timeline-item {% if history.status == 'completed' %}completed{% endif %}">
+                    <div class="timeline-date">{{ history.created_at|date:"F d, Y H:i" }}</div>
+                    <div class="timeline-status">{{ history.status|title }}</div>
+                    {% if history.notes %}
+                    <div class="timeline-notes">{{ history.notes }}</div>
+                    {% endif %}
+                    {% if history.changed_by %}
+                    <div style="font-size: 12px; color: #999; margin-top: 5px;">
+                        By: {{ history.changed_by.get_full_name|default:history.changed_by.username }}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Admin Notes -->
+        {% if transfer.admin_notes and request.user.is_staff %}
+        <div style="margin-top: 30px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #0466c8;">
+            <h4 style="margin-top: 0; color: #04293a;">Admin Notes</h4>
+            <p style="margin: 0; color: #333;">{{ transfer.admin_notes }}</p>
+        </div>
+        {% endif %}
+        
+        <!-- Actions -->
+        <div class="actions">
+            <a href="{% url 'send_money' %}" class="btn btn-primary">New Transfer</a>
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
+            {% if request.user.is_staff %}
+            <a href="{% url 'admin_transfer_detail' transfer.id %}" class="btn btn-success">Manage as Admin</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Auto-refresh for pending/processing status -->
+    {% if transfer and transfer.status == 'pending' or transfer.status == 'processing' %}
+    <script>
+        // Auto-refresh every 30 seconds
+        setTimeout(function() {
+            window.location.reload();
+        }, 30000);
+        
+        // Show refresh notice
+        document.addEventListener('DOMContentLoaded', function() {
+            const notice = document.createElement('div');
+            notice.innerHTML = '⏳ Status will auto-refresh every 30 seconds...';
+            notice.style.cssText = 'text-align: center; color: #666; font-size: 12px; margin-top: 10px;';
+            document.querySelector('.status-card').appendChild(notice);
+        });
+    </script>
+    {% endif %}
+</body>
+</html>

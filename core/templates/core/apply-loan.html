@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Loan - NovaTrust Bank</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        /* Header & Navigation */
+        .bank-header {
+            background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            color: white;
+            border-bottom: 2px solid white;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(13, 110, 253, 0.9), rgba(102, 16, 242, 0.9)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Application Progress */
+        .application-progress {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: -3rem auto 3rem;
+            max-width: 1200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-steps:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: #e9ecef;
+            z-index: 1;
+        }
+        
+        .progress-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e9ecef;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin: 0 auto 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .progress-step.active .step-number {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #6610f2 100%);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .progress-step.completed .step-number {
+            background: var(--success-color);
+            color: white;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Form Sections */
+        .form-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: none;
+        }
+        
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f8f9fa;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 0;
+        }
+        
+        .section-number {
+            width: 35px;
+            height: 35px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        /* Form Elements */
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .form-label.required:after {
+            content: " *";
+            color: var(--danger-color);
+        }
+        
+        .form-control, .form-select {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+        }
+        
+        .input-group-text {
+            background-color: #f8f9fa;
+            border-color: #e9ecef;
+        }
+        
+        .form-text {
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        
+        /* Loan Summary Card */
+        .loan-summary-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* Help Box */
+        .help-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-left: 4px solid var(--warning-color);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        
+        /* Document Upload */
+        .document-upload {
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .document-upload:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(13, 110, 253, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .uploaded-files {
+            margin-top: 1.5rem;
+        }
+        
+        .uploaded-file {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .file-icon {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        .file-name {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .file-size {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+        
+        .remove-file {
+            color: var(--danger-color);
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .remove-file:hover {
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+        
+        /* Preview Box */
+        .preview-box {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .preview-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f8f9fa;
+        }
+        
+        .preview-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* Consent Box */
+        .consent-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .consent-box h6 {
+            color: var(--primary-color);
+        }
+        
+        .consent-box p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .consent-box ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .consent-box li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Navigation Buttons */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0b5ed7 100%);
+            border: none;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(13, 110, 253, 0.3);
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        /* Sidebar */
+        .application-sidebar {
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .sidebar-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+        
+        .sidebar-card h6 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .timeline-progress {
+            margin: 1rem 0;
+        }
+        
+        .timeline-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background-color: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color) 0%, #6610f2 100%);
+            border-radius: 3px;
+            width: 25%;
+            transition: width 0.5s ease;
+        }
+        
+        /* Checkbox & Radio */
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .form-check-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        
+        /* Footer */
+        .footer-section {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .application-progress {
+                padding: 1.5rem;
+                margin: -2rem auto 2rem;
+            }
+            
+            .progress-steps {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .progress-steps:before {
+                display: none;
+            }
+            
+            .progress-step {
+                flex: 0 0 calc(50% - 0.5rem);
+            }
+            
+            .form-section {
+                padding: 1.5rem;
+            }
+            
+            .navigation-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .navigation-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+        
+        /* Animation for progress bar */
+        @keyframes progressAnimation {
+            0% { width: 0%; }
+            100% { width: 25%; }
+        }
+        
+        .progress-fill {
+            animation: progressAnimation 1s ease-out forwards;
+        }
+        
+        /* Radio Group */
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .radio-label {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .radio-label input {
+            margin-right: 0.5rem;
+        }
+        
+        .radio-label:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .radio-label input:checked + span {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .radio-label input:checked ~ .radio-label {
+            border-color: var(--primary-color);
+            background: rgba(13, 110, 253, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="bank-header">
+        <div class="main-container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="#" class="logo">NovaTrust Bank</a>
+                <nav class="d-none d-md-flex">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link active">Loans</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#" class="btn-outline">Login</a>
+                </nav>
+                <button class="btn btn-light d-md-none">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="main-container">
+            <h1 class="hero-title">Apply for a Loan</h1>
+            <p class="hero-subtitle">Get the funding you need for your dreams. Our simple 4-step application process makes it easy to apply for a loan with competitive rates.</p>
+        </div>
+    </section>
+
+    <!-- Application Progress -->
+    <div class="main-container">
+        <div class="application-progress">
+            <div class="progress-steps">
+                <div class="progress-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Loan Details</div>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Personal Info</div>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Financial Info</div>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Review & Submit</div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <p class="mb-0">Application ID: <strong>APP-2025-12548</strong></p>
+                <small class="text-muted">Started: Today, 2:30 PM</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="row">
+            <!-- Main Application Form -->
+            <div class="col-lg-8">
+                <!-- Step 1: Loan Details -->
+                <div class="form-section active" id="step1">
+                    <div class="section-header">
+                        <h2 class="section-title">Step 1: Loan Details</h2>
+                        <div class="section-number">1</div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="loanType" class="form-label required">Loan Type</label>
+                            <select class="form-select" id="loanType" required>
+                                <option value="">Select loan type...</option>
+                                <option value="personal" selected>Personal Loan</option>
+                                <option value="auto">Auto Loan</option>
+                                <option value="home">Home Equity Loan</option>
+                                <option value="business">Business Loan</option>
+                                <option value="education">Education Loan</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="loanPurpose" class="form-label required">Loan Purpose</label>
+                            <select class="form-select" id="loanPurpose" required>
+                                <option value="">Select purpose...</option>
+                                <option value="debt" selected>Debt Consolidation</option>
+                                <option value="home">Home Improvement</option>
+                                <option value="vehicle">Vehicle Purchase</option>
+                                <option value="medical">Medical Expenses</option>
+                                <option value="business">Business Investment</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="loanAmount" class="form-label required">Loan Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" id="loanAmount" value="25000" min="1000" max="100000" required>
+                            </div>
+                            <div class="form-text">Minimum: $1,000 | Maximum: $100,000</div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="loanTerm" class="form-label required">Loan Term</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="loanTerm" value="60" min="12" max="84" required>
+                                <span class="input-group-text">months</span>
+                            </div>
+                            <div class="form-text">12 to 84 months (1-7 years)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="loan-summary-card">
+                        <h6 class="mb-3">Estimated Payment Summary</h6>
+                        <div class="summary-item">
+                            <span>Loan Amount:</span>
+                            <span id="summaryAmount">$25,000.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Interest Rate (est.):</span>
+                            <span id="summaryRate">7.5% APR</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Loan Term:</span>
+                            <span id="summaryTerm">60 months</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Monthly Payment:</span>
+                            <span class="text-primary" id="summaryPayment">$501.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Total Interest:</span>
+                            <span id="summaryInterest">$5,060.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Total Cost:</span>
+                            <span class="text-primary" id="summaryTotal">$30,060.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="help-box">
+                        <h6><i class="bi bi-lightbulb"></i> Helpful Tip</h6>
+                        <p class="mb-0">
+                            Choose a shorter loan term to save on interest, or a longer term for lower monthly payments.
+                            Our loan specialists can help you find the right balance.
+                        </p>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <div></div>
+                        <button class="btn-primary" onclick="nextStep(2)">
+                            Next: Personal Information <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Personal Information -->
+                <div class="form-section" id="step2">
+                    <div class="section-header">
+                        <h2 class="section-title">Step 2: Personal Information</h2>
+                        <div class="section-number">2</div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName" class="form-label required">First Name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="John" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName" class="form-label required">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="dob" class="form-label required">Date of Birth</label>
+                            <input type="date" class="form-control" id="dob" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="ssn" class="form-label required">Social Security Number</label>
+                            <input type="text" class="form-control" id="ssn" placeholder="XXX-XX-XXXX" pattern="\d{3}-\d{2}-\d{4}" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label required">Email Address</label>
+                            <input type="email" class="form-control" id="email" placeholder="john.doe@example.com" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="form-label required">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="(555) 123-4567" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label required">Residential Address</label>
+                        <input type="text" class="form-control mb-2" placeholder="Street Address" required>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <input type="text" class="form-control" placeholder="City" required>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <select class="form-select" required>
+                                    <option value="">State</option>
+                                    <option>CA</option>
+                                    <option>NY</option>
+                                    <option>TX</option>
+                                    <option>FL</option>
+                                    <option>IL</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <input type="text" class="form-control" placeholder="ZIP Code" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">How long at current address?</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <input type="number" class="form-control" value="5" min="0">
+                                    <span class="input-group-text">years</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <input type="number" class="form-control" value="6" min="0" max="11">
+                                    <span class="input-group-text">months</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <button class="btn-outline" onclick="prevStep(1)">
+                            <i class="bi bi-arrow-left"></i> Back
+                        </button>
+                        <button class="btn-primary" onclick="nextStep(3)">
+                            Next: Financial Information <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Financial Information -->
+                <div class="form-section" id="step3">
+                    <div class="section-header">
+                        <h2 class="section-title">Step 3: Financial Information</h2>
+                        <div class="section-number">3</div>
+                    </div>
+                    
+                    <h5 class="mb-3">Employment Information</h5>
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label required">Employment Status</label>
+                            <select class="form-select" required>
+                                <option value="">Select status...</option>
+                                <option selected>Employed Full-time</option>
+                                <option>Employed Part-time</option>
+                                <option>Self-Employed</option>
+                                <option>Retired</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label required">Employer Name</label>
+                            <input type="text" class="form-control" placeholder="Company Name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label required">Job Title</label>
+                            <input type="text" class="form-control" placeholder="Position" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label required">Years with Employer</label>
+                            <input type="number" class="form-control" value="3" min="0" required>
+                        </div>
+                    </div>
+                    
+                    <h5 class="mb-3">Income Details</h5>
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label required">Annual Income</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" value="75000" min="0" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Additional Income</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" value="0" min="0">
+                            </div>
+                            <div class="form-text">e.g., rental, investment, alimony</div>
+                        </div>
+                    </div>
+                    
+                    <h5 class="mb-3">Monthly Expenses</h5>
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Rent/Mortgage Payment</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" value="1500" min="0">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Other Loan Payments</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" value="500" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h5 class="mb-3">Bank Accounts</h5>
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Checking Account Balance</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" value="5000" min="0">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Savings Account Balance</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" value="15000" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <button class="btn-outline" onclick="prevStep(2)">
+                            <i class="bi bi-arrow-left"></i> Back
+                        </button>
+                        <button class="btn-primary" onclick="nextStep(4)">
+                            Next: Review & Submit <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Documents & Review -->
+                <div class="form-section" id="step4">
+                    <div class="section-header">
+                        <h2 class="section-title">Step 4: Review & Submit</h2>
+                        <div class="section-number">4</div>
+                    </div>
+                    
+                    <h5 class="mb-3">Required Documents</h5>
+                    <p class="text-muted mb-4">
+                        Please upload the following documents. You can submit your application now and upload documents later,
+                        but your application won't be processed until all documents are received.
+                    </p>
+                    
+                    <div class="document-upload" onclick="document.getElementById('fileInput').click()">
+                        <div class="upload-icon">
+                            <i class="bi bi-cloud-arrow-up"></i>
+                        </div>
+                        <h5>Drag & Drop or Click to Upload</h5>
+                        <p class="text-muted">Supported: PDF, JPG, PNG (Max: 10MB each)</p>
+                    </div>
+                    <input type="file" id="fileInput" multiple style="display: none;" onchange="handleFileUpload(event)">
+                    
+                    <div class="uploaded-files" id="uploadedFiles">
+                        <!-- Uploaded files will appear here -->
+                    </div>
+                    
+                    <h5 class="mt-5 mb-3">Application Review</h5>
+                    <div class="preview-box">
+                        <div class="preview-item">
+                            <span>Loan Type:</span>
+                            <span id="reviewLoanType">Personal Loan</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>Loan Amount:</span>
+                            <span id="reviewAmount">$25,000.00</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>Monthly Payment:</span>
+                            <span id="reviewPayment">$501.00</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>Applicant:</span>
+                            <span id="reviewName">John Doe</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>Email:</span>
+                            <span id="reviewEmail">john.doe@example.com</span>
+                        </div>
+                    </div>
+                    
+                    <h5 class="mt-5 mb-3">Consent & Agreements</h5>
+                    <div class="consent-box">
+                        <h6>Loan Agreement Terms</h6>
+                        <p>
+                            By submitting this application, you agree to the following terms:
+                        </p>
+                        <ul>
+                            <li>You authorize NovaTrust Bank to obtain credit reports and verify information</li>
+                            <li>You confirm all information provided is accurate and complete</li>
+                            <li>You understand that submitting an application does not guarantee approval</li>
+                            <li>You agree to the terms and conditions of the loan if approved</li>
+                            <li>You consent to electronic communications regarding your application</li>
+                        </ul>
+                        <p>
+                            <strong>Annual Percentage Rate (APR):</strong> The actual APR will be determined based on your creditworthiness
+                            and may differ from the estimated rate shown. Final terms will be provided upon approval.
+                        </p>
+                    </div>
+                    
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="consentCheckbox" required>
+                        <label class="form-check-label" for="consentCheckbox">
+                            I have read and agree to the terms and conditions above
+                        </label>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <button class="btn-outline" onclick="prevStep(3)">
+                            <i class="bi bi-arrow-left"></i> Back
+                        </button>
+                        <button class="btn-primary" onclick="submitApplication()">
+                            <i class="bi bi-check-circle"></i> Submit Application
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="application-sidebar">
+                    <div class="sidebar-card">
+                        <h6>Application Summary</h6>
+                        <div class="summary-item">
+                            <span>Application ID:</span>
+                            <span>APP-2025-12548</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Started:</span>
+                            <span>Today, 2:30 PM</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Current Step:</span>
+                            <span id="currentStepDisplay">1 of 4</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Estimated Time:</span>
+                            <span>15-20 minutes</span>
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <button class="btn-outline w-100 mb-2" onclick="showHelp()">
+                                <i class="bi bi-question-circle"></i> Need Help?
+                            </button>
+                            <button class="btn-outline w-100" onclick="saveApplication()">
+                                <i class="bi bi-save"></i> Save Draft
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-card">
+                        <h6>What You'll Need</h6>
+                        <ul class="footer-links">
+                            <li><i class="bi bi-check-circle text-success me-2"></i> Personal information</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i> Employment details</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i> Income verification</li>
+                            <li><i class="bi bi-file-earmark-text me-2"></i> Government-issued ID</li>
+                            <li><i class="bi bi-file-earmark-text me-2"></i> Proof of income (2 most recent pay stubs)</li>
+                            <li><i class="bi bi-file-earmark-text me-2"></i> Bank statements (last 3 months)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-card">
+                        <h6>Processing Timeline</h6>
+                        <div class="timeline-progress">
+                            <div class="timeline-item">
+                                <div class="progress-label">
+                                    <span>Initial Review</span>
+                                    <span>1-2 days</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 25%"></div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="progress-label">
+                                    <span>Document Verification</span>
+                                    <span>2-3 days</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="progress-label">
+                                    <span>Approval Decision</span>
+                                    <span>1 day</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="progress-label">
+                                    <span>Funds Disbursement</span>
+                                    <span>1-2 days</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="main-container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-logo">NovaTrust Bank</div>
+                    <p>A modern, technology-first bank built for you and your growing business.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Awards</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Useful Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Home Loan</a></li>
+                        <li><a href="#">Car Loan</a></li>
+                        <li><a href="#">Business Loan</a></li>
+                        <li><a href="#">Personal Loan</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contact@novatrustbank.com">contact@novatrustbank.com</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>
+                    <p>Copyright © <a href="#" style="color: white; text-decoration: underline;">NovaTrust Bank</a></p>
+                </div>
+                <div>
+                    <a href="#" style="color: rgba(255,255,255,0.7); margin-right: 1rem;">Privacy Policy</a>
+                    <a href="#" style="color: rgba(255,255,255,0.7);">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        let currentStep = 1;
+        let uploadedFiles = [];
+        
+        // Initialize date input
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set date of birth input max to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('dob').max = today;
+            
+            // Set default date (25 years ago)
+            const defaultDate = new Date();
+            defaultDate.setFullYear(defaultDate.getFullYear() - 25);
+            document.getElementById('dob').value = defaultDate.toISOString().split('T')[0];
+            
+            // Initialize loan calculation
+            updateLoanSummary();
+            
+            // Add event listeners for loan amount and term
+            document.getElementById('loanAmount').addEventListener('input', updateLoanSummary);
+            document.getElementById('loanTerm').addEventListener('input', updateLoanSummary);
+            document.getElementById('loanType').addEventListener('change', updateLoanSummary);
+            
+            // Update review section when form changes
+            document.getElementById('firstName').addEventListener('input', updateReview);
+            document.getElementById('lastName').addEventListener('input', updateReview);
+            document.getElementById('email').addEventListener('input', updateReview);
+        });
+        
+        // Step navigation
+        function nextStep(step) {
+            if (!validateStep(currentStep)) {
+                alert('Please fill in all required fields before proceeding.');
+                return;
+            }
+            
+            // Hide current step
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            
+            // Show next step
+            document.getElementById(`step${step}`).classList.add('active');
+            currentStep = step;
+            
+            // Update progress indicators
+            updateProgress(step);
+            
+            // Update review section
+            updateReview();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function prevStep(step) {
+            // Hide current step
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            
+            // Show previous step
+            document.getElementById(`step${step}`).classList.add('active');
+            currentStep = step;
+            
+            // Update progress indicators
+            updateProgress(step);
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Update progress indicators
+        function updateProgress(step) {
+            // Update step numbers
+            document.querySelectorAll('.progress-step').forEach((progressStep, index) => {
+                const stepNumber = index + 1;
+                
+                progressStep.classList.remove('active', 'completed');
+                
+                if (stepNumber === step) {
+                    progressStep.classList.add('active');
+                } else if (stepNumber < step) {
+                    progressStep.classList.add('completed');
+                }
+            });
+            
+            // Update current step display
+            document.getElementById('currentStepDisplay').textContent = `${step} of 4`;
+        }
+        
+        // Validate step
+        function validateStep(step) {
+            const stepElement = document.getElementById(`step${step}`);
+            const requiredFields = stepElement.querySelectorAll('[required]');
+            
+            for (const field of requiredFields) {
+                if (!field.value.trim()) {
+                    field.focus();
+                    field.classList.add('is-invalid');
+                    return false;
+                }
+                field.classList.remove('is-invalid');
+            }
+            
+            return true;
+        }
+        
+        // Update loan summary calculation
+        function updateLoanSummary() {
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value) || 25000;
+            const loanTerm = parseFloat(document.getElementById('loanTerm').value) || 60;
+            const loanType = document.getElementById('loanType').value;
+            
+            // Calculate monthly payment (simplified)
+            const annualRate = loanType === 'personal' ? 7.5 : 
+                              loanType === 'auto' ? 5.5 : 
+                              loanType === 'home' ? 4.5 : 
+                              loanType === 'business' ? 8.5 : 6.5;
+            
+            const monthlyRate = annualRate / 100 / 12;
+            const numberOfPayments = loanTerm;
+            
+            let monthlyPayment;
+            if (monthlyRate === 0) {
+                monthlyPayment = loanAmount / numberOfPayments;
+            } else {
+                monthlyPayment = loanAmount * 
+                    (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / 
+                    (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+            }
+            
+            const totalPayment = monthlyPayment * numberOfPayments;
+            const totalInterest = totalPayment - loanAmount;
+            
+            // Update display
+            document.getElementById('summaryAmount').textContent = `$${loanAmount.toFixed(2)}`;
+            document.getElementById('summaryRate').textContent = `${annualRate.toFixed(1)}% APR`;
+            document.getElementById('summaryTerm').textContent = `${loanTerm} months`;
+            document.getElementById('summaryPayment').textContent = `$${monthlyPayment.toFixed(2)}`;
+            document.getElementById('summaryInterest').textContent = `$${totalInterest.toFixed(2)}`;
+            document.getElementById('summaryTotal').textContent = `$${totalPayment.toFixed(2)}`;
+            
+            // Update review section
+            updateReview();
+        }
+        
+        // Update review section
+        function updateReview() {
+            const firstName = document.getElementById('firstName').value || 'John';
+            const lastName = document.getElementById('lastName').value || 'Doe';
+            const email = document.getElementById('email').value || 'john.doe@example.com';
+            const loanAmount = document.getElementById('loanAmount').value || '25000';
+            const loanType = document.getElementById('loanType').options[document.getElementById('loanType').selectedIndex].text;
+            
+            document.getElementById('reviewLoanType').textContent = loanType;
+            document.getElementById('reviewAmount').textContent = `$${parseFloat(loanAmount).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('reviewPayment').textContent = document.getElementById('summaryPayment').textContent;
+            document.getElementById('reviewName').textContent = `${firstName} ${lastName}`;
+            document.getElementById('reviewEmail').textContent = email;
+        }
+        
+        // File upload handling
+        function handleFileUpload(event) {
+            const files = event.target.files;
+            
+            for (const file of files) {
+                if (file.size > 10 * 1024 * 1024) { // 10MB limit
+                    alert(`File ${file.name} is too large. Maximum size is 10MB.`);
+                    continue;
+                }
+                
+                if (!file.type.match('application/pdf') && 
+                    !file.type.match('image/jpeg') && 
+                    !file.type.match('image/png')) {
+                    alert(`File ${file.name} has an unsupported format. Please upload PDF, JPG, or PNG files.`);
+                    continue;
+                }
+                
+                uploadedFiles.push(file);
+                addFileToUI(file);
+            }
+            
+            // Reset file input
+            event.target.value = '';
+        }
+        
+        function addFileToUI(file) {
+            const container = document.getElementById('uploadedFiles');
+            const fileId = `file-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            
+            const fileElement = document.createElement('div');
+            fileElement.className = 'uploaded-file';
+            fileElement.id = fileId;
+            fileElement.innerHTML = `
+                <div class="file-info">
+                    <i class="bi bi-file-earmark-pdf file-icon"></i>
+                    <div>
+                        <div class="file-name">${file.name}</div>
+                        <div class="file-size">${formatFileSize(file.size)}</div>
+                    </div>
+                </div>
+                <button class="remove-file" onclick="removeFile('${fileId}', '${file.name}')">
+                    <i class="bi bi-x-circle"></i>
+                </button>
+            `;
+            
+            container.appendChild(fileElement);
+        }
+        
+        function removeFile(fileId, fileName) {
+            if (confirm(`Remove ${fileName} from your application?`)) {
+                const fileElement = document.getElementById(fileId);
+                fileElement.remove();
+                
+                // Remove from uploadedFiles array
+                uploadedFiles = uploadedFiles.filter(file => file.name !== fileName);
+            }
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Application actions
+        function saveApplication() {
+            alert('Application saved as draft. You can return to complete it later.');
+        }
+        
+        function showHelp() {
+            alert('For assistance, please call our loan specialists at 1-800-NOVA-BANK (1-800-668-2265) or visit a branch.');
+        }
+        
+        function submitApplication() {
+            if (!document.getElementById('consentCheckbox').checked) {
+                alert('Please agree to the terms and conditions before submitting.');
+                return;
+            }
+            
+            if (!validateStep(4)) {
+                alert('Please complete all required fields before submitting.');
+                return;
+            }
+            
+            if (confirm('Submit your loan application? You will receive a confirmation email shortly.')) {
+                // Show success message
+                const firstName = document.getElementById('firstName').value || 'John';
+                const email = document.getElementById('email').value || 'john.doe@example.com';
+                
+                alert(`Application submitted successfully, ${firstName}! Our loan specialists will review your application and contact you at ${email} within 2 business days.`);
+                
+                // In production, this would submit form data
+                // document.querySelector('form').submit();
+            }
+        }
+    </script>
+</body>
+</html>

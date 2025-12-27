@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Loan Application - NovaTrust Bank</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Header & Navigation */
+        .bank-header {
+            background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            color: white;
+            border-bottom: 2px solid white;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(13, 110, 253, 0.9), rgba(102, 16, 242, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Sections */
+        .section-padding {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .section-dark {
+            background-color: #f8f9fa;
+        }
+        
+        /* About Business Loan Section */
+        .about-loan-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 4rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        
+        .check-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .check-list .check-icon {
+            background: var(--success-color);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+        
+        .loan-image {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #6610f2 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 4rem 0;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-description {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #6610f2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        /* Loan Calculator */
+        .calculator-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+        }
+        
+        .slider-container {
+            margin-bottom: 2rem;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .slider-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .range-slider {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            background: #e9ecef;
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        
+        .calculation-result {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .monthly-payment {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+        
+        .rate-info {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+        }
+        
+        .rate-item {
+            text-align: center;
+        }
+        
+        .rate-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        /* How It Works */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: #e9ecef;
+            z-index: 1;
+        }
+        
+        .process-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #6610f2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            border: 5px solid white;
+        }
+        
+        /* Application Form */
+        .application-form {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            padding: 4rem;
+            margin: 4rem 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+        
+        .stars {
+            color: #ffc107;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        .footer-section {
+            background: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0b5ed7 100%);
+            border: none;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(13, 110, 253, 0.3);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .section-padding {
+                padding: 3rem 0;
+            }
+            
+            .about-loan-section,
+            .calculator-section,
+            .application-form {
+                padding: 2rem;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .process-steps:before {
+                display: none;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        /* Radio buttons */
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .radio-label {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .radio-label input {
+            margin-right: 0.5rem;
+        }
+        
+        .radio-label:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .radio-label input:checked + span {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .radio-label input:checked ~ .radio-label {
+            border-color: var(--primary-color);
+            background: rgba(13, 110, 253, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="bank-header">
+        <div class="main-container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="#" class="logo">NovaTrust Bank</a>
+                <nav>
+                    <a href="#" class="nav-link active">Home Loan</a>
+                    <a href="#" class="nav-link">Car Loan</a>
+                    <a href="#" class="nav-link">Business Loan</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#" class="btn-primary">Apply Now</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="main-container">
+            <h1 class="hero-title">Your Dream Home Awaits</h1>
+            <p class="hero-subtitle">Get competitive rates, flexible terms, and a seamless mortgage experience with NovaTrust Bank. Let's make homeownership a reality.</p>
+            <a href="#application-form" class="btn-primary">Apply for Home Loan</a>
+        </div>
+    </section>
+
+    <!-- About Home Loan -->
+    <section class="section-padding">
+        <div class="main-container">
+            <div class="about-loan-section">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="fade-in">
+                            <h5 class="text-primary mb-3">Helping you own your home sooner</h5>
+                            <h2 class="section-title">A simple way to buy a home or refinance</h2>
+                            <p>Whether you're building, investing or simply fixing up your current home, a housing loan is the best way to hammer in the first nail to your dream home.</p>
+                            <ul class="check-list">
+                                <li>
+                                    <span class="check-icon"><i class="fas fa-check"></i></span>
+                                    <span>Same day approval and multiple funding options</span>
+                                </li>
+                                <li>
+                                    <span class="check-icon"><i class="fas fa-check"></i></span>
+                                    <span>Access loans without origination fees</span>
+                                </li>
+                                <li>
+                                    <span class="check-icon"><i class="fas fa-check"></i></span>
+                                    <span>Borrow up to €250,000</span>
+                                </li>
+                            </ul>
+                            <div class="mt-4">
+                                <a href="#application-form" class="btn-primary">Apply for a home loan</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="fade-in">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Home Loan Illustration" class="loan-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section-padding">
+        <div class="main-container">
+            <div class="cta-section">
+                <h2 class="cta-title">Mortgage lending</h2>
+                <p class="cta-description">Our experienced loan officers look forward to helping you finance the home of your dreams!</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="#application-form" class="btn-secondary">Apply for a Home loan</a>
+                    <a href="#" class="btn-secondary">Get in touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section-padding section-dark">
+        <div class="main-container">
+            <div class="text-center mb-5">
+                <h5 class="text-primary mb-3">Why NovaTrust Bank is a great financing option for you</h5>
+                <h2 class="section-title">Great benefits from NovaTrust Bank</h2>
+                <p class="section-subtitle">Building or buying, for yourself or to invest, we have the home loan for you.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3 class="feature-title">Simple Application Process</h3>
+                    <p>Easy online application with minimal paperwork required.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="feature-title">No credit check</h3>
+                    <p>We believe in second chances and focus on your current financial situation.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="feature-title">No employment required</h3>
+                    <p>Self-employed, freelancers, and retirees welcome to apply.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Secure loan</h3>
+                    <p>Bank-level security and data protection for your peace of mind.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Fast approval</h3>
+                    <p>Get pre-approved in as little as 24 hours with our streamlined process.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="feature-title">Cash within minutes</h3>
+                    <p>Once approved, funds can be disbursed to your account immediately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loan Calculator -->
+    <section class="section-padding">
+        <div class="main-container">
+            <div class="calculator-section">
+                <div class="text-center mb-5">
+                    <h5 class="text-primary mb-3">Get a quick and easy loan to own your dream home</h5>
+                    <h2 class="section-title">Get Started with the Digital Mortgage Experience</h2>
+                    <p class="section-subtitle">Prequalify or apply for your mortgage in minutes</p>
+                </div>
+                
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <label>Purchase Price:</label>
+                                <span class="slider-value" id="homePriceValue">€250,000</span>
+                            </div>
+                            <input type="range" min="60000" max="2500000" value="250000" step="10000" class="range-slider" id="homePriceSlider">
+                            <div class="d-flex justify-content-between mt-2">
+                                <small>€60,000</small>
+                                <small>€2.5 million</small>
+                            </div>
+                        </div>
+                        
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <label>Down Payment:</label>
+                                <span class="slider-value" id="downPaymentValue">20%</span>
+                            </div>
+                            <input type="range" min="5" max="50" value="20" step="1" class="range-slider" id="downPaymentSlider">
+                            <div class="d-flex justify-content-between mt-2">
+                                <small>5%</small>
+                                <small>50%</small>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6>Loan Term</h6>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="loanTerm" value="5" checked>
+                                    <span>5/1 ARM Variable</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="loanTerm" value="15">
+                                    <span>15 Year Fixed</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="loanTerm" value="30">
+                                    <span>30 Year Fixed</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-5">
+                        <div class="calculation-result">
+                            <p>Your Estimated Monthly Payment</p>
+                            <div class="monthly-payment" id="monthlyPayment">€984</div>
+                            <p>Based on current rates</p>
+                            
+                            <div class="rate-info">
+                                <div class="rate-item">
+                                    <div class="rate-value" id="interestRate">5.250%</div>
+                                    <small>Rate</small>
+                                </div>
+                                <div class="rate-item">
+                                    <div class="rate-value" id="aprRate">4.418%</div>
+                                    <small>APR</small>
+                                </div>
+                                <div class="rate-item">
+                                    <div class="rate-value" id="pointsValue">0.325</div>
+                                    <small>Points</small>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <a href="#application-form" class="btn-primary w-100">Apply for Loan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section-padding section-dark">
+        <div class="main-container">
+            <div class="text-center mb-5">
+                <h5 class="text-primary mb-3">A Better Way to Get Loan</h5>
+                <h2 class="section-title">How it works</h2>
+                <p class="section-subtitle">It's easier than you think. Follow these simple steps</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <h4>Fill the form</h4>
+                    <p>Fill basic information for us to get in touch with you.</p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <h4>Get pre-qualified</h4>
+                    <p>Verify your ID and get on a quick video call with a loan specialist.</p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <h4>Send documents</h4>
+                    <p>Upload your documents on the NovaTrust Bank app and get approved.</p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="step-number">4</div>
+                    <h4>Get a Loan</h4>
+                    <p>Make smart spending decisions on the spot with instant funding.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#application-form" class="btn-primary">Apply for Loan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="section-padding" id="application-form">
+        <div class="main-container">
+            <div class="application-form">
+                <div class="text-center mb-5">
+                    <h5 class="text-primary mb-3">Quick & easy home loan</h5>
+                    <h2 class="section-title">Take One Step Closer to Your Dream</h2>
+                    <p class="section-subtitle">Get Home loans approved within days with transparent lending criteria and transparent processes.</p>
+                </div>
+                
+                <div class="text-center mb-4">
+                    <h3>Apply for a loan</h3>
+                    <p>Please fill the form below. We will get in touch with you within 1-2 business days, to request all necessary details</p>
+                </div>
+                
+                <form id="loanApplicationForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" id="name" class="form-control" placeholder="What's your name?" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="What's your email?" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="(123) 480-3540" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="state" class="form-label">State</label>
+                                <input type="text" id="state" class="form-control" placeholder="California" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="amount" class="form-label">Loan amount</label>
+                                <input type="text" id="amount" class="form-control" placeholder="Ex. $8,000 USD" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="term" class="form-label">Loan term</label>
+                                <input type="text" id="term" class="form-control" placeholder="Ex. 12 months" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Additional Information (Optional)</label>
+                        <textarea id="message" class="form-control" rows="4" placeholder="Tell us more about your needs..."></textarea>
+                    </div>
+                    
+                    <div class="form-check mb-4">
+                        <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                        <label class="form-check-label" for="termsCheck">
+                            I agree to the terms and conditions and privacy policy
+                        </label>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn-primary">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding">
+        <div class="main-container">
+            <div class="testimonials-section">
+                <div class="text-center mb-5">
+                    <h5 class="text-primary mb-3">Testimonials</h5>
+                    <h2 class="section-title">Trusted by 2000+ Partners & Customers</h2>
+                    <p class="section-subtitle">Take a look at our past customers success stories. Our goal is to help you grow</p>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="testimonial-card fade-in">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"The process was incredibly smooth and the team was very helpful throughout. Got my home loan approved in record time!"</p>
+                            <div class="testimonial-author">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Ben Mason" class="author-avatar">
+                                <div>
+                                    <h6 class="mb-0">Ben Mason</h6>
+                                    <small>Homeowner since 2023</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4">
+                        <div class="testimonial-card fade-in">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"As a first-time homebuyer, I was nervous about the process. NovaTrust Bank made everything simple and understandable."</p>
+                            <div class="testimonial-author">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Nancy Parks" class="author-avatar">
+                                <div>
+                                    <h6 class="mb-0">Nancy Parks</h6>
+                                    <small>First-time homebuyer</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 mb-4">
+                        <div class="testimonial-card fade-in">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"Refinanced my mortgage with NovaTrust Bank and saved hundreds per month. Excellent customer service and competitive rates."</p>
+                            <div class="testimonial-author">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Leroy Pierce" class="author-avatar">
+                                <div>
+                                    <h6 class="mb-0">Leroy Pierce</h6>
+                                    <small>Refinanced customer</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section-padding">
+        <div class="main-container">
+            <div class="cta-section">
+                <h2 class="cta-title">Ready to get started?</h2>
+                <p class="cta-description">It only takes a few minutes to apply for your NovaTrust Bank home loan.</p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="#application-form" class="btn-secondary">Apply for Home Loan</a>
+                    <a href="#" class="btn-secondary">Open an Account</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="main-container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-logo">NovaTrust Bank</div>
+                    <p>A modern, technology-first bank built for you and your growing business.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Awards</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Useful Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Home Loan</a></li>
+                        <li><a href="#">Car Loan</a></li>
+                        <li><a href="#">Business Loan</a></li>
+                        <li><a href="#">Personal Loan</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="mailto:contact@novatrustbank.com">contact@novatrustbank.com</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>
+                    <p>Copyright © <a href="#" style="color: white; text-decoration: underline;">NovaTrust Bank</a></p>
+                </div>
+                <div>
+                    <a href="#" style="color: rgba(255,255,255,0.7); margin-right: 1rem;">Privacy Policy</a>
+                    <a href="#" style="color: rgba(255,255,255,0.7);">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Loan Calculator
+        document.addEventListener('DOMContentLoaded', function() {
+            const homePriceSlider = document.getElementById('homePriceSlider');
+            const downPaymentSlider = document.getElementById('downPaymentSlider');
+            const homePriceValue = document.getElementById('homePriceValue');
+            const downPaymentValue = document.getElementById('downPaymentValue');
+            const monthlyPayment = document.getElementById('monthlyPayment');
+            const interestRate = document.getElementById('interestRate');
+            const aprRate = document.getElementById('aprRate');
+            const pointsValue = document.getElementById('pointsValue');
+            const loanTermRadios = document.querySelectorAll('input[name="loanTerm"]');
+            
+            function formatCurrency(amount) {
+                return '€' + amount.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+            }
+            
+            function calculatePayment() {
+                const homePrice = parseInt(homePriceSlider.value);
+                const downPaymentPercent = parseInt(downPaymentSlider.value);
+                const downPaymentAmount = homePrice * (downPaymentPercent / 100);
+                const loanAmount = homePrice - downPaymentAmount;
+                
+                let loanTerm = 30; // Default
+                loanTermRadios.forEach(radio => {
+                    if (radio.checked) loanTerm = parseInt(radio.value);
+                });
+                
+                // Simplified calculation for demo
+                const annualInterestRate = 5.25; // 5.25%
+                const monthlyInterestRate = annualInterestRate / 100 / 12;
+                const numberOfPayments = loanTerm * 12;
+                
+                let payment;
+                if (monthlyInterestRate === 0) {
+                    payment = loanAmount / numberOfPayments;
+                } else {
+                    payment = loanAmount * 
+                        (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments)) / 
+                        (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
+                }
+                
+                // Update display
+                homePriceValue.textContent = formatCurrency(homePrice);
+                downPaymentValue.textContent = downPaymentPercent + '%';
+                monthlyPayment.textContent = formatCurrency(Math.round(payment));
+                
+                // Update rates based on loan term
+                if (loanTerm === 5) {
+                    interestRate.textContent = '5.250%';
+                    aprRate.textContent = '4.418%';
+                } else if (loanTerm === 15) {
+                    interestRate.textContent = '4.875%';
+                    aprRate.textContent = '4.125%';
+                } else {
+                    interestRate.textContent = '5.250%';
+                    aprRate.textContent = '4.418%';
+                }
+            }
+            
+            // Event listeners
+            homePriceSlider.addEventListener('input', calculatePayment);
+            downPaymentSlider.addEventListener('input', calculatePayment);
+            loanTermRadios.forEach(radio => {
+                radio.addEventListener('change', calculatePayment);
+            });
+            
+            // Initial calculation
+            calculatePayment();
+            
+            // Form submission
+            document.getElementById('loanApplicationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    state: document.getElementById('state').value,
+                    amount: document.getElementById('amount').value,
+                    term: document.getElementById('term').value,
+                    message: document.getElementById('message').value
+                };
+                
+                // Show success message
+                alert('Thank you for your application, ' + formData.name + '! We will contact you at ' + formData.email + ' within 1-2 business days.');
+                
+                // Reset form
+                this.reset();
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Fade in animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for fade-in
+            document.querySelectorAll('.feature-card, .process-step, .testimonial-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

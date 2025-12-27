@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Statements - TrustBank</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .bank-header {
+            background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+            color: white;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .account-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+        
+        .account-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .account-card.active {
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .statement-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .statement-card .card-header {
+            background-color: white;
+            border-bottom: 2px solid #e9ecef;
+            font-weight: 600;
+        }
+        
+        .statement-row {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.2s ease;
+        }
+        
+        .statement-row:hover {
+            background-color: #f8f9fa;
+            border-color: var(--primary-color);
+        }
+        
+        .btn-bank-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0b5ed7 100%);
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-bank-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+        }
+        
+        .btn-bank-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-bank-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .table th {
+            border-top: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        
+        .table tbody tr:hover {
+            background-color: rgba(13, 110, 253, 0.05);
+        }
+        
+        .status-badge {
+            padding: 0.35em 0.65em;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        
+        .period-filter {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .file-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #6610f2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .balance-change {
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .balance-change.positive {
+            background-color: rgba(25, 135, 84, 0.1);
+            color: var(--success-color);
+        }
+        
+        .balance-change.negative {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: var(--danger-color);
+        }
+        
+        .preference-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: none;
+            border-radius: 10px;
+        }
+        
+        .preference-switch {
+            font-size: 1.5rem;
+        }
+        
+        .preference-switch .form-check-input {
+            width: 3em;
+            height: 1.5em;
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 0 10px;
+            }
+            
+            .statement-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .table-responsive {
+                font-size: 0.9rem;
+            }
+        }
+        
+        .progress-bar-custom {
+            background: linear-gradient(90deg, var(--primary-color) 0%, #6610f2 100%);
+            border-radius: 10px;
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--secondary-color);
+            font-weight: 500;
+            border: none;
+            padding: 0.75rem 1.5rem;
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="bank-header">
+        <div class="main-container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="h3 mb-0">Account Statements</h1>
+                    <p class="mb-0">View and download your account statements</p>
+                </div>
+                <div>
+                    <button class="btn btn-light me-2" onclick="window.print()">
+                        <i class="bi bi-printer"></i> Print
+                    </button>
+                    <button class="btn btn-light" onclick="requestStatement()">
+                        <i class="bi bi-plus-circle"></i> Request Statement
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="row">
+            <!-- Left Column - Account Selection & Filters -->
+            <div class="col-lg-3">
+                <!-- Account Selection -->
+                <div class="card account-card active">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="file-icon me-3">
+                                <i class="bi bi-bank"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Checking Account</h6>
+                                <small class="text-muted">****4321</small>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <small class="text-muted">Current Balance</small>
+                            <h5 class="mb-0">$5,123.45</h5>
+                        </div>
+                        <div class="progress mb-2" style="height: 6px;">
+                            <div class="progress-bar progress-bar-custom" style="width: 75%"></div>
+                        </div>
+                        <small class="text-muted">75% of monthly average</small>
+                    </div>
+                </div>
+                
+                <div class="card account-card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="file-icon me-3" style="background: linear-gradient(135deg, #198754 0%, #20c997 100%);">
+                                <i class="bi bi-piggy-bank"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Savings Account</h6>
+                                <small class="text-muted">****8765</small>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <small class="text-muted">Current Balance</small>
+                            <h5 class="mb-0">$12,345.67</h5>
+                        </div>
+                        <div class="progress mb-2" style="height: 6px;">
+                            <div class="progress-bar bg-success" style="width: 45%"></div>
+                        </div>
+                        <small class="text-muted">45% of savings goal</small>
+                    </div>
+                </div>
+                
+                <!-- Statement Period Filter -->
+                <div class="period-filter mt-4">
+                    <h6>Filter Statements</h6>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Period</label>
+                        <select class="form-select" id="periodFilter" onchange="filterStatements()">
+                            <option value="all">All Statements</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Account</label>
+                        <select class="form-select" id="accountFilter" onchange="filterStatements()">
+                            <option value="all">All Accounts</option>
+                            <option value="checking">Checking Account</option>
+                            <option value="savings">Savings Account</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Statement Type</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="monthly" checked>
+                            <label class="form-check-label" for="monthly">
+                                Monthly Statements
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="quarterly">
+                            <label class="form-check-label" for="quarterly">
+                                Quarterly Statements
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="yearly">
+                            <label class="form-check-label" for="yearly">
+                                Year-End Summaries
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-outline-secondary w-100" onclick="resetFilters()">
+                        <i class="bi bi-arrow-clockwise"></i> Reset Filters
+                    </button>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="card account-card mt-4">
+                    <div class="card-body">
+                        <h6>Statement Stats</h6>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Total Statements:</span>
+                            <strong>36</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Oldest:</span>
+                            <strong>Jan 2023</strong>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Total Downloaded:</span>
+                            <strong>24</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column - Statements -->
+            <div class="col-lg-9">
+                <!-- Statements Table -->
+                <div class="card statement-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Available Statements</h5>
+                        <div class="nav nav-tabs border-0">
+                            <button class="nav-link active" onclick="showTab('available')">Available</button>
+                            <button class="nav-link" onclick="showTab('requested')">Requested</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="availableTab">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Statement Date</th>
+                                            <th>Account</th>
+                                            <th>Period</th>
+                                            <th>Opening Balance</th>
+                                            <th>Closing Balance</th>
+                                            <th>Change</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="file-icon me-3">
+                                                        <i class="bi bi-file-earmark-pdf"></i>
+                                                    </div>
+                                                    <div>
+                                                        <div>Nov 30, 2025</div>
+                                                        <small class="text-muted">6.2 MB</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div>Checking</div>
+                                                    <small class="text-muted">****4321</small>
+                                                </div>
+                                            </td>
+                                            <td>Nov 1-30, 2025</td>
+                                            <td>$4,567.89</td>
+                                            <td>$5,123.45</td>
+                                            <td>
+                                                <span class="balance-change positive">
+                                                    <i class="bi bi-arrow-up"></i> $555.56
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-sm btn-bank-outline me-1" onclick="viewStatement('nov2025')">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-bank-primary me-1" onclick="downloadPDF('nov2025')">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" onclick="shareStatement('nov2025')">
+                                                    <i class="bi bi-share"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="file-icon me-3">
+                                                        <i class="bi bi-file-earmark-pdf"></i>
+                                                    </div>
+                                                    <div>
+                                                        <div>Oct 31, 2025</div>
+                                                        <small class="text-muted">5.8 MB</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div>Checking</div>
+                                                    <small class="text-muted">****4321</small>
+                                                </div>
+                                            </td>
+                                            <td>Oct 1-31, 2025</td>
+                                            <td>$4,123.45</td>
+                                            <td>$4,567.89</td>
+                                            <td>
+                                                <span class="balance-change positive">
+                                                    <i class="bi bi-arrow-up"></i> $444.44
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-sm btn-bank-outline me-1">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-bank-primary me-1">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="bi bi-share"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="file-icon me-3">
+                                                        <i class="bi bi-file-earmark-pdf"></i>
+                                                    </div>
+                                                    <div>
+                                                        <div>Sep 30, 2025</div>
+                                                        <small class="text-muted">6.5 MB</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div>Savings</div>
+                                                    <small class="text-muted">****8765</small>
+                                                </div>
+                                            </td>
+                                            <td>Sep 1-30, 2025</td>
+                                            <td>$11,500.00</td>
+                                            <td>$12,000.00</td>
+                                            <td>
+                                                <span class="balance-change positive">
+                                                    <i class="bi bi-arrow-up"></i> $500.00
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-sm btn-bank-outline me-1">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-bank-primary me-1">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="bi bi-share"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="file-icon me-3">
+                                                        <i class="bi bi-file-earmark-pdf"></i>
+                                                    </div>
+                                                    <div>
+                                                        <div>Aug 31, 2025</div>
+                                                        <small class="text-muted">6.1 MB</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div>Checking</div>
+                                                    <small class="text-muted">****4321</small>
+                                                </div>
+                                            </td>
+                                            <td>Aug 1-31, 2025</td>
+                                            <td>$4,567.89</td>
+                                            <td>$4,123.45</td>
+                                            <td>
+                                                <span class="balance-change negative">
+                                                    <i class="bi bi-arrow-down"></i> $444.44
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-sm btn-bank-outline me-1">
+                                                    <i class="bi bi-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-bank-primary me-1">
+                                                    <i class="bi bi-download"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="bi bi-share"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div id="requestedTab" style="display: none;">
+                            <div class="text-center py-5">
+                                <i class="bi bi-hourglass-split display-1 text-muted mb-3"></i>
+                                <h5>No Pending Statement Requests</h5>
+                                <p class="text-muted">Your requested statements will appear here.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <small class="text-muted">Showing 4 of 36 statements</small>
+                            </div>
+                            <div class="col-auto">
+                                <nav>
+                                    <ul class="pagination pagination-sm mb-0">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#">Previous</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- E-Statement Preferences -->
+                <div class="card preference-card mt-4">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h5>E-Statement Preferences</h5>
+                                <p class="mb-0 text-muted">
+                                    Paper statements are $2.00 per month. Go green and save with e-Statements!
+                                    You'll receive email notifications when new statements are available.
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="preference-switch">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="eStatementToggle" checked>
+                                        <label class="form-check-label" for="eStatementToggle">
+                                            Receive e-Statements
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Year-End Summary -->
+                <div class="card statement-card mt-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Year-End Tax Documents</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="statement-row">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">2024 Year-End Summary</h6>
+                                            <small class="text-muted">Available: Jan 31, 2025</small>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-success">Available</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="statement-row">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">2023 Year-End Summary</h6>
+                                            <small class="text-muted">Available: Jan 31, 2024</small>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-success">Available</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function downloadPDF(statementId) {
+            alert(`Downloading statement: ${statementId}.pdf\nThis may take a moment...`);
+            // In production: window.location.href = `/statements/download/${statementId}/`;
+        }
+        
+        function viewStatement(statementId) {
+            alert(`Opening statement viewer for: ${statementId}`);
+            // In production: window.location.href = `/statements/view/${statementId}/`;
+        }
+        
+        function shareStatement(statementId) {
+            const email = prompt("Enter email address to share with:");
+            if (email) {
+                alert(`Statement ${statementId} will be shared with ${email}`);
+            }
+        }
+        
+        function requestStatement() {
+            const date = prompt("Enter statement end date (YYYY-MM-DD):");
+            if (date) {
+                alert(`Statement request submitted for ${date}. You'll receive it within 2 business days.`);
+            }
+        }
+        
+        function filterStatements() {
+            const period = document.getElementById('periodFilter').value;
+            const account = document.getElementById('accountFilter').value;
+            alert(`Filtering statements: Period=${period}, Account=${account}`);
+            // In production, this would filter the table via AJAX
+        }
+        
+        function resetFilters() {
+            document.getElementById('periodFilter').value = 'all';
+            document.getElementById('accountFilter').value = 'all';
+            filterStatements();
+        }
+        
+        function showTab(tabName) {
+            document.getElementById('availableTab').style.display = tabName === 'available' ? 'block' : 'none';
+            document.getElementById('requestedTab').style.display = tabName === 'requested' ? 'block' : 'none';
+            
+            // Update active tab buttons
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        // Toggle e-statements
+        document.getElementById('eStatementToggle').addEventListener('change', function() {
+            if (this.checked) {
+                alert('E-Statements enabled. You will receive email notifications.');
+            } else {
+                alert('E-Statements disabled. Paper statements will be mailed ($2/month).');
+            }
+        });
+    </script>
+</body>
+</html>

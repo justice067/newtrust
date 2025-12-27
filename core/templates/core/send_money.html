@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Money - Bank Transfer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #333;
+        }
+        
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-btn {
+            color: #0466c8;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border: 1px solid #0466c8;
+            border-radius: 5px;
+        }
+        
+        .form-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            color: #04293a;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0466c8;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #0466c8;
+            box-shadow: 0 0 0 3px rgba(4, 102, 200, 0.1);
+        }
+        
+        .amount-group {
+            background: linear-gradient(135deg, #0466c8, #00aaff);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .amount-label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .amount-input {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            outline: none;
+        }
+        
+        .amount-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .transfer-btn {
+            width: 100%;
+            padding: 16px;
+            background: #0466c8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .transfer-btn:hover {
+            background: #0354a8;
+        }
+        
+        .transfer-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* Account Type Selection */
+        .account-types {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .account-type {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .account-type:hover {
+            border-color: #0466c8;
+        }
+        
+        .account-type.active {
+            border-color: #0466c8;
+            background: #f0f8ff;
+        }
+        
+        .account-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #0466c8;
+        }
+        
+        /* Fee Information */
+        .fee-info {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #856404;
+        }
+        
+        /* Error message */
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Success message */
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+        }
+        
+        /* Balance check */
+        .balance-check {
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        .balance-check.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .balance-check.warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .balance-check.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 style="margin: 0; color: #04293a;">Send Money</h1>
+        <a href="{% url 'dashboard' %}" class="back-btn">← Back to Dashboard</a>
+    </div>
+    
+    {% if error %}
+    <div class="error-message">
+        <strong>Error:</strong> {{ error }}
+    </div>
+    {% endif %}
+    
+    <div class="form-section">
+        <h2 class="section-title">Bank Transfer Details</h2>
+        
+        <form method="POST" action="{% url 'send_money' %}" id="transferForm">
+            {% csrf_token %}
+            
+            <!-- Bank Selection -->
+            <div class="form-group">
+                <label for="bank">Select Bank</label>
+                <select class="form-control" id="bank" name="bank" required>
+                    <option value="">-- Choose Bank --</option>
+                    <option value="JPMorgan Chase Bank">JPMorgan Chase Bank</option>
+                    <option value="Bank of America">Bank of America</option>
+                    <option value="Wells Fargo Bank">Wells Fargo Bank</option>
+                    <option value="Citibank">Citibank</option>
+                    <option value="U.S. Bank">U.S. Bank</option>
+                    <option value="PNC Bank">PNC Bank</option>
+                    <option value="TD Bank">TD Bank</option>
+                    <option value="Capital One">Capital One</option>
+                    <option value="Truist Bank">Truist Bank</option>
+                    <option value="HSBC Bank USA">HSBC Bank USA</option>
+                    <option value="Ally Bank">Ally Bank</option>
+                    <option value="Discover Bank">Discover Bank</option>
+                    <option value="American Express">American Express</option>
+                    <option value="Morgan Stanley">Morgan Stanley</option>
+                    <option value="Goldman Sachs">Goldman Sachs</option>
+                    <option value="Charles Schwab Bank">Charles Schwab Bank</option>
+                    <option value="USAA Bank">USAA Bank</option>
+                    <option value="Navy Federal Credit Union">Navy Federal Credit Union</option>
+                    <option value="Regions Bank">Regions Bank</option>
+                    <option value="M&T Bank">M&T Bank</option>
+                    <option value="KeyBank">KeyBank</option>
+                    <option value="Citizens Bank">Citizens Bank</option>
+                    <option value="Fifth Third Bank">Fifth Third Bank</option>
+                    <option value="Huntington Bank">Huntington Bank</option>
+                    <option value="Comerica Bank">Comerica Bank</option>
+                    <option value="Zions Bank">Zions Bank</option>
+                    <option value="First Republic Bank">First Republic Bank</option>
+                    <option value="Silicon Valley Bank">Silicon Valley Bank</option>
+                    <option value="Signature Bank">Signature Bank</option>
+                </select>
+            </div>
+            
+            <!-- Account Type -->
+            <div class="form-group">
+                <label>Account Type</label>
+                <div class="account-types">
+                    <div class="account-type active" data-type="checking">
+                        <div class="account-icon">🏦</div>
+                        <div>Checking Account</div>
+                    </div>
+                    <div class="account-type" data-type="savings">
+                        <div class="account-icon">💰</div>
+                        <div>Savings Account</div>
+                    </div>
+                </div>
+                <input type="hidden" id="accountType" value="checking">
+            </div>
+            
+            <!-- Recipient Details -->
+            <div class="form-group">
+                <label for="accountNumber">Recipient's Account Number</label>
+                <input type="text" class="form-control" id="accountNumber" name="accountNumber" required 
+                       placeholder="Enter 10-12 digit account number" pattern="[0-9]{10,12}">
+            </div>
+            
+            <div class="form-group">
+                <label for="routingNumber">Recipient's Routing Number</label>
+                <input type="text" class="form-control" id="routingNumber" name="routingNumber" required 
+                       placeholder="Enter 9-digit routing number" pattern="[0-9]{9}">
+            </div>
+            
+            <div class="form-group">
+                <label for="recipientName">Recipient's Full Name</label>
+                <input type="text" class="form-control" id="recipientName" name="recipientName" required 
+                       placeholder="As it appears on bank account">
+            </div>
+            
+            <div class="form-group">
+                <label for="recipientEmail">Recipient's Email</label>
+                <input type="email" class="form-control" id="recipientEmail" name="recipientEmail" required 
+                       placeholder="For confirmation receipt">
+            </div>
+            
+            <!-- Amount -->
+            <div class="amount-group">
+                <div class="amount-label">Transfer Amount (USD)</div>
+                <input type="number" class="amount-input" id="amount" name="amount" required 
+                       min="1" step="0.01" placeholder="0.00">
+            </div>
+            
+            <!-- Transfer Type -->
+            <div class="form-group">
+                <label for="transferType">Transfer Type</label>
+                <select class="form-control" id="transferType" name="transferType">
+                    <option value="standard">Standard Transfer (2-3 business days)</option>
+                    <option value="express">Express Transfer (24 hours) - $15 fee</option>
+                    <option value="instant">Instant Transfer (Within minutes) - $25 fee</option>
+                </select>
+            </div>
+            
+            <!-- Reference/Memo -->
+            <div class="form-group">
+                <label for="reference">Reference / Memo</label>
+                <input type="text" class="form-control" id="reference" name="reference" 
+                       placeholder="e.g., Invoice #1234, Rent payment">
+            </div>
+            
+            <!-- Fee Information -->
+            <div class="fee-info">
+                <strong>ℹ️ Transfer Information:</strong><br>
+                • Standard transfers are free<br>
+                • Express: $15 fee (24 hours)<br>
+                • Instant: $25 fee (Within minutes)<br>
+                • Daily limit: $10,000.00
+            </div>
+            
+            <!-- Balance Check -->
+            <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                <strong>Your Available Balance:</strong> ${{ account.balance|floatformat:2 }}
+                <div id="balanceCheck" class="balance-check" style="margin-top: 10px;"></div>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="transfer-btn" id="submitBtn">
+                🏦 Send Money Now
+            </button>
+            
+            <!-- Track Transfer Link -->
+            <div style="text-align: center; margin-top: 20px;">
+                 <a href="#" style="color: #0466c8; text-decoration: none;" 
+                      onclick="alert('🏦 Transfer tracking feature is coming soon!\\n\\nYou will be able to track all your past transfers here.'); return false;">
+                        📋 Track a previous transfer
+    </a>
+</div>
+        </form>
+    </div>
+    
+    <div style="text-align: center; margin-top: 30px; color: #666; font-size: 12px;">
+        <p>🏦 FDIC Insured • 🔒 256-bit Encryption • ⏰ 24/7 Support</p>
+    </div>
+
+    <script>
+        // Account type selection
+        document.querySelectorAll('.account-type').forEach(type => {
+            type.addEventListener('click', function() {
+                document.querySelectorAll('.account-type').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('accountType').value = this.getAttribute('data-type');
+                updateBalanceCheck();
+            });
+        });
+        
+        // Calculate fees and check balance
+        function updateBalanceCheck() {
+            const amount = parseFloat(document.getElementById('amount').value) || 0;
+            const transferType = document.getElementById('transferType').value;
+            const balance = parseFloat('{{ account.balance|default:0 }}');
+            const balanceCheck = document.getElementById('balanceCheck');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Calculate fee
+            let fee = 0;
+            if (transferType === 'express') fee = 15;
+            if (transferType === 'instant') fee = 25;
+            
+            // Calculate total
+            const total = amount + fee;
+            
+            // Update balance check message
+            if (amount === 0) {
+                balanceCheck.innerHTML = 'Enter an amount to check balance';
+                balanceCheck.className = 'balance-check';
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '🏦 Enter Amount First';
+            } else if (amount > 10000) {
+                balanceCheck.innerHTML = `❌ <strong>Over daily limit:</strong> Maximum is $10,000`;
+                balanceCheck.className = 'balance-check error';
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '❌ Over Limit';
+            } else if (total > balance) {
+                balanceCheck.innerHTML = `❌ <strong>Insufficient funds:</strong> You need $${total.toFixed(2)} but have $${balance.toFixed(2)}`;
+                balanceCheck.className = 'balance-check error';
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '❌ Insufficient Funds';
+            } else {
+                balanceCheck.innerHTML = `✅ <strong>Sufficient funds:</strong> Total: $${total.toFixed(2)} (Amount: $${amount.toFixed(2)} + Fee: $${fee.toFixed(2)})`;
+                balanceCheck.className = 'balance-check success';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '🏦 Send Money Now';
+            }
+        }
+        
+        // Event listeners for real-time updates
+        document.getElementById('amount').addEventListener('input', updateBalanceCheck);
+        document.getElementById('transferType').addEventListener('change', updateBalanceCheck);
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateBalanceCheck();
+        });
+    </script>
+</body>
+</html>

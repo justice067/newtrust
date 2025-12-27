@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recurring Payments - TrustBank</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .bank-header {
+            background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+            color: white;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .recurring-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 1rem;
+        }
+        
+        .recurring-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .recurring-card .card-header {
+            background-color: white;
+            border-bottom: 2px solid #e9ecef;
+            font-weight: 600;
+        }
+        
+        .payment-item {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.2s ease;
+        }
+        
+        .payment-item:hover {
+            background-color: #f8f9fa;
+            border-color: var(--primary-color);
+        }
+        
+        .frequency-badge {
+            padding: 0.35em 0.65em;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        
+        .payment-schedule {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .btn-bank-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0b5ed7 100%);
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-bank-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+        }
+        
+        .btn-bank-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-bank-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        
+        .frequency-option {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .frequency-option.active {
+            border-color: var(--primary-color);
+            background-color: rgba(13, 110, 253, 0.05);
+        }
+        
+        .frequency-option:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .frequency-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .table th {
+            border-top: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        
+        .table tbody tr:hover {
+            background-color: rgba(13, 110, 253, 0.05);
+        }
+        
+        .calendar-preview {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        
+        .calendar-month {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .calendar-dates {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.25rem;
+        }
+        
+        .calendar-date {
+            padding: 0.25rem;
+            font-size: 0.85rem;
+        }
+        
+        .calendar-date.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+        }
+        
+        .payment-history-item {
+            border-left: 3px solid var(--primary-color);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .payment-history-item.success {
+            border-left-color: var(--success-color);
+        }
+        
+        .payment-history-item.failed {
+            border-left-color: var(--danger-color);
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 0 10px;
+            }
+            
+            .recurring-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .table-responsive {
+                font-size: 0.9rem;
+            }
+        }
+        
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+        
+        .status-indicator.active {
+            background-color: var(--success-color);
+        }
+        
+        .status-indicator.pending {
+            background-color: var(--warning-color);
+        }
+        
+        .status-indicator.cancelled {
+            background-color: var(--danger-color);
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--secondary-color);
+            font-weight: 500;
+            border: none;
+            padding: 0.75rem 1.5rem;
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            background-color: transparent;
+        }
+        
+        .amount-input {
+            position: relative;
+        }
+        
+        .amount-input .input-group-text {
+            background-color: #f8f9fa;
+            border-right: none;
+        }
+        
+        .amount-input .form-control {
+            border-left: none;
+        }
+        
+        .recurring-summary {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .recurring-actions {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .payment-item:hover .recurring-actions {
+            opacity: 1;
+        }
+        
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 0.25rem;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn.edit {
+            background-color: rgba(13, 110, 253, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .action-btn.edit:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .action-btn.delete {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: var(--danger-color);
+        }
+        
+        .action-btn.delete:hover {
+            background-color: var(--danger-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="bank-header">
+        <div class="main-container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="h3 mb-0">Recurring Payments</h1>
+                    <p class="mb-0">Schedule and manage automatic payments</p>
+                </div>
+                <div>
+                    <button class="btn btn-light me-2" onclick="exportPayments()">
+                        <i class="bi bi-download"></i> Export
+                    </button>
+                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newPaymentModal">
+                        <i class="bi bi-plus-circle"></i> New Payment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Active Recurring Payments -->
+        <div class="card recurring-card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Active Recurring Payments</h5>
+                <div class="nav nav-tabs border-0">
+                    <button class="nav-link active" onclick="showTab('active')">Active</button>
+                    <button class="nav-link" onclick="showTab('paused')">Paused</button>
+                    <button class="nav-link" onclick="showTab('completed')">Completed</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="activeTab">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Payee</th>
+                                    <th>Amount</th>
+                                    <th>Frequency</th>
+                                    <th>Next Payment</th>
+                                    <th>Account</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                                                <i class="bi bi-house-door text-primary"></i>
+                                            </div>
+                                            <div>
+                                                <strong>Mortgage Payment</strong>
+                                                <div class="small text-muted">Loan #123456</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>ABC Mortgage Co.</td>
+                                    <td>
+                                        <strong>$1,250.00</strong>
+                                        <div class="small text-muted">Monthly</div>
+                                    </td>
+                                    <td>
+                                        <span class="frequency-badge bg-primary bg-opacity-10 text-primary">
+                                            <i class="bi bi-calendar-month"></i> Monthly
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div>Jan 1, 2026</div>
+                                        <div class="small text-muted">in 14 days</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div>Checking</div>
+                                            <small class="text-muted">****4321</small>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="status-indicator active"></span>
+                                        <span class="badge bg-success bg-opacity-10 text-success">Active</span>
+                                    </td>
+                                    <td>
+                                        <div class="recurring-actions">
+                                            <button class="action-btn edit" onclick="editPayment(1)">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="action-btn delete" onclick="pausePayment(1)">
+                                                <i class="bi bi-pause"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-success bg-opacity-10 p-2 rounded me-3">
+                                                <i class="bi bi-car-front text-success"></i>
+                                            </div>
+                                            <div>
+                                                <strong>Car Payment</strong>
+                                                <div class="small text-muted">Auto Loan</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Auto Finance Inc.</td>
+                                    <td>
+                                        <strong>$425.50</strong>
+                                        <div class="small text-muted">Monthly</div>
+                                    </td>
+                                    <td>
+                                        <span class="frequency-badge bg-primary bg-opacity-10 text-primary">
+                                            <i class="bi bi-calendar-month"></i> Monthly
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div>Dec 15, 2025</div>
+                                        <div class="small text-muted">Today</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div>Checking</div>
+                                            <small class="text-muted">****4321</small>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="status-indicator active"></span>
+                                        <span class="badge bg-success bg-opacity-10 text-success">Active</span>
+                                    </td>
+                                    <td>
+                                        <div class="recurring-actions">
+                                            <button class="action-btn edit" onclick="editPayment(2)">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="action-btn delete" onclick="pausePayment(2)">
+                                                <i class="bi bi-pause"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-info bg-opacity-10 p-2 rounded me-3">
+                                                <i class="bi bi-play-btn text-info"></i>
+                                            </div>
+                                            <div>
+                                                <strong>Streaming Service</strong>
+                                                <div class="small text-muted">Entertainment</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>StreamFlix</td>
+                                    <td>
+                                        <strong>$14.99</strong>
+                                        <div class="small text-muted">Monthly</div>
+                                    </td>
+                                    <td>
+                                        <span class="frequency-badge bg-primary bg-opacity-10 text-primary">
+                                            <i class="bi bi-calendar-month"></i> Monthly
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div>Dec 25, 2025</div>
+                                        <div class="small text-muted">in 7 days</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div>Checking</div>
+                                            <small class="text-muted">****4321</small>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="status-indicator active"></span>
+                                        <span class="badge bg-success bg-opacity-10 text-success">Active</span>
+                                    </td>
+                                    <td>
+                                        <div class="recurring-actions">
+                                            <button class="action-btn edit" onclick="editPayment(3)">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="action-btn delete" onclick="pausePayment(3)">
+                                                <i class="bi bi-pause"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-warning bg-opacity-10 p-2 rounded me-3">
+                                                <i class="bi bi-lightning-charge text-warning"></i>
+                                            </div>
+                                            <div>
+                                                <strong>Electric Bill</strong>
+                                                <div class="small text-muted">Utilities</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Electric Company</td>
+                                    <td>
+                                        <strong>$125.50</strong>
+                                        <div class="small text-muted">Monthly</div>
+                                    </td>
+                                    <td>
+                                        <span class="frequency-badge bg-primary bg-opacity-10 text-primary">
+                                            <i class="bi bi-calendar-month"></i> Monthly
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div>Dec 28, 2025</div>
+                                        <div class="small text-muted">in 10 days</div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <div>Checking</div>
+                                            <small class="text-muted">****4321</small>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="status-indicator active"></span>
+                                        <span class="badge bg-success bg-opacity-10 text-success">Active</span>
+                                    </td>
+                                    <td>
+                                        <div class="recurring-actions">
+                                            <button class="action-btn edit" onclick="editPayment(4)">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="action-btn delete" onclick="pausePayment(4)">
+                                                <i class="bi bi-pause"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div id="pausedTab" style="display: none;">
+                    <div class="text-center py-5">
+                        <i class="bi bi-pause-circle display-1 text-muted mb-3"></i>
+                        <h5>No Paused Payments</h5>
+                        <p class="text-muted">Your paused recurring payments will appear here.</p>
+                    </div>
+                </div>
+                
+                <div id="completedTab" style="display: none;">
+                    <div class="text-center py-5">
+                        <i class="bi bi-check-circle display-1 text-muted mb-3"></i>
+                        <h5>No Completed Payments</h5>
+                        <p class="text-muted">Your completed recurring payments will appear here.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-footer">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <small class="text-muted">Total Monthly: $1,816.99</small>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-sm btn-outline-primary" onclick="pauseAllPayments()">
+                            <i class="bi bi-pause"></i> Pause All
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Setup New Payment -->
+            <div class="col-lg-8">
+                <div class="card recurring-card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Setup New Recurring Payment</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="newPaymentForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Payee Name</label>
+                                    <select class="form-select" required>
+                                        <option value="">Select payee...</option>
+                                        <option>Electric Company</option>
+                                        <option>Water Utility</option>
+                                        <option>Internet Provider</option>
+                                        <option>Mobile Phone</option>
+                                        <option>Other...</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Nickname (Optional)</label>
+                                    <input type="text" class="form-control" placeholder="e.g., Home Mortgage">
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">From Account</label>
+                                    <select class="form-select" required>
+                                        <option value="">Select account...</option>
+                                        <option selected>Checking ****4321</option>
+                                        <option>Savings ****8765</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Payment Amount ($)</label>
+                                    <div class="input-group amount-input">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" value="125.50" step="0.01" min="0.01" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Frequency Selection -->
+                            <div class="mb-4">
+                                <label class="form-label mb-3">Payment Frequency</label>
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <div class="frequency-option" onclick="selectFrequency('weekly')">
+                                            <div class="frequency-icon">
+                                                <i class="bi bi-calendar-week"></i>
+                                            </div>
+                                            <h6>Weekly</h6>
+                                            <small class="text-muted">Every week</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <div class="frequency-option" onclick="selectFrequency('biweekly')">
+                                            <div class="frequency-icon">
+                                                <i class="bi bi-calendar2-week"></i>
+                                            </div>
+                                            <h6>Bi-weekly</h6>
+                                            <small class="text-muted">Every 2 weeks</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <div class="frequency-option active" onclick="selectFrequency('monthly')">
+                                            <div class="frequency-icon">
+                                                <i class="bi bi-calendar-month"></i>
+                                            </div>
+                                            <h6>Monthly</h6>
+                                            <small class="text-muted">Every month</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <div class="frequency-option" onclick="selectFrequency('quarterly')">
+                                            <div class="frequency-icon">
+                                                <i class="bi bi-calendar3"></i>
+                                            </div>
+                                            <h6>Quarterly</h6>
+                                            <small class="text-muted">Every 3 months</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Monthly Options -->
+                            <div class="row mb-4" id="monthlyOptions">
+                                <div class="col-md-6">
+                                    <label class="form-label">Day of Month</label>
+                                    <select class="form-select">
+                                        <option value="1">1st of month</option>
+                                        <option value="15" selected>15th of month</option>
+                                        <option value="last">Last day of month</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Start Date</label>
+                                    <input type="date" class="form-control" value="2026-01-15" required>
+                                </div>
+                            </div>
+                            
+                            <!-- End Date Options -->
+                            <div class="mb-4">
+                                <label class="form-label mb-3">End Date</label>
+                                <div class="row mb-3">
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="end_option" value="never" id="never" checked>
+                                            <label class="form-check-label" for="never">
+                                                Never (ongoing)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="end_option" value="date" id="endDate">
+                                            <label class="form-check-label" for="endDate">
+                                                End on date
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="end_option" value="count" id="endCount">
+                                            <label class="form-check-label" for="endCount">
+                                                After # of payments
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-2" id="specificEndDate" style="display: none;">
+                                    <div class="col-md-6">
+                                        <input type="date" class="form-control" name="end_date" value="2026-12-15">
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-2" id="paymentCount" style="display: none;">
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" name="payment_count" min="1" value="12">
+                                            <span class="input-group-text">payments</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Memo (Optional)</label>
+                                <input type="text" class="form-control" placeholder="Description of payment">
+                            </div>
+                            
+                            <!-- Notification Preferences -->
+                            <div class="mb-4">
+                                <label class="form-label mb-3">Notification Preferences</label>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="email_notification" id="emailNotify" checked>
+                                            <label class="form-check-label" for="emailNotify">
+                                                Email notification before each payment
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="sms_notification" id="smsNotify">
+                                            <label class="form-check-label" for="smsNotify">
+                                                SMS notification before each payment
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Payment Summary -->
+                            <div class="recurring-summary">
+                                <h6>Payment Summary</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-2">
+                                            <small class="text-muted">Next Payment:</small>
+                                            <div><strong>Jan 15, 2026</strong></div>
+                                        </div>
+                                        <div class="mb-2">
+                                            <small class="text-muted">Frequency:</small>
+                                            <div><strong>Monthly</strong></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-2">
+                                            <small class="text-muted">Amount:</small>
+                                            <div><strong>$125.50</strong></div>
+                                        </div>
+                                        <div class="mb-2">
+                                            <small class="text-muted">Total Yearly:</small>
+                                            <div><strong>$1,506.00</strong></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Calendar Preview -->
+                                <div class="mt-3">
+                                    <small class="text-muted">Payment Schedule Preview:</small>
+                                    <div class="calendar-preview mt-2">
+                                        <div class="calendar-month">January 2026</div>
+                                        <div class="calendar-dates">
+                                            <div class="calendar-date">1</div>
+                                            <div class="calendar-date">2</div>
+                                            <div class="calendar-date">3</div>
+                                            <div class="calendar-date">4</div>
+                                            <div class="calendar-date">5</div>
+                                            <div class="calendar-date">6</div>
+                                            <div class="calendar-date">7</div>
+                                            <div class="calendar-date">8</div>
+                                            <div class="calendar-date">9</div>
+                                            <div class="calendar-date">10</div>
+                                            <div class="calendar-date">11</div>
+                                            <div class="calendar-date">12</div>
+                                            <div class="calendar-date">13</div>
+                                            <div class="calendar-date">14</div>
+                                            <div class="calendar-date active">15</div>
+                                            <div class="calendar-date">16</div>
+                                            <div class="calendar-date">17</div>
+                                            <div class="calendar-date">18</div>
+                                            <div class="calendar-date">19</div>
+                                            <div class="calendar-date">20</div>
+                                            <div class="calendar-date">21</div>
+                                            <div class="calendar-date">22</div>
+                                            <div class="calendar-date">23</div>
+                                            <div class="calendar-date">24</div>
+                                            <div class="calendar-date">25</div>
+                                            <div class="calendar-date">26</div>
+                                            <div class="calendar-date">27</div>
+                                            <div class="calendar-date">28</div>
+                                            <div class="calendar-date">29</div>
+                                            <div class="calendar-date">30</div>
+                                            <div class="calendar-date">31</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <button type="submit" class="btn btn-bank-primary px-4">
+                                    <i class="bi bi-check-circle"></i> Create Recurring Payment
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary ms-2" onclick="saveAsDraft()">
+                                    Save as Draft
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment History & Statistics -->
+            <div class="col-lg-4">
+                <!-- Upcoming Payments -->
+                <div class="card recurring-card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Upcoming Payments</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="payment-history-item success">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="mb-1">Car Payment</h6>
+                                    <small class="text-muted">Today • Auto Finance Inc.</small>
+                                </div>
+                                <div class="text-end">
+                                    <strong class="text-danger">$425.50</strong>
+                                    <div class="small text-success">Scheduled</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-history-item">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="mb-1">Streaming Service</h6>
+                                    <small class="text-muted">Dec 25 • StreamFlix</small>
+                                </div>
+                                <div class="text-end">
+                                    <strong>$14.99</strong>
+                                    <div class="small text-muted">Pending</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-history-item">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="mb-1">Electric Bill</h6>
+                                    <small class="text-muted">Dec 28 • Electric Company</small>
+                                </div>
+                                <div class="text-end">
+                                    <strong>$125.50</strong>
+                                    <div class="small text-muted">Pending</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-history-item">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="mb-1">Mortgage Payment</h6>
+                                    <small class="text-muted">Jan 1 • ABC Mortgage</small>
+                                </div>
+                                <div class="text-end">
+                                    <strong>$1,250.00</strong>
+                                    <div class="small text-muted">Scheduled</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Statistics -->
+                <div class="card recurring-card mt-4">
+                    <div class="card-body">
+                        <h6 class="mb-3">Payment Statistics</h6>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Active Payments:</span>
+                            <strong>4</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Monthly Total:</span>
+                            <strong class="text-danger">$1,816.99</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Yearly Total:</span>
+                            <strong class="text-danger">$21,803.88</strong>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Success Rate:</span>
+                            <strong class="text-success">100%</strong>
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <small class="text-muted">Last updated: Today, 2:45 PM</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="card recurring-card mt-4">
+                    <div class="card-body">
+                        <h6 class="mb-3">Quick Actions</h6>
+                        <button class="btn btn-outline-primary w-100 mb-2" onclick="quickSetup('mortgage')">
+                            <i class="bi bi-house-door"></i> Setup Mortgage Payment
+                        </button>
+                        <button class="btn btn-outline-success w-100 mb-2" onclick="quickSetup('utility')">
+                            <i class="bi bi-lightning-charge"></i> Setup Utility Payment
+                        </button>
+                        <button class="btn btn-outline-info w-100" onclick="quickSetup('subscription')">
+                            <i class="bi bi-play-btn"></i> Setup Subscription
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Payment Modal -->
+    <div class="modal fade" id="newPaymentModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Setup New Recurring Payment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Use the form above to setup a new recurring payment. All fields are required unless marked optional.</p>
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle"></i>
+                        <strong>Note:</strong> Recurring payments can be modified or cancelled at any time before the next scheduled payment date.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-bank-primary" onclick="scrollToForm()">
+                        Go to Form
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        let selectedFrequency = 'monthly';
+        
+        function showTab(tabName) {
+            ['activeTab', 'pausedTab', 'completedTab'].forEach(tab => {
+                document.getElementById(tab).style.display = 'none';
+            });
+            document.getElementById(tabName + 'Tab').style.display = 'block';
+            
+            // Update active tab buttons
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        function selectFrequency(frequency) {
+            selectedFrequency = frequency;
+            
+            // Update visual selection
+            document.querySelectorAll('.frequency-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.frequency-option').classList.add('active');
+            
+            // Show/hide options based on frequency
+            const monthlyOptions = document.getElementById('monthlyOptions');
+            monthlyOptions.style.display = frequency === 'monthly' ? 'block' : 'none';
+        }
+        
+        // Show/hide end date options
+        document.addEventListener('DOMContentLoaded', function() {
+            const endOptions = document.querySelectorAll('input[name="end_option"]');
+            endOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    document.getElementById('specificEndDate').style.display = 
+                        this.value === 'date' ? 'block' : 'none';
+                    document.getElementById('paymentCount').style.display = 
+                        this.value === 'count' ? 'block' : 'none';
+                });
+            });
+            
+            // Initialize with monthly selected
+            selectFrequency('monthly');
+        });
+        
+        function editPayment(paymentId) {
+            alert(`Editing payment #${paymentId}. This would open an edit form.`);
+            // In production, this would load payment data into the form
+        }
+        
+        function pausePayment(paymentId) {
+            if (confirm(`Pause recurring payment #${paymentId}? No further payments will be processed until resumed.`)) {
+                alert(`Payment #${paymentId} paused successfully.`);
+                // In production, this would send API request
+            }
+        }
+        
+        function pauseAllPayments() {
+            if (confirm('Pause all recurring payments? This will stop all automatic payments until resumed.')) {
+                alert('All recurring payments paused successfully.');
+            }
+        }
+        
+        function exportPayments() {
+            alert('Exporting recurring payments data to CSV file...');
+            // In production, this would trigger a file download
+        }
+        
+        function saveAsDraft() {
+            alert('Payment setup saved as draft. You can complete it later from your drafts.');
+            // In production, this would save form data
+        }
+        
+        function quickSetup(type) {
+            const setups = {
+                'mortgage': { amount: '1250.00', frequency: 'monthly', day: '1' },
+                'utility': { amount: '125.50', frequency: 'monthly', day: '28' },
+                'subscription': { amount: '14.99', frequency: 'monthly', day: '25' }
+            };
+            
+            const setup = setups[type];
+            alert(`Quick setup for ${type}: $${setup.amount} ${setup.frequency} on the ${setup.day}th`);
+            
+            // In production, this would pre-fill the form
+            if (type === 'mortgage') {
+                document.querySelector('select').value = 'ABC Mortgage Co.';
+                document.querySelector('input[type="number"]').value = setup.amount;
+                selectFrequency(setup.frequency);
+            }
+        }
+        
+        function scrollToForm() {
+            document.getElementById('newPaymentForm').scrollIntoView({ behavior: 'smooth' });
+            const modal = bootstrap.Modal.getInstance(document.getElementById('newPaymentModal'));
+            modal.hide();
+        }
+        
+        // Handle form submission
+        document.getElementById('newPaymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const amount = this.querySelector('input[type="number"]').value;
+            const frequency = selectedFrequency;
+            const payee = this.querySelector('select').value;
+            
+            alert(`Recurring payment created successfully!\n\nDetails:\nPayee: ${payee}\nAmount: $${amount}\nFrequency: ${frequency}\n\nYou will receive a confirmation email.`);
+            
+            // In production, this would submit to server
+            // this.submit();
+        });
+        
+        // Set minimum date to today
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const tomorrowStr = tomorrow.toISOString().split('T')[0];
+        document.querySelector('input[type="date"]').min = tomorrowStr;
+    </script>
+</body>
+</html>

@@ -1,0 +1,2076 @@
+INFO 2025-12-23 15:11:35,992 autoreload 11000 6316 Watching for file changes with StatReloader
+INFO 2025-12-23 15:11:35,992 autoreload 11000 6316 Watching for file changes with StatReloader
+INFO 2025-12-23 15:12:20,623 autoreload 11000 6316 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:12:20,623 autoreload 11000 6316 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:12:21,071 autoreload 1736 15740 Watching for file changes with StatReloader
+INFO 2025-12-23 15:12:21,071 autoreload 1736 15740 Watching for file changes with StatReloader
+INFO 2025-12-23 15:12:49,045 autoreload 1736 15740 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:12:49,045 autoreload 1736 15740 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:12:49,506 autoreload 8200 11528 Watching for file changes with StatReloader
+INFO 2025-12-23 15:12:49,506 autoreload 8200 11528 Watching for file changes with StatReloader
+INFO 2025-12-23 15:14:20,681 autoreload 8200 11528 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+INFO 2025-12-23 15:14:20,681 autoreload 8200 11528 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+INFO 2025-12-23 15:14:21,160 autoreload 3056 6076 Watching for file changes with StatReloader
+INFO 2025-12-23 15:14:21,160 autoreload 3056 6076 Watching for file changes with StatReloader
+INFO 2025-12-23 15:14:46,255 log 3056 16364 "GET / HTTP/1.1" 200 38105
+INFO 2025-12-23 15:14:46,255 log 3056 16364 "GET / HTTP/1.1" 200 38105
+INFO 2025-12-23 15:14:57,180 log 3056 16364 "GET /login/ HTTP/1.1" 200 1614
+INFO 2025-12-23 15:14:57,180 log 3056 16364 "GET /login/ HTTP/1.1" 200 1614
+INFO 2025-12-23 15:15:17,194 log 3056 16364 "POST /login/ HTTP/1.1" 200 1679
+INFO 2025-12-23 15:15:17,194 log 3056 16364 "POST /login/ HTTP/1.1" 200 1679
+INFO 2025-12-23 15:15:24,528 log 3056 16364 "GET /register/ HTTP/1.1" 200 1604
+INFO 2025-12-23 15:15:24,528 log 3056 16364 "GET /register/ HTTP/1.1" 200 1604
+INFO 2025-12-23 15:15:51,587 log 3056 16364 "POST /register/ HTTP/1.1" 200 1675
+INFO 2025-12-23 15:15:51,587 log 3056 16364 "POST /register/ HTTP/1.1" 200 1675
+INFO 2025-12-23 15:16:23,980 log 3056 16364 "POST /register/ HTTP/1.1" 302 0
+INFO 2025-12-23 15:16:23,980 log 3056 16364 "POST /register/ HTTP/1.1" 302 0
+ERROR 2025-12-23 15:16:24,083 log 3056 16364 Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py", line 67, in dashboard
+    return render(request, 'core/dashboard.html', context)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'loan' not found. 'loan' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py", line 71, in dashboard
+    return render(request, 'core/dashboard.html', {
+        'user': request.user,
+        'error': str(e)
+    })
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'loan' not found. 'loan' is not a valid view function or pattern name.
+ERROR 2025-12-23 15:16:24,083 log 3056 16364 Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py", line 67, in dashboard
+    return render(request, 'core/dashboard.html', context)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'loan' not found. 'loan' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py", line 71, in dashboard
+    return render(request, 'core/dashboard.html', {
+        'user': request.user,
+        'error': str(e)
+    })
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\venv\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'loan' not found. 'loan' is not a valid view function or pattern name.
+ERROR 2025-12-23 15:16:24,091 log 3056 16364 "GET /dashboard/ HTTP/1.1" 500 181250
+ERROR 2025-12-23 15:16:24,091 log 3056 16364 "GET /dashboard/ HTTP/1.1" 500 181250
+INFO 2025-12-23 15:19:04,001 autoreload 3056 6076 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:19:04,001 autoreload 3056 6076 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:19:04,475 autoreload 16160 18148 Watching for file changes with StatReloader
+INFO 2025-12-23 15:19:04,475 autoreload 16160 18148 Watching for file changes with StatReloader
+INFO 2025-12-23 15:19:05,785 autoreload 16160 18148 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:19:05,785 autoreload 16160 18148 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:19:06,226 autoreload 10872 16940 Watching for file changes with StatReloader
+INFO 2025-12-23 15:19:06,226 autoreload 10872 16940 Watching for file changes with StatReloader
+INFO 2025-12-23 15:19:11,663 autoreload 10872 16940 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:19:11,663 autoreload 10872 16940 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:19:12,126 autoreload 11520 18252 Watching for file changes with StatReloader
+INFO 2025-12-23 15:19:12,126 autoreload 11520 18252 Watching for file changes with StatReloader
+INFO 2025-12-23 15:25:56,684 autoreload 11520 18252 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:25:56,684 autoreload 11520 18252 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:25:57,148 autoreload 5248 17320 Watching for file changes with StatReloader
+INFO 2025-12-23 15:25:57,148 autoreload 5248 17320 Watching for file changes with StatReloader
+INFO 2025-12-23 15:25:58,469 autoreload 5248 17320 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:25:58,469 autoreload 5248 17320 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:25:58,912 autoreload 9536 18336 Watching for file changes with StatReloader
+INFO 2025-12-23 15:25:58,912 autoreload 9536 18336 Watching for file changes with StatReloader
+INFO 2025-12-23 15:26:03,180 autoreload 9536 18336 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:26:03,180 autoreload 9536 18336 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:26:03,687 autoreload 5548 19884 Watching for file changes with StatReloader
+INFO 2025-12-23 15:26:03,687 autoreload 5548 19884 Watching for file changes with StatReloader
+INFO 2025-12-23 15:26:14,264 autoreload 5548 19884 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:26:14,264 autoreload 5548 19884 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:26:14,730 autoreload 7528 1196 Watching for file changes with StatReloader
+INFO 2025-12-23 15:26:14,730 autoreload 7528 1196 Watching for file changes with StatReloader
+INFO 2025-12-23 15:26:16,054 autoreload 7528 1196 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:26:16,054 autoreload 7528 1196 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:26:16,518 autoreload 16428 8404 Watching for file changes with StatReloader
+INFO 2025-12-23 15:26:16,518 autoreload 16428 8404 Watching for file changes with StatReloader
+INFO 2025-12-23 15:26:20,915 autoreload 16428 8404 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:26:20,915 autoreload 16428 8404 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+INFO 2025-12-23 15:26:21,374 autoreload 12396 12104 Watching for file changes with StatReloader
+INFO 2025-12-23 15:26:21,374 autoreload 12396 12104 Watching for file changes with StatReloader
+INFO 2025-12-23 15:26:46,803 log 12396 18636 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 15:26:46,803 log 12396 18636 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 15:26:46,861 log 12396 18636 "GET /dashboard/ HTTP/1.1" 200 33908
+INFO 2025-12-23 15:26:46,861 log 12396 18636 "GET /dashboard/ HTTP/1.1" 200 33908
+WARNING 2025-12-23 15:26:46,900 log 12396 18636 Not Found: /api/dashboard/
+WARNING 2025-12-23 15:26:46,900 log 12396 18636 Not Found: /api/dashboard/
+WARNING 2025-12-23 15:26:46,901 log 12396 18636 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 15:26:46,901 log 12396 18636 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 15:27:19,997 log 12396 1768 "GET / HTTP/1.1" 200 38105
+INFO 2025-12-23 15:27:19,997 log 12396 1768 "GET / HTTP/1.1" 200 38105
+WARNING 2025-12-23 15:27:20,129 log 12396 1768 Not Found: /favicon.ico
+WARNING 2025-12-23 15:27:20,129 log 12396 1768 Not Found: /favicon.ico
+WARNING 2025-12-23 15:27:20,129 log 12396 1768 "GET /favicon.ico HTTP/1.1" 404 6794
+WARNING 2025-12-23 15:27:20,129 log 12396 1768 "GET /favicon.ico HTTP/1.1" 404 6794
+INFO 2025-12-23 15:27:23,853 log 12396 1768 "GET /login/ HTTP/1.1" 200 1614
+INFO 2025-12-23 15:27:23,853 log 12396 1768 "GET /login/ HTTP/1.1" 200 1614
+INFO 2025-12-23 15:27:25,413 log 12396 1768 "GET /register/ HTTP/1.1" 200 1604
+INFO 2025-12-23 15:27:25,413 log 12396 1768 "GET /register/ HTTP/1.1" 200 1604
+INFO 2025-12-23 15:27:45,949 log 12396 1768 "POST /register/ HTTP/1.1" 302 0
+INFO 2025-12-23 15:27:45,949 log 12396 1768 "POST /register/ HTTP/1.1" 302 0
+INFO 2025-12-23 15:27:45,961 log 12396 1768 "GET /dashboard/ HTTP/1.1" 200 33908
+INFO 2025-12-23 15:27:45,961 log 12396 1768 "GET /dashboard/ HTTP/1.1" 200 33908
+WARNING 2025-12-23 15:27:45,988 log 12396 1768 Not Found: /api/dashboard/
+WARNING 2025-12-23 15:27:45,988 log 12396 1768 Not Found: /api/dashboard/
+WARNING 2025-12-23 15:27:45,988 log 12396 1768 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 15:27:45,988 log 12396 1768 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 15:27:58,616 log 12396 1768 "GET /loan/apply/step1/ HTTP/1.1" 200 9908
+INFO 2025-12-23 15:27:58,616 log 12396 1768 "GET /loan/apply/step1/ HTTP/1.1" 200 9908
+INFO 2025-12-23 15:28:00,521 log 12396 18636 "GET /loan/apply/step1/ HTTP/1.1" 200 9908
+INFO 2025-12-23 15:28:00,521 log 12396 18636 "GET /loan/apply/step1/ HTTP/1.1" 200 9908
+INFO 2025-12-23 15:31:25,923 log 12396 1768 "POST /loan/apply/step1/ HTTP/1.1" 302 0
+INFO 2025-12-23 15:31:25,923 log 12396 1768 "POST /loan/apply/step1/ HTTP/1.1" 302 0
+INFO 2025-12-23 15:31:25,934 log 12396 1768 "GET /loan/apply/step2/ HTTP/1.1" 200 13446
+INFO 2025-12-23 15:31:25,934 log 12396 1768 "GET /loan/apply/step2/ HTTP/1.1" 200 13446
+INFO 2025-12-23 15:32:13,464 log 12396 1768 "POST /loan/apply/step2/ HTTP/1.1" 200 13646
+INFO 2025-12-23 15:32:13,464 log 12396 1768 "POST /loan/apply/step2/ HTTP/1.1" 200 13646
+INFO 2025-12-23 15:32:39,873 log 12396 1768 "POST /loan/apply/step2/ HTTP/1.1" 302 0
+INFO 2025-12-23 15:32:39,873 log 12396 1768 "POST /loan/apply/step2/ HTTP/1.1" 302 0
+INFO 2025-12-23 15:32:39,883 log 12396 1768 "GET /loan/apply/step1/ HTTP/1.1" 200 9908
+INFO 2025-12-23 15:32:39,883 log 12396 1768 "GET /loan/apply/step1/ HTTP/1.1" 200 9908
+INFO 2025-12-23 15:40:18,147 autoreload 12396 12104 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:40:18,147 autoreload 12396 12104 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:40:18,609 autoreload 10528 12076 Watching for file changes with StatReloader
+INFO 2025-12-23 15:40:18,609 autoreload 10528 12076 Watching for file changes with StatReloader
+INFO 2025-12-23 15:40:45,663 autoreload 10528 12076 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:40:45,663 autoreload 10528 12076 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:40:46,151 autoreload 9624 2680 Watching for file changes with StatReloader
+INFO 2025-12-23 15:40:46,151 autoreload 9624 2680 Watching for file changes with StatReloader
+INFO 2025-12-23 15:41:27,769 autoreload 9624 2680 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:41:27,769 autoreload 9624 2680 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:41:28,220 autoreload 18436 5760 Watching for file changes with StatReloader
+INFO 2025-12-23 15:41:28,220 autoreload 18436 5760 Watching for file changes with StatReloader
+INFO 2025-12-23 15:41:29,519 autoreload 18436 5760 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:41:29,519 autoreload 18436 5760 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:41:29,992 autoreload 5340 18840 Watching for file changes with StatReloader
+INFO 2025-12-23 15:41:29,992 autoreload 5340 18840 Watching for file changes with StatReloader
+INFO 2025-12-23 15:42:20,934 autoreload 5340 18840 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:42:20,934 autoreload 5340 18840 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:42:21,388 autoreload 12660 3700 Watching for file changes with StatReloader
+INFO 2025-12-23 15:42:21,388 autoreload 12660 3700 Watching for file changes with StatReloader
+INFO 2025-12-23 15:44:01,717 autoreload 12660 3700 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:44:01,717 autoreload 12660 3700 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:44:02,213 autoreload 18252 17072 Watching for file changes with StatReloader
+INFO 2025-12-23 15:44:02,213 autoreload 18252 17072 Watching for file changes with StatReloader
+INFO 2025-12-23 15:46:17,614 autoreload 18252 17072 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+INFO 2025-12-23 15:46:17,614 autoreload 18252 17072 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+INFO 2025-12-23 15:46:18,085 autoreload 16708 17428 Watching for file changes with StatReloader
+INFO 2025-12-23 15:46:18,085 autoreload 16708 17428 Watching for file changes with StatReloader
+INFO 2025-12-23 15:46:20,400 autoreload 16708 17428 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+INFO 2025-12-23 15:46:20,400 autoreload 16708 17428 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+INFO 2025-12-23 15:46:20,935 autoreload 14740 14092 Watching for file changes with StatReloader
+INFO 2025-12-23 15:46:20,935 autoreload 14740 14092 Watching for file changes with StatReloader
+INFO 2025-12-23 15:48:09,542 log 14740 5912 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 15:48:09,542 log 14740 5912 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 15:48:09,561 log 14740 5912 "GET /dashboard/ HTTP/1.1" 200 33908
+INFO 2025-12-23 15:48:09,561 log 14740 5912 "GET /dashboard/ HTTP/1.1" 200 33908
+WARNING 2025-12-23 15:48:09,602 log 14740 5912 Not Found: /api/dashboard/
+WARNING 2025-12-23 15:48:09,602 log 14740 5912 Not Found: /api/dashboard/
+WARNING 2025-12-23 15:48:09,603 log 14740 5912 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 15:48:09,603 log 14740 5912 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 15:48:25,871 log 14740 16524 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 15:48:25,871 log 14740 16524 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 15:48:25,895 log 14740 16524 "GET /dashboard/ HTTP/1.1" 200 33908
+INFO 2025-12-23 15:48:25,895 log 14740 16524 "GET /dashboard/ HTTP/1.1" 200 33908
+WARNING 2025-12-23 15:48:25,947 log 14740 16524 Not Found: /api/dashboard/
+WARNING 2025-12-23 15:48:25,947 log 14740 16524 Not Found: /api/dashboard/
+WARNING 2025-12-23 15:48:25,948 log 14740 16524 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 15:48:25,948 log 14740 16524 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 15:48:26,037 log 14740 16524 Not Found: /favicon.ico
+WARNING 2025-12-23 15:48:26,037 log 14740 16524 Not Found: /favicon.ico
+WARNING 2025-12-23 15:48:26,038 log 14740 16524 "GET /favicon.ico HTTP/1.1" 404 6794
+WARNING 2025-12-23 15:48:26,038 log 14740 16524 "GET /favicon.ico HTTP/1.1" 404 6794
+INFO 2025-12-23 15:48:37,036 log 14740 16524 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 15:48:37,036 log 14740 16524 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 15:48:37,052 log 14740 16524 "GET /dashboard/ HTTP/1.1" 200 33908
+INFO 2025-12-23 15:48:37,052 log 14740 16524 "GET /dashboard/ HTTP/1.1" 200 33908
+WARNING 2025-12-23 15:48:37,077 log 14740 16524 Not Found: /api/dashboard/
+WARNING 2025-12-23 15:48:37,077 log 14740 16524 Not Found: /api/dashboard/
+WARNING 2025-12-23 15:48:37,079 log 14740 16524 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 15:48:37,079 log 14740 16524 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 15:53:03,725 autoreload 14740 14092 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:53:03,725 autoreload 14740 14092 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:53:04,198 autoreload 10444 10480 Watching for file changes with StatReloader
+INFO 2025-12-23 15:53:04,198 autoreload 10444 10480 Watching for file changes with StatReloader
+INFO 2025-12-23 15:53:05,497 autoreload 10444 10480 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:53:05,497 autoreload 10444 10480 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:53:05,931 autoreload 19816 15640 Watching for file changes with StatReloader
+INFO 2025-12-23 15:53:05,931 autoreload 19816 15640 Watching for file changes with StatReloader
+INFO 2025-12-23 15:53:24,803 autoreload 19816 15640 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:53:24,803 autoreload 19816 15640 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:53:25,252 autoreload 15208 4364 Watching for file changes with StatReloader
+INFO 2025-12-23 15:53:25,252 autoreload 15208 4364 Watching for file changes with StatReloader
+INFO 2025-12-23 15:53:27,573 autoreload 15208 4364 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:53:27,573 autoreload 15208 4364 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:53:28,000 autoreload 8960 19428 Watching for file changes with StatReloader
+INFO 2025-12-23 15:53:28,000 autoreload 8960 19428 Watching for file changes with StatReloader
+INFO 2025-12-23 15:54:25,164 autoreload 8960 19428 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:54:25,164 autoreload 8960 19428 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:54:25,619 autoreload 19816 4920 Watching for file changes with StatReloader
+INFO 2025-12-23 15:54:25,619 autoreload 19816 4920 Watching for file changes with StatReloader
+INFO 2025-12-23 15:54:28,974 autoreload 19816 4920 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:54:28,974 autoreload 19816 4920 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:54:29,478 autoreload 8704 11812 Watching for file changes with StatReloader
+INFO 2025-12-23 15:54:29,478 autoreload 8704 11812 Watching for file changes with StatReloader
+INFO 2025-12-23 15:54:44,202 autoreload 8704 11812 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:54:44,202 autoreload 8704 11812 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:54:44,633 autoreload 4348 1256 Watching for file changes with StatReloader
+INFO 2025-12-23 15:54:44,633 autoreload 4348 1256 Watching for file changes with StatReloader
+INFO 2025-12-23 15:54:48,022 autoreload 4348 1256 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:54:48,022 autoreload 4348 1256 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:54:48,462 autoreload 3460 18516 Watching for file changes with StatReloader
+INFO 2025-12-23 15:54:48,462 autoreload 3460 18516 Watching for file changes with StatReloader
+INFO 2025-12-23 15:54:49,771 autoreload 3460 18516 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:54:49,771 autoreload 3460 18516 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:54:50,208 autoreload 4276 14088 Watching for file changes with StatReloader
+INFO 2025-12-23 15:54:50,208 autoreload 4276 14088 Watching for file changes with StatReloader
+INFO 2025-12-23 15:54:51,494 autoreload 4276 14088 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:54:51,494 autoreload 4276 14088 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 15:54:51,961 autoreload 14756 11636 Watching for file changes with StatReloader
+INFO 2025-12-23 15:54:51,961 autoreload 14756 11636 Watching for file changes with StatReloader
+INFO 2025-12-23 16:07:39,828 log 14756 17180 "GET /dashboard/ HTTP/1.1" 200 35131
+INFO 2025-12-23 16:07:39,828 log 14756 17180 "GET /dashboard/ HTTP/1.1" 200 35131
+WARNING 2025-12-23 16:07:39,853 log 14756 17180 Not Found: /api/dashboard/
+WARNING 2025-12-23 16:07:39,853 log 14756 17180 Not Found: /api/dashboard/
+WARNING 2025-12-23 16:07:39,854 log 14756 17180 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 16:07:39,854 log 14756 17180 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 16:07:40,935 log 14756 17180 "GET /dashboard/ HTTP/1.1" 200 35131
+INFO 2025-12-23 16:07:40,935 log 14756 17180 "GET /dashboard/ HTTP/1.1" 200 35131
+WARNING 2025-12-23 16:07:40,956 log 14756 17180 Not Found: /api/dashboard/
+WARNING 2025-12-23 16:07:40,956 log 14756 17180 Not Found: /api/dashboard/
+WARNING 2025-12-23 16:07:40,957 log 14756 17180 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 16:07:40,957 log 14756 17180 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 16:07:41,710 log 14756 17180 "GET /dashboard/ HTTP/1.1" 200 35131
+INFO 2025-12-23 16:07:41,710 log 14756 17180 "GET /dashboard/ HTTP/1.1" 200 35131
+WARNING 2025-12-23 16:07:41,736 log 14756 17180 Not Found: /api/dashboard/
+WARNING 2025-12-23 16:07:41,736 log 14756 17180 Not Found: /api/dashboard/
+WARNING 2025-12-23 16:07:41,738 log 14756 17180 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 16:07:41,738 log 14756 17180 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 16:08:01,394 log 14756 15116 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 16:08:01,394 log 14756 15116 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 16:08:01,416 log 14756 15116 "GET /dashboard/ HTTP/1.1" 200 35131
+INFO 2025-12-23 16:08:01,416 log 14756 15116 "GET /dashboard/ HTTP/1.1" 200 35131
+WARNING 2025-12-23 16:08:01,469 log 14756 15116 Not Found: /api/dashboard/
+WARNING 2025-12-23 16:08:01,469 log 14756 15116 Not Found: /api/dashboard/
+WARNING 2025-12-23 16:08:01,470 log 14756 15116 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 16:08:01,470 log 14756 15116 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 16:08:01,530 log 14756 15116 Not Found: /favicon.ico
+WARNING 2025-12-23 16:08:01,530 log 14756 15116 Not Found: /favicon.ico
+WARNING 2025-12-23 16:08:01,530 log 14756 15116 "GET /favicon.ico HTTP/1.1" 404 6794
+WARNING 2025-12-23 16:08:01,530 log 14756 15116 "GET /favicon.ico HTTP/1.1" 404 6794
+INFO 2025-12-23 16:08:27,258 log 14756 15116 "GET /loan/apply/step1/ HTTP/1.1" 200 9908
+INFO 2025-12-23 16:08:27,258 log 14756 15116 "GET /loan/apply/step1/ HTTP/1.1" 200 9908
+INFO 2025-12-23 16:13:59,215 log 14756 3852 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 16:13:59,215 log 14756 3852 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 16:13:59,238 log 14756 3852 "GET /dashboard/ HTTP/1.1" 200 35131
+INFO 2025-12-23 16:13:59,238 log 14756 3852 "GET /dashboard/ HTTP/1.1" 200 35131
+WARNING 2025-12-23 16:13:59,292 log 14756 3852 Not Found: /api/dashboard/
+WARNING 2025-12-23 16:13:59,292 log 14756 3852 Not Found: /api/dashboard/
+WARNING 2025-12-23 16:13:59,294 log 14756 3852 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 16:13:59,294 log 14756 3852 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 16:13:59,368 log 14756 3852 Not Found: /favicon.ico
+WARNING 2025-12-23 16:13:59,368 log 14756 3852 Not Found: /favicon.ico
+WARNING 2025-12-23 16:13:59,368 log 14756 3852 "GET /favicon.ico HTTP/1.1" 404 6794
+WARNING 2025-12-23 16:13:59,368 log 14756 3852 "GET /favicon.ico HTTP/1.1" 404 6794
+INFO 2025-12-23 16:15:54,869 log 14756 13456 "GET / HTTP/1.1" 200 38105
+INFO 2025-12-23 16:15:54,869 log 14756 13456 "GET / HTTP/1.1" 200 38105
+WARNING 2025-12-23 16:15:56,623 log 14756 13456 Not Found: /favicon.ico
+WARNING 2025-12-23 16:15:56,623 log 14756 13456 Not Found: /favicon.ico
+WARNING 2025-12-23 16:15:56,623 log 14756 13456 "GET /favicon.ico HTTP/1.1" 404 6794
+WARNING 2025-12-23 16:15:56,623 log 14756 13456 "GET /favicon.ico HTTP/1.1" 404 6794
+INFO 2025-12-23 16:16:57,174 log 14756 13456 "POST /register/ HTTP/1.1" 302 0
+INFO 2025-12-23 16:16:57,174 log 14756 13456 "POST /register/ HTTP/1.1" 302 0
+INFO 2025-12-23 16:16:57,185 log 14756 13456 "GET /dashboard/ HTTP/1.1" 200 35166
+INFO 2025-12-23 16:16:57,185 log 14756 13456 "GET /dashboard/ HTTP/1.1" 200 35166
+WARNING 2025-12-23 16:16:58,057 log 14756 13456 Not Found: /api/dashboard/
+WARNING 2025-12-23 16:16:58,057 log 14756 13456 Not Found: /api/dashboard/
+WARNING 2025-12-23 16:16:58,058 log 14756 13456 "GET /api/dashboard/ HTTP/1.1" 404 6803
+WARNING 2025-12-23 16:16:58,058 log 14756 13456 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 16:17:08,397 log 14756 13456 "GET /loan/apply/step1/ HTTP/1.1" 200 9902
+INFO 2025-12-23 16:17:08,397 log 14756 13456 "GET /loan/apply/step1/ HTTP/1.1" 200 9902
+INFO 2025-12-23 16:17:49,219 log 14756 13456 "POST /loan/apply/step1/ HTTP/1.1" 302 0
+INFO 2025-12-23 16:17:49,219 log 14756 13456 "POST /loan/apply/step1/ HTTP/1.1" 302 0
+INFO 2025-12-23 16:17:49,230 log 14756 13456 "GET /loan/apply/step2/ HTTP/1.1" 200 13449
+INFO 2025-12-23 16:17:49,230 log 14756 13456 "GET /loan/apply/step2/ HTTP/1.1" 200 13449
+INFO 2025-12-23 16:18:38,650 log 14756 13456 "POST /loan/apply/step2/ HTTP/1.1" 200 13673
+INFO 2025-12-23 16:18:38,650 log 14756 13456 "POST /loan/apply/step2/ HTTP/1.1" 200 13673
+INFO 2025-12-23 17:01:19,738 autoreload 14756 11636 C:\Users\DELL\Desktop\trustbank (1)\trustbank\trustbank\settings.py changed, reloading.
+INFO 2025-12-23 17:01:19,738 autoreload 14756 11636 C:\Users\DELL\Desktop\trustbank (1)\trustbank\trustbank\settings.py changed, reloading.
+INFO 2025-12-23 17:01:20,877 autoreload 17808 22280 Watching for file changes with StatReloader
+INFO 2025-12-23 17:01:20,877 autoreload 17808 22280 Watching for file changes with StatReloader
+INFO 2025-12-23 17:01:22,159 autoreload 17808 22280 C:\Users\DELL\Desktop\trustbank (1)\trustbank\trustbank\settings.py changed, reloading.
+INFO 2025-12-23 17:01:22,159 autoreload 17808 22280 C:\Users\DELL\Desktop\trustbank (1)\trustbank\trustbank\settings.py changed, reloading.
+INFO 2025-12-23 17:01:22,587 autoreload 20880 16752 Watching for file changes with StatReloader
+INFO 2025-12-23 17:01:22,587 autoreload 20880 16752 Watching for file changes with StatReloader
+INFO 2025-12-23 17:01:30,099 autoreload 20880 16752 C:\Users\DELL\Desktop\trustbank (1)\trustbank\trustbank\settings.py changed, reloading.
+INFO 2025-12-23 17:01:30,099 autoreload 20880 16752 C:\Users\DELL\Desktop\trustbank (1)\trustbank\trustbank\settings.py changed, reloading.
+INFO 2025-12-23 17:01:30,529 autoreload 20928 20904 Watching for file changes with StatReloader
+INFO 2025-12-23 17:01:30,529 autoreload 20928 20904 Watching for file changes with StatReloader
+INFO 2025-12-23 17:01:31,825 autoreload 20928 20904 C:\Users\DELL\Desktop\trustbank (1)\trustbank\trustbank\settings.py changed, reloading.
+INFO 2025-12-23 17:01:31,825 autoreload 20928 20904 C:\Users\DELL\Desktop\trustbank (1)\trustbank\trustbank\settings.py changed, reloading.
+INFO 2025-12-23 17:01:32,276 autoreload 9236 6308 Watching for file changes with StatReloader
+INFO 2025-12-23 17:01:32,276 autoreload 9236 6308 Watching for file changes with StatReloader
+INFO 2025-12-23 17:08:57,654 autoreload 9236 6308 C:\Users\DELL\Desktop\trustbank (1)\trustbank\trustbank\settings.py changed, reloading.
+INFO 2025-12-23 17:08:57,654 autoreload 9236 6308 C:\Users\DELL\Desktop\trustbank (1)\trustbank\trustbank\settings.py changed, reloading.
+INFO 2025-12-23 17:08:58,128 autoreload 19320 16948 Watching for file changes with StatReloader
+INFO 2025-12-23 21:57:46,956 autoreload 19320 16948 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+INFO 2025-12-23 21:57:47,448 autoreload 22424 21076 Watching for file changes with StatReloader
+INFO 2025-12-23 21:57:48,748 autoreload 22424 21076 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+INFO 2025-12-23 21:57:49,215 autoreload 22988 14764 Watching for file changes with StatReloader
+INFO 2025-12-23 21:58:18,540 autoreload 22988 14764 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\admin.py changed, reloading.
+INFO 2025-12-23 21:58:18,961 autoreload 2952 5508 Watching for file changes with StatReloader
+INFO 2025-12-23 21:58:50,192 autoreload 2952 5508 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 21:58:50,611 autoreload 22684 23152 Watching for file changes with StatReloader
+INFO 2025-12-23 21:58:51,901 autoreload 22684 23152 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 21:58:52,304 autoreload 22816 20836 Watching for file changes with StatReloader
+INFO 2025-12-23 21:58:53,598 autoreload 22816 20836 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 21:58:53,988 autoreload 5376 13088 Watching for file changes with StatReloader
+INFO 2025-12-23 22:00:38,741 autoreload 5376 13088 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 22:00:39,150 autoreload 2716 2168 Watching for file changes with StatReloader
+INFO 2025-12-23 22:00:40,449 autoreload 2716 2168 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 22:00:40,847 autoreload 20616 21372 Watching for file changes with StatReloader
+INFO 2025-12-23 22:02:39,869 autoreload 20616 21372 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 22:02:40,281 autoreload 2960 21624 Watching for file changes with StatReloader
+INFO 2025-12-23 22:02:41,571 autoreload 2960 21624 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 22:02:42,028 autoreload 22124 20120 Watching for file changes with StatReloader
+INFO 2025-12-23 22:02:43,321 autoreload 22124 20120 C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+INFO 2025-12-23 22:02:43,801 autoreload 21076 16588 Watching for file changes with StatReloader
+INFO 2025-12-23 22:33:22,910 autoreload 23308 7824 Watching for file changes with StatReloader
+INFO 2025-12-23 22:50:25,580 autoreload 1796 21816 Watching for file changes with StatReloader
+INFO 2025-12-23 22:50:40,522 log 1796 12272 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 22:50:40,591 log 1796 12272 "GET /dashboard/ HTTP/1.1" 200 39154
+WARNING 2025-12-23 22:50:40,651 log 1796 12272 Not Found: /api/dashboard/
+WARNING 2025-12-23 22:50:40,651 log 1796 12272 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 22:50:46,276 log 1796 12272 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-12-23 22:50:46,358 log 1796 12272 "GET / HTTP/1.1" 200 38105
+INFO 2025-12-23 22:50:59,809 log 1796 12272 "GET /login/ HTTP/1.1" 200 1614
+INFO 2025-12-23 22:51:12,288 log 1796 12272 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-23 22:51:12,301 log 1796 12272 "GET /dashboard/ HTTP/1.1" 200 39154
+WARNING 2025-12-23 22:51:12,361 log 1796 12272 Not Found: /api/dashboard/
+WARNING 2025-12-23 22:51:12,362 log 1796 12272 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 22:51:19,821 log 1796 12272 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 22:51:19,838 log 1796 12272 "GET /dashboard/ HTTP/1.1" 200 39154
+WARNING 2025-12-23 22:51:19,886 log 1796 12272 Not Found: /api/dashboard/
+WARNING 2025-12-23 22:51:19,886 log 1796 12272 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 22:51:24,267 log 1796 12272 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-12-23 22:51:24,421 log 1796 12272 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3605
+INFO 2025-12-23 22:51:24,594 log 1796 22648 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-12-23 22:51:24,594 log 1796 23460 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-12-23 22:51:24,602 log 1796 22200 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 3538
+INFO 2025-12-23 22:51:24,605 log 1796 20980 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16194
+INFO 2025-12-23 22:51:24,606 log 1796 12272 "GET /static/admin/css/base.css HTTP/1.1" 200 23100
+INFO 2025-12-23 22:51:24,654 log 1796 3304 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-12-23 22:51:24,655 log 1796 12272 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-12-23 22:57:58,675 autoreload 2400 21060 Watching for file changes with StatReloader
+INFO 2025-12-23 22:58:13,098 log 2400 1188 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 22:58:13,120 log 2400 1188 "GET /dashboard/ HTTP/1.1" 200 39154
+WARNING 2025-12-23 22:58:13,162 log 2400 1188 Not Found: /api/dashboard/
+WARNING 2025-12-23 22:58:13,162 log 2400 1188 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 22:58:17,281 log 2400 1188 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-12-23 22:58:17,317 log 2400 1188 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3605
+INFO 2025-12-23 22:58:42,320 log 2400 1188 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-12-23 22:58:42,369 log 2400 1188 "GET /admin/ HTTP/1.1" 200 10227
+INFO 2025-12-23 22:58:42,466 log 2400 1188 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-12-23 22:58:42,470 log 2400 17580 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 593
+INFO 2025-12-23 22:58:42,471 log 2400 7840 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 978
+INFO 2025-12-23 22:58:48,823 log 2400 7840 "GET /admin/core/account/ HTTP/1.1" 200 20633
+INFO 2025-12-23 22:58:48,850 log 2400 7840 "GET /static/admin/css/changelists.css HTTP/1.1" 200 7501
+INFO 2025-12-23 22:58:48,861 log 2400 10476 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-12-23 22:58:48,873 log 2400 17340 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-12-23 22:58:48,875 log 2400 21836 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-12-23 22:58:48,878 log 2400 17580 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 22:58:48,880 log 2400 7840 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-12-23 22:58:48,889 log 2400 10476 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-12-23 22:58:48,894 log 2400 17340 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-12-23 22:58:48,908 log 2400 17340 "GET /static/admin/img/search.svg HTTP/1.1" 200 607
+INFO 2025-12-23 22:58:48,918 log 2400 1188 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-12-23 22:58:48,942 log 2400 1188 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-12-23 22:58:48,975 log 2400 21836 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-12-23 22:58:48,999 log 2400 1188 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 928
+INFO 2025-12-23 22:58:49,000 log 2400 21836 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 593
+INFO 2025-12-23 22:59:12,006 log 2400 21836 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 22:59:12,025 log 2400 21836 "GET /dashboard/ HTTP/1.1" 200 39143
+WARNING 2025-12-23 22:59:12,065 log 2400 21836 Not Found: /api/dashboard/
+WARNING 2025-12-23 22:59:12,066 log 2400 21836 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 22:59:18,993 log 2400 21836 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-12-23 22:59:18,998 log 2400 21836 "GET / HTTP/1.1" 200 38105
+INFO 2025-12-23 22:59:21,438 log 2400 21836 "GET /login/ HTTP/1.1" 200 1614
+INFO 2025-12-23 22:59:28,117 log 2400 21836 "GET /register/ HTTP/1.1" 200 1604
+INFO 2025-12-23 22:59:56,271 log 2400 21836 "POST /register/ HTTP/1.1" 302 0
+INFO 2025-12-23 22:59:56,282 log 2400 21836 "GET /dashboard/ HTTP/1.1" 200 39147
+WARNING 2025-12-23 22:59:56,332 log 2400 21836 Not Found: /api/dashboard/
+WARNING 2025-12-23 22:59:56,332 log 2400 21836 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:00:06,521 log 2400 21836 "GET /loan/apply/step1/ HTTP/1.1" 200 9900
+INFO 2025-12-23 23:00:17,390 log 2400 21836 "GET /admin/core/account/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:00:17,402 log 2400 21836 "GET /admin/login/?next=/admin/core/account/ HTTP/1.1" 200 3628
+INFO 2025-12-23 23:00:34,611 log 2400 21836 "POST /admin/login/?next=/admin/core/account/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:00:34,634 log 2400 21836 "GET /admin/core/account/ HTTP/1.1" 200 21649
+INFO 2025-12-23 23:00:34,662 log 2400 21836 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:00:39,681 log 2400 21836 "GET /admin/core/account/14/change/ HTTP/1.1" 200 16564
+INFO 2025-12-23 23:00:39,707 log 2400 17340 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:00:39,712 log 2400 21836 "GET /static/admin/css/forms.css HTTP/1.1" 200 8844
+INFO 2025-12-23 23:00:39,716 log 2400 1188 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-12-23 23:00:39,724 log 2400 17340 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11811
+INFO 2025-12-23 23:00:39,729 log 2400 21836 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-12-23 23:03:28,039 log 2400 21836 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 23:03:28,052 log 2400 21836 "GET /dashboard/ HTTP/1.1" 200 39143
+WARNING 2025-12-23 23:03:28,077 log 2400 21836 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:03:28,077 log 2400 21836 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:04:04,189 log 2400 21836 "GET /loan/apply/step1/ HTTP/1.1" 200 9896
+INFO 2025-12-23 23:04:18,049 log 2400 21836 "GET /dashboard/ HTTP/1.1" 200 39143
+WARNING 2025-12-23 23:04:18,075 log 2400 21836 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:04:18,076 log 2400 21836 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:04:21,590 log 2400 21836 "GET /dashboard/ HTTP/1.1" 200 39143
+WARNING 2025-12-23 23:04:21,608 log 2400 21836 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:04:21,609 log 2400 21836 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:17:23,993 log 2400 2776 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 23:17:24,006 log 2400 2776 "GET /dashboard/ HTTP/1.1" 200 39143
+WARNING 2025-12-23 23:17:24,050 log 2400 2776 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:17:24,051 log 2400 2776 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:19:46,578 log 2400 2776 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:19:46,584 log 2400 2776 "GET /login/?next=/dashboard/ HTTP/1.1" 200 1614
+INFO 2025-12-23 23:22:42,742 log 2400 2776 "POST /login/?next=/dashboard/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:22:42,752 log 2400 2776 "GET /dashboard/ HTTP/1.1" 200 39150
+WARNING 2025-12-23 23:22:44,900 log 2400 2776 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:22:44,900 log 2400 2776 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:48:51,551 log 2400 19488 "GET /dashboard/ HTTP/1.1" 200 37899
+WARNING 2025-12-23 23:48:51,572 log 2400 19488 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:48:51,573 log 2400 19488 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:48:52,817 log 2400 19488 "GET /dashboard/ HTTP/1.1" 200 37899
+WARNING 2025-12-23 23:48:52,835 log 2400 19488 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:48:52,836 log 2400 19488 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:49:05,004 log 2400 19488 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:49:05,009 log 2400 19488 "GET / HTTP/1.1" 200 38105
+INFO 2025-12-23 23:49:07,777 log 2400 19488 "GET /login/ HTTP/1.1" 200 1614
+INFO 2025-12-23 23:49:15,409 log 2400 19488 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:49:15,419 log 2400 19488 "GET /dashboard/ HTTP/1.1" 200 37899
+WARNING 2025-12-23 23:49:15,451 log 2400 19488 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:49:15,452 log 2400 19488 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:49:33,425 log 2400 19488 "GET / HTTP/1.1" 302 0
+INFO 2025-12-23 23:49:33,439 log 2400 19488 "GET /dashboard/ HTTP/1.1" 200 37899
+WARNING 2025-12-23 23:49:33,476 log 2400 19488 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:49:33,477 log 2400 19488 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:49:40,632 log 2400 19488 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:49:40,654 log 2400 19488 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 3602
+INFO 2025-12-23 23:49:40,673 log 2400 9964 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 3538
+INFO 2025-12-23 23:49:40,674 log 2400 19488 "GET /static/admin/css/base.css HTTP/1.1" 200 23100
+INFO 2025-12-23 23:49:40,676 log 2400 2576 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-12-23 23:49:40,676 log 2400 12988 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-12-23 23:49:40,676 log 2400 16888 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-12-23 23:49:40,677 log 2400 21440 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16194
+INFO 2025-12-23 23:49:40,681 log 2400 21440 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-12-23 23:50:22,369 log 2400 21440 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:50:22,386 log 2400 21440 "GET /admin/ HTTP/1.1" 200 10227
+INFO 2025-12-23 23:50:22,403 log 2400 16888 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 593
+INFO 2025-12-23 23:50:22,403 log 2400 12988 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 978
+INFO 2025-12-23 23:50:22,403 log 2400 21440 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-12-23 23:52:10,275 log 2400 21440 "GET /admin/core/account/ HTTP/1.1" 200 21649
+INFO 2025-12-23 23:52:10,293 log 2400 2576 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-12-23 23:52:10,293 log 2400 21440 "GET /static/admin/css/changelists.css HTTP/1.1" 200 7501
+INFO 2025-12-23 23:52:10,294 log 2400 9964 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-12-23 23:52:10,295 log 2400 19488 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-12-23 23:52:10,298 log 2400 2576 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-12-23 23:52:10,298 log 2400 9964 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-12-23 23:52:10,298 log 2400 21440 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-12-23 23:52:10,301 log 2400 21440 "GET /static/admin/img/search.svg HTTP/1.1" 200 607
+INFO 2025-12-23 23:52:10,303 log 2400 16888 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-12-23 23:52:10,304 log 2400 12988 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:52:10,305 log 2400 19488 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-12-23 23:52:10,310 log 2400 19488 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-12-23 23:52:10,328 log 2400 19488 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 593
+INFO 2025-12-23 23:52:10,328 log 2400 12988 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 928
+INFO 2025-12-23 23:52:44,596 log 2400 12988 "GET /admin/core/account/12/change/ HTTP/1.1" 200 16564
+INFO 2025-12-23 23:52:44,612 log 2400 12988 "GET /static/admin/css/forms.css HTTP/1.1" 200 8844
+INFO 2025-12-23 23:52:44,616 log 2400 12988 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-12-23 23:52:44,616 log 2400 16888 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11811
+INFO 2025-12-23 23:52:44,621 log 2400 12988 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-12-23 23:52:44,625 log 2400 19488 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:52:54,778 log 2400 19488 "POST /admin/core/account/12/change/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:52:54,802 log 2400 19488 "GET /admin/core/account/ HTTP/1.1" 200 21884
+INFO 2025-12-23 23:52:54,826 log 2400 19488 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:52:54,854 log 2400 19488 "GET /static/admin/img/icon-yes-dark.svg HTTP/1.1" 200 558
+INFO 2025-12-23 23:52:58,862 log 2400 19488 "GET /dashboard/ HTTP/1.1" 200 37892
+WARNING 2025-12-23 23:52:58,881 log 2400 19488 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:52:58,881 log 2400 19488 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:52:59,967 log 2400 19488 "GET /dashboard/ HTTP/1.1" 200 37892
+WARNING 2025-12-23 23:52:59,992 log 2400 19488 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:52:59,993 log 2400 19488 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:00,632 log 2400 19488 "GET /dashboard/ HTTP/1.1" 200 37892
+WARNING 2025-12-23 23:53:00,653 log 2400 19488 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:00,654 log 2400 19488 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:01,259 log 2400 19488 "GET /dashboard/ HTTP/1.1" 200 37892
+WARNING 2025-12-23 23:53:01,281 log 2400 19488 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:01,282 log 2400 19488 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:09,158 log 2400 19488 "GET /admin/core/account/13/change/ HTTP/1.1" 200 16564
+INFO 2025-12-23 23:53:09,190 log 2400 19488 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:53:15,138 log 2400 19488 "POST /admin/core/account/13/change/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:53:15,163 log 2400 19488 "GET /admin/core/account/ HTTP/1.1" 200 21887
+INFO 2025-12-23 23:53:15,188 log 2400 19488 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:53:18,798 log 2400 19488 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:18,816 log 2400 19488 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:18,817 log 2400 19488 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:19,862 log 2400 19488 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:19,884 log 2400 19488 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:19,884 log 2400 19488 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:27,088 log 2400 19488 "GET /admin/core/account/13/change/ HTTP/1.1" 200 16567
+INFO 2025-12-23 23:53:27,107 log 2400 19488 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:53:41,939 log 2400 13404 "POST /admin/core/account/13/change/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:53:41,961 log 2400 13404 "GET /admin/core/account/ HTTP/1.1" 200 21887
+INFO 2025-12-23 23:53:41,986 log 2400 13404 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:53:50,562 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:50,581 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:50,582 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:51,448 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:51,467 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:51,468 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:52,008 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:52,025 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:52,026 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:52,692 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:52,713 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:52,713 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:53,084 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:53,107 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:53,107 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:53,239 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:53,258 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:53,259 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:53,400 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:53,419 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:53,420 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:53,569 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:53,591 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:53,592 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:53,771 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:53,794 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:53,794 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:54,666 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:54,687 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:54,688 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:53:55,521 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:53:55,539 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:53:55,540 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:54:06,160 log 2400 13404 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:54:06,164 log 2400 13404 "GET / HTTP/1.1" 200 38105
+INFO 2025-12-23 23:54:32,751 log 2400 13404 "POST /register/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:54:32,762 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37899
+WARNING 2025-12-23 23:54:32,805 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:54:32,806 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:54:45,176 log 2400 13404 "GET /admin/core/account/13/change/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:54:45,188 log 2400 13404 "GET /admin/login/?next=/admin/core/account/13/change/ HTTP/1.1" 200 3649
+INFO 2025-12-23 23:54:57,296 log 2400 13404 "POST /admin/login/?next=/admin/core/account/13/change/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:54:57,313 log 2400 13404 "GET /admin/core/account/13/change/ HTTP/1.1" 200 16613
+INFO 2025-12-23 23:54:57,341 log 2400 13404 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:55:00,489 log 2400 13404 "GET /admin/ HTTP/1.1" 200 11403
+INFO 2025-12-23 23:55:02,369 log 2400 13404 "GET /admin/core/account/ HTTP/1.1" 200 22168
+INFO 2025-12-23 23:55:02,389 log 2400 13404 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:55:05,045 log 2400 13404 "GET /admin/core/account/15/change/ HTTP/1.1" 200 16610
+INFO 2025-12-23 23:55:05,066 log 2400 13404 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:55:11,759 log 2400 13404 "POST /admin/core/account/15/change/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:55:11,781 log 2400 13404 "GET /admin/core/account/ HTTP/1.1" 200 22403
+INFO 2025-12-23 23:55:11,806 log 2400 13404 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:55:17,202 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:55:17,226 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:55:17,228 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:55:18,320 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:55:18,342 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:55:18,344 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:55:28,730 log 2400 13404 "GET /admin/core/account/15/change/ HTTP/1.1" 200 16613
+INFO 2025-12-23 23:55:28,750 log 2400 13404 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:55:34,374 log 2400 13404 "POST /admin/core/account/15/change/ HTTP/1.1" 302 0
+INFO 2025-12-23 23:55:34,397 log 2400 13404 "GET /admin/core/account/ HTTP/1.1" 200 22400
+INFO 2025-12-23 23:55:34,424 log 2400 13404 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-23 23:55:38,223 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:55:38,247 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:55:38,248 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-23 23:55:38,921 log 2400 13404 "GET /dashboard/ HTTP/1.1" 200 37898
+WARNING 2025-12-23 23:55:38,942 log 2400 13404 Not Found: /api/dashboard/
+WARNING 2025-12-23 23:55:38,943 log 2400 13404 "GET /api/dashboard/ HTTP/1.1" 404 6803
+INFO 2025-12-24 00:38:24,382 autoreload 10136 21920 Watching for file changes with StatReloader
+INFO 2025-12-24 00:52:31,446 basehttp 10136 9548 "GET / HTTP/1.1" 200 38105
+INFO 2025-12-24 00:53:36,020 basehttp 10136 8388 "GET /login/ HTTP/1.1" 200 1614
+INFO 2025-12-24 00:54:02,122 basehttp 10136 8388 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-24 00:54:02,170 basehttp 10136 8388 "GET /dashboard/ HTTP/1.1" 200 26118
+INFO 2025-12-24 00:55:04,397 basehttp 10136 8388 "GET /loan/apply/step1/ HTTP/1.1" 200 9903
+INFO 2025-12-24 00:57:18,330 basehttp 10136 8388 "GET /admin/core/account/ HTTP/1.1" 302 0
+INFO 2025-12-24 00:57:18,395 basehttp 10136 8388 "GET /admin/login/?next=/admin/core/account/ HTTP/1.1" 200 3722
+INFO 2025-12-24 00:57:30,786 basehttp 10136 8388 "POST /admin/login/?next=/admin/core/account/ HTTP/1.1" 302 0
+INFO 2025-12-24 00:57:30,875 basehttp 10136 8388 "GET /admin/core/account/ HTTP/1.1" 200 21837
+INFO 2025-12-24 00:57:30,903 basehttp 10136 8388 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-24 00:57:33,762 basehttp 10136 8388 "GET /admin/core/account/15/change/ HTTP/1.1" 200 16439
+INFO 2025-12-24 00:57:33,780 basehttp 10136 8388 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-24 00:57:43,470 basehttp 10136 8388 "POST /admin/core/account/15/change/ HTTP/1.1" 302 0
+INFO 2025-12-24 00:57:43,493 basehttp 10136 8388 "GET /admin/core/account/ HTTP/1.1" 200 22071
+INFO 2025-12-24 00:57:43,521 basehttp 10136 8388 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-24 00:57:48,433 basehttp 10136 8388 "GET /dashboard/ HTTP/1.1" 200 26116
+INFO 2025-12-24 00:58:03,374 basehttp 10136 8388 "GET /admin/core/account/15/change/ HTTP/1.1" 200 16441
+INFO 2025-12-24 00:58:03,395 basehttp 10136 8388 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-24 00:58:10,356 basehttp 10136 8388 "POST /admin/core/account/15/change/ HTTP/1.1" 200 16679
+INFO 2025-12-24 00:58:10,373 basehttp 10136 8388 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-24 00:58:18,374 basehttp 10136 8388 "POST /admin/core/account/15/change/ HTTP/1.1" 302 0
+INFO 2025-12-24 00:58:18,396 basehttp 10136 8388 "GET /admin/core/account/ HTTP/1.1" 200 22083
+INFO 2025-12-24 00:58:18,415 basehttp 10136 8388 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-24 00:58:22,997 basehttp 10136 8388 "GET /dashboard/ HTTP/1.1" 200 26116
+INFO 2025-12-24 00:58:24,058 basehttp 10136 8388 "GET /dashboard/ HTTP/1.1" 200 26116
+INFO 2025-12-24 00:58:27,361 basehttp 10136 8388 "GET /admin/core/account/15/change/ HTTP/1.1" 200 16453
+INFO 2025-12-24 00:58:27,382 basehttp 10136 8388 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-24 00:58:42,048 basehttp 10136 8388 "POST /admin/core/account/15/change/ HTTP/1.1" 302 0
+INFO 2025-12-24 00:58:42,070 basehttp 10136 8388 "GET /admin/core/account/ HTTP/1.1" 200 22071
+INFO 2025-12-24 00:58:42,096 basehttp 10136 8388 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-24 00:58:46,718 basehttp 10136 8388 "GET /dashboard/ HTTP/1.1" 200 26116
+INFO 2025-12-24 01:33:41,330 autoreload 376 12000 Watching for file changes with StatReloader
+INFO 2025-12-24 01:33:52,644 basehttp 376 404 "GET / HTTP/1.1" 200 38105
+INFO 2025-12-24 01:33:55,526 basehttp 376 404 "GET /login/ HTTP/1.1" 200 1614
+INFO 2025-12-24 01:34:08,487 basehttp 376 404 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-12-24 01:34:08,534 basehttp 376 404 "GET /dashboard/ HTTP/1.1" 200 30509
+INFO 2025-12-24 01:34:57,572 basehttp 376 404 "GET /dashboard/ HTTP/1.1" 200 30509
+INFO 2025-12-24 01:35:00,745 basehttp 376 404 "GET /dashboard/ HTTP/1.1" 200 30509
+INFO 2025-12-24 01:35:12,493 basehttp 376 404 "GET /admin/core/account/15/change/ HTTP/1.1" 302 0
+INFO 2025-12-24 01:35:12,527 basehttp 376 404 "GET /admin/login/?next=/admin/core/account/15/change/ HTTP/1.1" 200 3742
+INFO 2025-12-24 01:35:12,542 basehttp 376 404 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:12,546 basehttp 376 404 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:12,546 basehttp 376 11464 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:12,546 basehttp 376 20088 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:12,547 basehttp 376 6712 "GET /static/admin/css/login.css HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:12,547 basehttp 376 15908 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:12,549 basehttp 376 15908 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,570 basehttp 376 15908 "POST /admin/login/?next=/admin/core/account/15/change/ HTTP/1.1" 302 0
+INFO 2025-12-24 01:35:20,604 basehttp 376 15908 "GET /admin/core/account/15/change/ HTTP/1.1" 200 16441
+INFO 2025-12-24 01:35:20,626 basehttp 376 15908 "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,627 basehttp 376 20088 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,627 basehttp 376 404 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,628 basehttp 376 11464 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,629 basehttp 376 22044 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,629 basehttp 376 20088 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,629 basehttp 376 15908 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,632 basehttp 376 404 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,632 basehttp 376 11464 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,632 basehttp 376 22044 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,632 basehttp 376 20088 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,637 basehttp 376 20088 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,640 basehttp 376 6712 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-24 01:35:20,640 basehttp 376 20088 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,643 basehttp 376 6712 "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:20,644 basehttp 376 20088 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:24,558 basehttp 376 20088 "GET /admin/core/account/ HTTP/1.1" 200 21838
+INFO 2025-12-24 01:35:24,573 basehttp 376 20088 "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:24,577 basehttp 376 6712 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:24,580 basehttp 376 6712 "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:24,583 basehttp 376 20088 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-24 01:35:24,599 basehttp 376 20088 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2025-12-24 01:35:26,392 basehttp 376 20088 "GET /admin/core/account/15/change/ HTTP/1.1" 200 16441
+INFO 2025-12-24 01:35:26,425 basehttp 376 20088 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-12-24 01:35:33,517 basehttp 376 20088 "POST /admin/core/account/15/change/ HTTP/1.1" 302 0
+INFO 2025-12-24 01:35:33,538 basehttp 376 20088 "GET /admin/core/account/ HTTP/1.1" 200 22070
+INFO 2025-12-24 01:35:33,563 basehttp 376 20088 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+WARNING 2025-12-24 01:35:33,579 basehttp 376 20088 "GET /static/admin/img/icon-yes-dark.svg HTTP/1.1" 404 2008
+INFO 2025-12-24 01:35:40,068 basehttp 376 6712 "GET /dashboard/ HTTP/1.1" 200 30506
+INFO 2025-12-24 01:35:44,805 basehttp 376 6712 "GET /dashboard/ HTTP/1.1" 200 30506
+INFO 2025-12-24 04:29:31,885 basehttp 376 18420 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-12-24 04:29:31,905 basehttp 376 18420 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-12-24 04:29:31,913 basehttp 376 14792 "GET / HTTP/1.1" 200 38105
+INFO 2025-12-24 04:29:31,936 basehttp 376 14792 "GET / HTTP/1.1" 200 38105
+Watching for file changes with StatReloader
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4173
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 10305
+"GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+"GET /admin/core/account/ HTTP/1.1" 200 21846
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /dashboard/ HTTP/1.1" 200 29235
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29225
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 3696
+"POST /admin/login/?next=/admin/ HTTP/1.1" 200 3864
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 10305
+"GET /admin/core/account/ HTTP/1.1" 200 22352
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/account/15/change/ HTTP/1.1" 200 16490
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/core/account/15/change/ HTTP/1.1" 302 0
+"GET /admin/core/account/ HTTP/1.1" 200 22352
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /dashboard/ HTTP/1.1" 200 29235
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29235
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29225
+"GET / HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29225
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 3696
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 10719
+"GET /admin/core/account/ HTTP/1.1" 200 22352
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET / HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29235
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4173
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 7348
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 10719
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /admin/core/account/ HTTP/1.1" 200 22352
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+"GET /static/admin/js/core.js HTTP/1.1" 200 6208
+"GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+"GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/img/search.svg HTTP/1.1" 200 458
+"GET /static/admin/js/filters.js HTTP/1.1" 200 978
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+"GET /admin/core/account/19/change/ HTTP/1.1" 200 16488
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+"GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+"GET /static/admin/css/widgets.css HTTP/1.1" 200 11973
+"GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/account/19/delete/ HTTP/1.1" 200 10547
+"GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+"POST /admin/core/account/19/delete/ HTTP/1.1" 302 0
+"GET /admin/core/account/ HTTP/1.1" 200 22033
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+"GET /admin/core/account/19/delete/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 11226
+"GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+"GET /static/admin/img/icon-alert.svg HTTP/1.1" 200 504
+"GET /login/ HTTP/1.1" 200 1614
+"GET /register/ HTTP/1.1" 200 1604
+"POST /register/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29229
+"GET /admin/core/contactmessage/ HTTP/1.1" 200 10580
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 11055
+"GET /admin/core/account/ HTTP/1.1" 200 22358
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/account/20/change/ HTTP/1.1" 200 16533
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/core/account/20/change/ HTTP/1.1" 302 0
+"GET /admin/core/account/ HTTP/1.1" 200 22360
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /dashboard/ HTTP/1.1" 200 29225
+"GET /admin/core/account/20/change/ HTTP/1.1" 200 16535
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/core/account/20/change/ HTTP/1.1" 302 0
+"GET /admin/core/account/ HTTP/1.1" 200 22360
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /dashboard/ HTTP/1.1" 200 29225
+"GET /dashboard/ HTTP/1.1" 200 29225
+"GET /dashboard/ HTTP/1.1" 200 29225
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4173
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 7348
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 11817
+"GET /admin/core/account/ HTTP/1.1" 200 22360
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/account/20/change/ HTTP/1.1" 200 16535
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/core/account/20/change/ HTTP/1.1" 302 0
+"GET /admin/core/account/ HTTP/1.1" 200 22362
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /dashboard/ HTTP/1.1" 200 29231
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /dashboard/ HTTP/1.1" 302 0
+"GET /login/?next=/dashboard/ HTTP/1.1" 200 1614
+"POST /login/?next=/dashboard/ HTTP/1.1" 200 1678
+"POST /login/?next=/dashboard/ HTTP/1.1" 200 1679
+"POST /login/?next=/dashboard/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29231
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29197
+"GET / HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29197
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 3695
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4173
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 8099
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 12198
+"GET /admin/core/account/ HTTP/1.1" 200 22362
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /dashboard/ HTTP/1.1" 200 29279
+"GET /dashboard/ HTTP/1.1" 302 0
+"GET /login/?next=/dashboard/ HTTP/1.1" 200 1614
+"POST /login/?next=/dashboard/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /send-money/ HTTP/1.1" 200 20803
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /send-money/ HTTP/1.1" 200 20803
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /deposit/ HTTP/1.1" 200 39114
+"GET /deposit/ HTTP/1.1" 200 35511
+Not Found: /deposit/home.html
+"GET /deposit/home.html HTTP/1.1" 404 8117
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 29738
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /send-money/ HTTP/1.1" 200 20825
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 29738
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 29738
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /send-money/ HTTP/1.1" 200 20825
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET / HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 29738
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29738
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 29738
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /dashboard/ HTTP/1.1" 302 0
+"GET /login/?next=/dashboard/ HTTP/1.1" 200 1614
+"GET /login/?next=/dashboard/ HTTP/1.1" 200 1614
+"POST /login/?next=/dashboard/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29737
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 29737
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 29737
+Watching for file changes with StatReloader
+"GET /pay-bills/ HTTP/1.1" 302 0
+"GET /login/?next=/pay-bills/ HTTP/1.1" 200 1614
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 8099
+"POST /login/?next=/pay-bills/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29731
+"GET /send-money/ HTTP/1.1" 200 20819
+"GET /dashboard/ HTTP/1.1" 200 29731
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 29731
+"GET /loan/apply/step1/ HTTP/1.1" 200 9903
+"GET /dashboard/ HTTP/1.1" 200 29731
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\trustbank\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /dashboard/ HTTP/1.1" 302 0
+"GET /login/?next=/dashboard/ HTTP/1.1" 200 1614
+"GET /login/?next=/dashboard/ HTTP/1.1" 200 1614
+"POST /login/?next=/dashboard/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29737
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /pay-bills/ HTTP/1.1" 200 10486
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /cards/ HTTP/1.1" 200 10962
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /crypto/ HTTP/1.1" 200 12118
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /send-money/ HTTP/1.1" 200 20825
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /pay-bills/ HTTP/1.1" 200 10486
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /cards/ HTTP/1.1" 200 10962
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 30217
+"GET /admin/core/account/20/change/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/core/account/20/change/ HTTP/1.1" 200 4219
+"POST /admin/login/?next=/admin/core/account/20/change/ HTTP/1.1" 302 0
+"GET /admin/core/account/20/change/ HTTP/1.1" 200 16537
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/core/account/20/change/ HTTP/1.1" 302 0
+"GET /admin/core/account/ HTTP/1.1" 200 22359
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /send-money/ HTTP/1.1" 200 20816
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /pay-bills/ HTTP/1.1" 200 10483
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /cards/ HTTP/1.1" 200 10959
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /send-money/ HTTP/1.1" 200 20816
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /crypto/ HTTP/1.1" 200 12115
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /crypto/ HTTP/1.1" 200 12115
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"POST /loan/apply/step1/ HTTP/1.1" 302 0
+"GET /loan/apply/step2/ HTTP/1.1" 200 13441
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /dashboard/ HTTP/1.1" 302 0
+"GET /login/?next=/dashboard/ HTTP/1.1" 200 1614
+"POST /login/?next=/dashboard/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 29843
+Internal Server Error: /transactions/
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py", line 717, in transactions
+    return render(request, 'core/transactions.html', {
+        'account': account,
+        'transactions': user_transactions
+    })
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/transactions.html
+"GET /transactions/ HTTP/1.1" 500 87874
+"GET /dashboard/ HTTP/1.1" 200 29511
+"GET /dashboard/ HTTP/1.1" 200 28794
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /dashboard/ HTTP/1.1" 200 30210
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /dashboard/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 30208
+"GET /dashboard/ HTTP/1.1" 200 30283
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 30283
+"GET /dashboard/ HTTP/1.1" 200 24641
+"GET /dashboard/ HTTP/1.1" 200 24641
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 24641
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 24641
+"GET /pay-bills/ HTTP/1.1" 200 10483
+"GET /dashboard/ HTTP/1.1" 200 24641
+"GET /cards/ HTTP/1.1" 200 10959
+"GET /dashboard/ HTTP/1.1" 302 0
+"GET /login/?next=/dashboard/ HTTP/1.1" 200 1614
+"POST /login/?next=/dashboard/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 24641
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"POST /loan/apply/step1/ HTTP/1.1" 302 0
+"GET /loan/apply/step2/ HTTP/1.1" 200 13446
+"GET /loan/apply/step2/ HTTP/1.1" 200 21453
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /loan/apply/step2/ HTTP/1.1" 200 21453
+"POST /loan/apply/step2/ HTTP/1.1" 302 0
+"GET /loan/apply/confirm/ HTTP/1.1" 200 9626
+"GET /loan/apply/confirm/ HTTP/1.1" 200 7808
+"GET /loan/apply/step2/ HTTP/1.1" 302 0
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 24685
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 24685
+"GET /dashboard/ HTTP/1.1" 200 24685
+"GET /send-money/ HTTP/1.1" 200 20816
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /login/?next=/send-money/ HTTP/1.1" 200 1614
+"POST /login/?next=/send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 24686
+"GET /send-money/ HTTP/1.1" 200 16009
+"POST /send-money/ HTTP/1.1" 200 16140
+"GET /track-transfer/ HTTP/1.1" 200 4482
+Internal Server Error: /track-transfer/
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: core_moneytransfer
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py", line 796, in track_transfer
+    transfer = MoneyTransfer.objects.get(reference_number=ref, sender=request.user)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 629, in get
+    num = len(clone)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 366, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: core_moneytransfer
+"GET /track-transfer/?ref=nnnnnnnnnnnnnnnn HTTP/1.1" 500 158750
+Watching for file changes with StatReloader
+"POST /send-money/ HTTP/1.1" 302 0
+"GET /transfer-status/TRF-18-1766705638/ HTTP/1.1" 200 9330
+"GET /transfer-status/TRF-18-1766705638/ HTTP/1.1" 200 9330
+"GET /transfer-status/TRF-18-1766705638/ HTTP/1.1" 200 9330
+"GET /dashboard/ HTTP/1.1" 200 24770
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /transfer-status/TRF-18-1766705638/ HTTP/1.1" 200 9330
+"GET /send-money/ HTTP/1.1" 200 16009
+"GET /dashboard/ HTTP/1.1" 200 24770
+"GET /send-money/ HTTP/1.1" 200 16009
+"POST /send-money/ HTTP/1.1" 302 0
+"GET /transfer-status/TRF-18-1766705800/ HTTP/1.1" 200 9333
+"GET /transfer-status/TRF-18-1766705800/ HTTP/1.1" 200 9333
+"GET / HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25175
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 3695
+"GET /static/admin/css/base.css HTTP/1.1" 304 0
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+"GET /static/admin/js/theme.js HTTP/1.1" 304 0
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+"GET /static/admin/css/login.css HTTP/1.1" 304 0
+"GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+"GET /transfer-status/TRF-18-1766705800/ HTTP/1.1" 200 9333
+"GET /admin/core/account/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/core/account/ HTTP/1.1" 200 4199
+"POST /admin/login/?next=/admin/core/account/ HTTP/1.1" 302 0
+"GET /admin/core/account/ HTTP/1.1" 200 23314
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 13913
+"GET /admin/core/moneytransfer/ HTTP/1.1" 200 17110
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+"GET /admin/core/moneytransfer/2/change/ HTTP/1.1" 200 34481
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+"GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+"GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+"GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+"GET /transfer-status/TRF-18-1766705800/ HTTP/1.1" 200 9333
+"GET /transfer-status/TRF-18-1766705800/ HTTP/1.1" 200 9333
+"GET /transfer-status/TRF-18-1766705800/ HTTP/1.1" 200 9333
+"POST /admin/core/moneytransfer/2/change/ HTTP/1.1" 200 34741
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /transfer-status/TRF-18-1766705800/ HTTP/1.1" 200 9333
+"POST /send-money/ HTTP/1.1" 302 0
+"GET /transfer-status/TRF-18-1766705800/ HTTP/1.1" 200 9333
+"GET /admin/core/moneytransfer/2/change/ HTTP/1.1" 200 34481
+"GET /admin/core/moneytransfer/ HTTP/1.1" 200 17110
+"GET /admin/core/moneytransfer/ HTTP/1.1" 200 17110
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/moneytransfer/2/change/ HTTP/1.1" 200 34481
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /transfer-status/TRF-18-1766705800/ HTTP/1.1" 200 9333
+"POST /admin/core/moneytransfer/2/change/ HTTP/1.1" 302 0
+"GET /admin/core/moneytransfer/ HTTP/1.1" 200 17358
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /transfer-status/TRF-18-1766705800/ HTTP/1.1" 200 8736
+"GET /send-money/ HTTP/1.1" 200 16004
+"GET /dashboard/ HTTP/1.1" 200 25175
+"GET /dashboard/ HTTP/1.1" 200 25175
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 25175
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 25175
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"POST /loan/apply/step1/ HTTP/1.1" 302 0
+"GET /loan/apply/step2/ HTTP/1.1" 200 21453
+"GET /admin/ HTTP/1.1" 200 14310
+"GET /admin/core/loanapplication/ HTTP/1.1" 200 16621
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/loanapplication/1/change/ HTTP/1.1" 200 25607
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/loanapplication/ HTTP/1.1" 200 16621
+"GET /admin/ HTTP/1.1" 200 14310
+"GET /admin/core/systemsettings/ HTTP/1.1" 200 11861
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 14310
+"GET /admin/core/transaction/ HTTP/1.1" 200 23002
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 14310
+"GET /admin/core/transferstatushistory/ HTTP/1.1" 200 16067
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 14310
+"GET /admin/core/userprofile/ HTTP/1.1" 200 18980
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/userprofile/15/change/ HTTP/1.1" 200 17440
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/userprofile/ HTTP/1.1" 200 18980
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /loan/apply/step2/ HTTP/1.1" 302 0
+"GET /login/?next=/loan/apply/step2/ HTTP/1.1" 200 1614
+"POST /login/?next=/loan/apply/step2/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 1614
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25174
+"GET /loan/apply/step1/ HTTP/1.1" 200 9901
+"GET /dashboard/ HTTP/1.1" 200 25174
+"GET /dashboard/ HTTP/1.1" 200 25174
+"GET /loan/apply/step1/ HTTP/1.1" 200 21098
+"POST /loan/apply/step1/ HTTP/1.1" 302 0
+"GET /loan/apply/step2/ HTTP/1.1" 200 28351
+"GET /admin/core/userprofile/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/core/userprofile/ HTTP/1.1" 200 4207
+"POST /admin/login/?next=/admin/core/userprofile/ HTTP/1.1" 302 0
+"GET /admin/core/userprofile/ HTTP/1.1" 200 20388
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/userprofile/15/change/ HTTP/1.1" 200 18848
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/userprofile/ HTTP/1.1" 200 20388
+"GET /admin/ HTTP/1.1" 200 16277
+"GET /admin/core/loanpayment/ HTTP/1.1" 200 14706
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 16277
+"GET /admin/core/loanapplication/ HTTP/1.1" 200 18029
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/loanapplication/1/change/ HTTP/1.1" 200 31840
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/loanapplication/ HTTP/1.1" 200 18029
+"GET /admin/core/loanapplication/1/change/ HTTP/1.1" 200 31840
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/loanapplication/ HTTP/1.1" 200 18029
+"GET /admin/ HTTP/1.1" 200 16277
+"GET /admin/core/loanapplication/ HTTP/1.1" 200 18029
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/loanapplication/1/change/ HTTP/1.1" 200 31840
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\admin.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /loan/apply/step2/
+"GET /loan/apply/step2/ HTTP/1.1" 404 9570
+Not Found: /loan/apply/step2/
+"GET /loan/apply/step2/ HTTP/1.1" 404 9570
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /loan/step1/ HTTP/1.1" 200 23390
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /loan/step1/ HTTP/1.1" 200 23390
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /loan/step1/ HTTP/1.1" 200 23390
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /loan/step1/ HTTP/1.1" 200 23390
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1614
+"GET /login/ HTTP/1.1" 200 1403
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25151
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25151
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25151
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25151
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"POST /loan/step1/ HTTP/1.1" 302 0
+"GET /loan/step2/ HTTP/1.1" 200 28371
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4173
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 16277
+"GET /admin/core/loanapplication/ HTTP/1.1" 200 18572
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/loanapplication/1/change/ HTTP/1.1" 200 36724
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /media/selfies/18_WhatsApp%20Image%202025-12-23%20at%2012.07.41%20PM.jpeg HTTP/1.1" 200 179738
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /loan/step2/ HTTP/1.1" 302 0
+"GET /login/?next=/loan/step2/ HTTP/1.1" 200 1403
+"POST /login/?next=/loan/step2/ HTTP/1.1" 302 0
+"GET /loan/step2/ HTTP/1.1" 302 0
+"GET /loan/step1/ HTTP/1.1" 200 22799
+Forbidden (CSRF token from POST incorrect.): /login/
+"POST /login/?next=/loan/step2/ HTTP/1.1" 403 2503
+"GET /login/?next=/loan/step2/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1403
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /pay-bills/ HTTP/1.1" 200 10482
+"GET /dashboard/ HTTP/1.1" 200 25150
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"POST /loan/step1/ HTTP/1.1" 302 0
+"GET /loan/step2/ HTTP/1.1" 200 19197
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"POST /loan/step1/ HTTP/1.1" 302 0
+"GET /loan/step2/ HTTP/1.1" 200 19197
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"POST /loan/step1/ HTTP/1.1" 302 0
+"GET /loan/step2/ HTTP/1.1" 200 19197
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4173
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 16277
+"GET /admin/core/paymentmethod/ HTTP/1.1" 200 15384
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/paymentmethod/?payment_type__exact=walmart HTTP/1.1" 200 15865
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/paymentmethod/?_facets=True&payment_type__exact=walmart HTTP/1.1" 200 16251
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/img/icon-hidelink.svg HTTP/1.1" 200 784
+"GET /admin/core/paymentmethod/?_facets=True&payment_type__exact=walmart HTTP/1.1" 200 16251
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/paymentmethod/add/?_changelist_filters=_facets%3DTrue%26payment_type__exact%3Dwalmart HTTP/1.1" 200 19996
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/core/paymentmethod/add/?_changelist_filters=_facets%3DTrue%26payment_type__exact%3Dwalmart HTTP/1.1" 302 0
+"GET /admin/core/paymentmethod/?_facets=True&payment_type__exact=walmart HTTP/1.1" 200 19711
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /loan/step2/ HTTP/1.1" 200 29578
+"GET /admin/ HTTP/1.1" 200 16665
+"POST /loan/step2/ HTTP/1.1" 302 0
+Internal Server Error: /loan/success/
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\engine.py", line 163, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: base.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py", line 606, in loan_success
+    return render(request, 'core/loan_success.html', {'user': request.user})
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 109, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: base.html
+"GET /loan/success/ HTTP/1.1" 500 136026
+"GET /admin/core/loanapplication/ HTTP/1.1" 200 19246
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/loanapplication/2/change/ HTTP/1.1" 200 37678
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /media/selfies/18_WhatsApp%20Image%202025-12-20%20at%2011_elrRiJ8.32.29%20PM.jpeg HTTP/1.1" 200 129042
+"GET /media/id_documents/18_WhatsApp%20Image%202025-12-18%20at%208_l9wraDG.31.09%20PM.jpeg HTTP/1.1" 200 103637
+"GET /media/address_proofs/18_WhatsApp%20Image%202025-12-18%20at%204_l3QOgAm.08.46%20PM.jpeg HTTP/1.1" 200 115025
+"GET /loan/step2/ HTTP/1.1" 302 0
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"POST /loan/step1/ HTTP/1.1" 302 0
+"GET /loan/step2/ HTTP/1.1" 200 29571
+"GET /loan/step2/ HTTP/1.1" 200 2400
+"GET /dashboard/ HTTP/1.1" 200 26014
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"POST /loan/step1/ HTTP/1.1" 302 0
+"GET /loan/step2/ HTTP/1.1" 200 2400
+"GET /admin/ HTTP/1.1" 200 16665
+"GET /admin/core/loanapplication/ HTTP/1.1" 200 19246
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/loanapplication/2/change/ HTTP/1.1" 200 37678
+"GET /media/selfies/18_WhatsApp%20Image%202025-12-20%20at%2011_elrRiJ8.32.29%20PM.jpeg HTTP/1.1" 304 0
+"GET /media/address_proofs/18_WhatsApp%20Image%202025-12-18%20at%204_l3QOgAm.08.46%20PM.jpeg HTTP/1.1" 304 0
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /media/id_documents/18_WhatsApp%20Image%202025-12-18%20at%208_l9wraDG.31.09%20PM.jpeg HTTP/1.1" 304 0
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /loan/step2/ HTTP/1.1" 200 2400
+"GET /admin/core/loanapplication/2/change/ HTTP/1.1" 200 37653
+"GET /media/selfies/18_WhatsApp%20Image%202025-12-20%20at%2011_elrRiJ8.32.29%20PM.jpeg HTTP/1.1" 304 0
+"GET /media/address_proofs/18_WhatsApp%20Image%202025-12-18%20at%204_l3QOgAm.08.46%20PM.jpeg HTTP/1.1" 304 0
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /media/id_documents/18_WhatsApp%20Image%202025-12-18%20at%208_l9wraDG.31.09%20PM.jpeg HTTP/1.1" 304 0
+"GET /admin/core/loanapplication/ HTTP/1.1" 200 19202
+"GET /admin/core/loanapplication/2/change/ HTTP/1.1" 200 37653
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\admin.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 26014
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1403
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 26014
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"POST /loan/step1/ HTTP/1.1" 302 0
+"GET /loan/step2/ HTTP/1.1" 200 2400
+"GET /admin/core/loanapplication/2/change/ HTTP/1.1" 200 37653
+"GET /media/id_documents/18_WhatsApp%20Image%202025-12-18%20at%208_l9wraDG.31.09%20PM.jpeg HTTP/1.1" 304 0
+"GET /media/address_proofs/18_WhatsApp%20Image%202025-12-18%20at%204_l3QOgAm.08.46%20PM.jpeg HTTP/1.1" 304 0
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /media/selfies/18_WhatsApp%20Image%202025-12-20%20at%2011_elrRiJ8.32.29%20PM.jpeg HTTP/1.1" 304 0
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /loan/step2/ HTTP/1.1" 200 2400
+"GET /loan/step2/ HTTP/1.1" 200 2400
+"GET / HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 26014
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1403
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 26014
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"POST /loan/step1/ HTTP/1.1" 302 0
+"GET /loan/step2/ HTTP/1.1" 200 2400
+"GET /loan/step2/ HTTP/1.1" 200 29578
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"POST /loan/step1/ HTTP/1.1" 302 0
+"GET /loan/step2/ HTTP/1.1" 200 29578
+"POST /loan/step2/ HTTP/1.1" 302 0
+Internal Server Error: /loan/confirmation/
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py", line 647, in loan_confirmation
+    return render(request, 'core/loan_confirmation.html', {
+        'loan': loan,
+        'payment_details': payment_details
+    })
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'loan_details' not found. 'loan_details' is not a valid view function or pattern name.
+"GET /loan/confirmation/ HTTP/1.1" 500 125058
+"GET /loan/confirmation/ HTTP/1.1" 200 9005
+"GET /admin/ HTTP/1.1" 200 16665
+"GET /admin/ HTTP/1.1" 200 16665
+"GET /admin/core/loanapplication/ HTTP/1.1" 200 19853
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/loanapplication/3/change/ HTTP/1.1" 200 37612
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /media/id_documents/18_WhatsApp%20Image%202025-12-19%20at%2012_YkFjsaA.37.20%20PM.jpeg HTTP/1.1" 200 93412
+"GET /media/selfies/18_WhatsApp%20Image%202025-12-23%20at%2012_kdSYjsJ.07.41%20PM.jpeg HTTP/1.1" 200 179738
+"GET /media/address_proofs/18_WhatsApp%20Image%202025-12-23%20at%2012.07.41%20PM.jpeg HTTP/1.1" 200 179738
+"POST /admin/core/loanapplication/3/change/ HTTP/1.1" 200 38129
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/core/loanapplication/3/change/ HTTP/1.1" 302 0
+"GET /admin/core/loanapplication/ HTTP/1.1" 200 20112
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /loan/confirmation/ HTTP/1.1" 302 0
+"GET /loan/success/ HTTP/1.1" 200 5895
+"GET /dashboard/ HTTP/1.1" 200 26863
+"GET /dashboard/ HTTP/1.1" 200 26863
+"GET /admin/core/loanapplication/3/change/ HTTP/1.1" 200 36477
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 17080
+"GET /admin/core/account/ HTTP/1.1" 200 24722
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/account/20/change/ HTTP/1.1" 200 18898
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/core/account/20/change/ HTTP/1.1" 302 0
+"GET /admin/core/account/ HTTP/1.1" 200 24724
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /dashboard/ HTTP/1.1" 200 26859
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"GET /dashboard/ HTTP/1.1" 200 26859
+Internal Server Error: /transactions/
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py", line 1074, in transactions
+    return render(request, 'core/transactions.html', {
+        'account': account,
+        'transactions': user_transactions
+    })
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: core/transactions.html
+"GET /transactions/ HTTP/1.1" 500 89169
+"GET /dashboard/ HTTP/1.1" 200 26859
+"GET /admin/ HTTP/1.1" 200 17461
+"GET /admin/core/transferstatushistory/ HTTP/1.1" 200 17475
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/transferstatushistory/2/change/ HTTP/1.1" 200 19994
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/transferstatushistory/ HTTP/1.1" 200 17475
+"GET /admin/core/transferstatushistory/add/ HTTP/1.1" 200 19558
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/core/moneytransfer/2/change/?_to_field=id&_popup=1 HTTP/1.1" 200 26343
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/core/moneytransfer/2/change/?_to_field=id&_popup=1 HTTP/1.1" 200 437
+"GET /static/admin/js/popup_response.js HTTP/1.1" 200 532
+"POST /admin/core/transferstatushistory/add/ HTTP/1.1" 302 0
+"GET /admin/core/transferstatushistory/ HTTP/1.1" 200 18324
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /dashboard/ HTTP/1.1" 200 26859
+"GET /deposit/ HTTP/1.1" 200 35511
+"GET /dashboard/ HTTP/1.1" 200 26859
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"GET /dashboard/ HTTP/1.1" 200 26859
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 26859
+"GET /admin/ HTTP/1.1" 200 17567
+"GET /admin/auth/user/add/ HTTP/1.1" 200 28796
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 17567
+"GET /admin/auth/group/ HTTP/1.1" 200 13229
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 17567
+"GET /admin/auth/user/ HTTP/1.1" 200 25571
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+"GET /admin/ HTTP/1.1" 200 17567
+"GET /dashboard/ HTTP/1.1" 200 28733
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 28733
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 28733
+Watching for file changes with StatReloader
+"GET /dashboard/ HTTP/1.1" 200 27720
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 27720
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105
+"GET /login/ HTTP/1.1" 200 1403
+"POST /login/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 27720
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 27720
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 27720
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"GET /dashboard/ HTTP/1.1" 200 27720
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 27720
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 27720
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /dashboard/ HTTP/1.1" 200 27720
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 27720
+"GET /send-money/ HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 27720
+C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /dashboard/ HTTP/1.1" 200 27720
+Internal Server Error: /send-money/
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py", line 1154, in send_money
+    return render(request, 'core/send_money.html', {
+        'user': request.user,
+        'account': account
+    })
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'track_transfer' not found. 'track_transfer' is not a valid view function or pattern name.
+"GET /send-money/ HTTP/1.1" 500 124063
+"GET /send-money/ HTTP/1.1" 200 5258
+"GET /send-money/ HTTP/1.1" 200 5258
+"GET /dashboard/ HTTP/1.1" 200 27720
+Internal Server Error: /send-money/
+Traceback (most recent call last):
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\DELL\Desktop\trustbank (1)\trustbank\core\views.py", line 1154, in send_money
+    return render(request, 'core/send_money.html', {
+        'user': request.user,
+        'account': account
+    })
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\DELL\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'track_transfer' not found. 'track_transfer' is not a valid view function or pattern name.
+"GET /send-money/ HTTP/1.1" 500 124063
+"GET /send-money/ HTTP/1.1" 200 16142
+"GET /dashboard/ HTTP/1.1" 200 27720
+"GET /send-money/ HTTP/1.1" 200 16142
+"GET /dashboard/ HTTP/1.1" 200 27720
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"POST /loan/step1/ HTTP/1.1" 302 0
+"GET /loan/step2/ HTTP/1.1" 200 29578
+"POST /loan/step2/ HTTP/1.1" 302 0
+"GET /loan/confirmation/ HTTP/1.1" 200 9012
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /pay-bills/ HTTP/1.1" 200 10484
+"GET /dashboard HTTP/1.1" 301 0
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /deposit/ HTTP/1.1" 200 35511
+Not Found: /deposit/personal-loan.html
+"GET /deposit/personal-loan.html HTTP/1.1" 404 9597
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET / HTTP/1.1" 302 0
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /send-money/ HTTP/1.1" 200 16142
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /deposit/ HTTP/1.1" 200 35511
+Not Found: /deposit/account.html
+"GET /deposit/account.html HTTP/1.1" 404 9579
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /deposit/ HTTP/1.1" 200 35227
+Not Found: /deposit/home.html
+"GET /deposit/home.html HTTP/1.1" 404 9570
+Not Found: /deposit/dashboard.html
+"GET /deposit/dashboard.html HTTP/1.1" 404 9585
+"GET /deposit/ HTTP/1.1" 200 35135
+Not Found: /deposit/profile.html
+"GET /deposit/profile.html HTTP/1.1" 404 9579
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /deposit/ HTTP/1.1" 200 35135
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /pay-bills/ HTTP/1.1" 200 10484
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /cards/ HTTP/1.1" 200 10960
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /loan/step1/ HTTP/1.1" 200 22799
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /pay-bills/ HTTP/1.1" 200 9231
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /cards/ HTTP/1.1" 200 10960
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /cards/ HTTP/1.1" 200 9656
+"GET /dashboard/ HTTP/1.1" 200 28567
+"GET /logout/ HTTP/1.1" 302 0
+"GET / HTTP/1.1" 200 38105

@@ -1,0 +1,119 @@
+<!-- core/templates/core/loan_success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approved! | TrustBank</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .card-header {
+            border-radius: 15px 15px 0 0 !important;
+        }
+        .celebration {
+            font-size: 60px;
+            color: #ffd700;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card border-success">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0"><i class="fas fa-trophy me-2"></i>CONGRATULATIONS! Loan Approved</h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="mb-4">
+                            <div class="celebration">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-success">🎉 Congratulations!</h3>
+                        <p class="lead fs-4">Your loan application has been <strong>APPROVED</strong> by the admin!</p>
+                        
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <strong>Status Updated:</strong> Admin has approved your loan application.
+                        </div>
+                        
+                        {% if loan %}
+                        <div class="card mt-4">
+                            <div class="card-body text-start">
+                                <h5>🎯 Approved Loan Details:</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <strong>Application ID:</strong> <span class="text-success">{{ loan.application_id }}</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Name:</strong> {{ loan.full_name }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Approved Amount:</strong> <span class="text-success fw-bold">${{ loan.amount|floatformat:2 }}</span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Purpose:</strong> {{ loan.purpose }}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Status:</strong> 
+                                        <span class="badge bg-success fs-6">
+                                            <i class="fas fa-check me-1"></i> {{ loan.get_status_display|default:loan.status }}
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Term:</strong> {{ loan.term_months }} months
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info mt-4">
+                            <h5><i class="fas fa-rocket me-2"></i>Next Steps - Your Loan is Ready!</h5>
+                            <ol class="mb-0">
+                                <li><strong>Funds Disbursement:</strong> Approved amount will be deposited to your account</li>
+                                <li><strong>Access Funds:</strong> Check your dashboard for available balance</li>
+                                <li><strong>Repayment Schedule:</strong> Monthly payments will begin next month</li>
+                                <li><strong>Support:</strong> Contact us if you have any questions</li>
+                            </ol>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="alert alert-warning mt-4">
+                            <i class="fas fa-star me-2"></i>
+                            <strong>Admin Action:</strong> This page only appears when admin changes your loan status to "Approved"
+                        </div>
+                        
+                        <div class="mt-4">
+                            <a href="{% url 'dashboard' %}" class="btn btn-success btn-lg">
+                                <i class="fas fa-tachometer-alt me-2"></i>Go to Dashboard
+                            </a>
+                            <a href="{% url 'home' %}" class="btn btn-outline-primary btn-lg ms-2">
+                                <i class="fas fa-home me-2"></i>Return Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make Payment – Trust Bank</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Poppins,sans-serif
+}
+body{
+    background:#f4f7fb;
+    color:#102a43
+}
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:30px
+}
+.card{
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    margin-bottom:30px;
+    box-shadow:0 12px 35px rgba(0,0,0,.08)
+}
+h1,h2{
+    margin-bottom:15px
+}
+.btn{
+    padding:14px 22px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-weight:600
+}
+.btn-primary{
+    background:#0466c8;
+    color:#fff
+}
+.btn-primary:hover{
+    opacity:.9
+}
+input,select{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #ccd4e0;
+    margin-bottom:18px
+}
+.result{
+    font-size:22px;
+    font-weight:700;
+    color:#0466c8
+}
+.success{
+    background:#ecfdf5;
+    border-left:6px solid #10b981
+}
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px
+}
+@media(max-width:768px){
+    .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>💳 Make a Loan Payment</h1>
+
+<div class="card">
+    <h2>Loan Details</h2>
+    <div class="grid">
+        <input type="text" id="loanId" placeholder="Loan ID" required>
+        <select id="loanType">
+            <option value="Auto Loan">Auto Loan</option>
+            <option value="Home Loan">Home Loan</option>
+            <option value="Personal Loan">Personal Loan</option>
+        </select>
+    </div>
+</div>
+
+<div class="card">
+    <h2>Payment Information</h2>
+
+    <label>Payment Amount ($)</label>
+    <input type="number" id="amount" placeholder="Enter payment amount">
+
+    <label>Payment Method</label>
+    <select id="method">
+        <option value="PYUSD">PYUSD (Crypto)</option>
+        <option value="Bank">Bank Transfer</option>
+        <option value="Card">Debit / Credit Card</option>
+    </select>
+
+    <div id="cryptoBox">
+        <label>PYUSD Wallet Address</label>
+        <input type="text" value="0xA3F9...TRUSTBANK" readonly>
+
+        <label>Transaction ID</label>
+        <input type="text" id="txid" placeholder="Enter transaction hash">
+    </div>
+</div>
+
+<div class="card">
+    <h2>Payment Summary</h2>
+    <p>Loan Type: <span class="result" id="sumType">-</span></p>
+    <p>Payment Amount: <span class="result" id="sumAmount">$0.00</span></p>
+    <p>Payment Method: <span class="result" id="sumMethod">-</span></p>
+</div>
+
+<div class="card">
+    <button class="btn btn-primary" onclick="submitPayment()">Submit Payment</button>
+</div>
+
+<div class="card success" id="success" style="display:none">
+    <h2>✅ Payment Submitted</h2>
+    <p>Your payment is being verified.</p>
+</div>
+
+</div>
+
+<script>
+const amount = document.getElementById('amount');
+const loanType = document.getElementById('loanType');
+const method = document.getElementById('method');
+const cryptoBox = document.getElementById('cryptoBox');
+
+const sumType = document.getElementById('sumType');
+const sumAmount = document.getElementById('sumAmount');
+const sumMethod = document.getElementById('sumMethod');
+
+amount.oninput = updateSummary;
+loanType.onchange = updateSummary;
+
+method.onchange = () => {
+    cryptoBox.style.display = method.value === 'PYUSD' ? 'block' : 'none';
+    updateSummary();
+};
+
+function updateSummary(){
+    sumType.innerText = loanType.value;
+    sumAmount.innerText = `$${(+amount.value || 0).toFixed(2)}`;
+    sumMethod.innerText = method.value;
+}
+
+updateSummary();
+
+function submitPayment(){
+    if(!loanId.value || !amount.value){
+        alert('Please fill all required fields');
+        return;
+    }
+    if(method.value === 'PYUSD' && !txid.value){
+        alert('Enter PYUSD transaction ID');
+        return;
+    }
+    document.getElementById('success').style.display = 'block';
+    window.scrollTo({top: document.body.scrollHeight, behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>

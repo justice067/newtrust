@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Transfer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #333;
+        }
+        
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .back-btn {
+            color: #0466c8;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border: 1px solid #0466c8;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .tracking-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .tracking-icon {
+            font-size: 48px;
+            color: #0466c8;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #0466c8;
+            box-shadow: 0 0 0 3px rgba(4, 102, 200, 0.1);
+        }
+        
+        .track-btn {
+            width: 100%;
+            padding: 16px;
+            background: #0466c8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        
+        .track-btn:hover {
+            background: #0354a8;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 style="margin: 0; color: #04293a;">Track Your Transfer</h1>
+        <p style="color: #666; margin: 10px 0 0 0;">Enter your reference number to check status</p>
+    </div>
+    
+    <div class="tracking-card">
+        <div class="tracking-icon">📋</div>
+        
+        {% if error %}
+        <div class="error-message">
+            <strong>Error:</strong> {{ error }}
+        </div>
+        {% endif %}
+        
+        <form method="GET" action="{% url 'track_transfer' %}">
+            <div class="form-group">
+                <label for="ref">Reference Number</label>
+                <input type="text" class="form-control" id="ref" name="ref" 
+                       value="{{ ref }}" placeholder="TRF-123-456789" required>
+                <small style="color: #666; display: block; margin-top: 5px;">
+                    Example: TRF-1-1645739201 (found in your confirmation email)
+                </small>
+            </div>
+            
+            <button type="submit" class="track-btn">
+                🔍 Track Transfer
+            </button>
+        </form>
+        
+        <div class="info-box">
+            <h4 style="margin-top: 0; color: #04293a;">Need help?</h4>
+            <p style="margin: 10px 0;">Your reference number can be found in:</p>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>Confirmation email after sending money</li>
+                <li>Transfer status page after submission</li>
+                <li>Your recent transfers on the dashboard</li>
+            </ul>
+            <p style="margin: 10px 0 0 0;">
+                <strong>Still can't find it?</strong><br>
+                Contact support: support@trustbank.com
+            </p>
+        </div>
+        
+        <a href="{% url 'dashboard' %}" class="back-btn">← Back to Dashboard</a>
+    </div>
+</body>
+</html>

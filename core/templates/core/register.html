@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - TrustBank</title>
+    <style>
+        body { font-family: Arial; background: #f5f5f5; padding: 20px; }
+        .register-box { max-width: 400px; margin: 50px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #0066cc; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
+        button { width: 100%; padding: 10px; background: #0066cc; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .error { color: red; text-align: center; }
+        .links { text-align: center; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="register-box">
+        <h2>Create TrustBank Account</h2>
+        
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        
+        {% if errors %}
+            {% for error in errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+        
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password (min 6 characters)" required>
+            <input type="tel" name="phone" placeholder="Phone Number">
+            <button type="submit">Create Account</button>
+        </form>
+        
+        <div class="links">
+            <a href="/login/">Already have account? Sign In</a> | 
+            <a href="/">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

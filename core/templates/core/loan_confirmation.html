@@ -1,0 +1,344 @@
+<!-- core/templates/core/loan_confirmation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Submitted | TrustBank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #28a745, #20c997);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .status-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .status-card.approved {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+        
+        .status-card.rejected {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+        
+        .status-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .status-icon {
+            width: 60px;
+            height: 60px;
+            background: #ffc107;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+        
+        .status-icon.approved {
+            background: #28a745;
+        }
+        
+        .status-icon.rejected {
+            background: #dc3545;
+        }
+        
+        .status-icon i {
+            font-size: 28px;
+            color: white;
+        }
+        
+        .loan-details {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 2px solid #e1e5eb;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #333;
+            width: 200px;
+        }
+        
+        .detail-value {
+            color: #666;
+            flex: 1;
+        }
+        
+        .payment-info {
+            background: #e7f3ff;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 2px solid #0066cc;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(90deg, #0066cc, #00aaff);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,102,204,0.2);
+        }
+        
+        .btn-success {
+            background: linear-gradient(90deg, #28a745, #20c997);
+        }
+        
+        .btn-back {
+            background: #6c757d;
+            margin-right: 15px;
+        }
+        
+        .info-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .verification-status {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .verified {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-check-circle"></i> Application Submitted Successfully!</h1>
+            <p>Your loan application has been received and is pending verification</p>
+        </div>
+        
+        <div class="content">
+            <div class="status-card {% if loan.status == 'approved' %}approved{% elif loan.status == 'rejected' %}rejected{% endif %}">
+                <div class="status-header">
+                    <div class="status-icon {% if loan.status == 'approved' %}approved{% elif loan.status == 'rejected' %}rejected{% endif %}">
+                        {% if loan.status == 'approved' %}
+                            <i class="fas fa-check"></i>
+                        {% elif loan.status == 'rejected' %}
+                            <i class="fas fa-times"></i>
+                        {% else %}
+                            <i class="fas fa-clock"></i>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h2>
+                            {% if loan.status == 'approved' %}
+                                Application Approved!
+                            {% elif loan.status == 'rejected' %}
+                                Application Rejected
+                            {% elif loan.status == 'under_review' %}
+                                Under Review
+                            {% else %}
+                                Pending Payment Verification
+                            {% endif %}
+                        </h2>
+                        <p style="color: #666; margin-top: 5px;">
+                            Application ID: <strong>{{ loan.application_id }}</strong>
+                        </p>
+                    </div>
+                </div>
+                
+                <p>
+                    {% if loan.status == 'approved' %}
+                        🎉 Congratulations! Your loan has been approved. Funds will be disbursed to your account within 24 hours.
+                    {% elif loan.status == 'rejected' %}
+                        We're sorry, your loan application has been rejected. Please contact support for more information.
+                    {% elif loan.status == 'under_review' %}
+                        Your application is currently under review. Our team will verify your documents and payment.
+                    {% else %}
+                        Your application is pending payment verification. Please complete the 10% deposit payment.
+                    {% endif %}
+                </p>
+            </div>
+            
+            <div class="loan-details">
+                <h3><i class="fas fa-file-invoice-dollar"></i> Loan Details</h3>
+                <div class="detail-row">
+                    <div class="detail-label">Application ID:</div>
+                    <div class="detail-value"><strong>{{ loan.application_id }}</strong></div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Loan Amount:</div>
+                    <div class="detail-value">${{ loan.amount }}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Deposit Required (10%):</div>
+                    <div class="detail-value">${{ loan.deposit_required }}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Loan Purpose:</div>
+                    <div class="detail-value">{{ loan.purpose }}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Term:</div>
+                    <div class="detail-value">{{ loan.term_months }} months</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Status:</div>
+                    <div class="detail-value">
+                        <span class="verification-status 
+                            {% if loan.status == 'pending_payment' %}pending
+                            {% elif loan.status == 'approved' %}verified
+                            {% elif loan.status == 'rejected' %}rejected
+                            {% else %}pending{% endif %}">
+                            {{ loan.get_status_display }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            {% if loan.payment_method %}
+            <div class="payment-info">
+                <h3><i class="fas fa-credit-card"></i> Payment Information</h3>
+                <div class="detail-row">
+                    <div class="detail-label">Payment Method:</div>
+                    <div class="detail-value">{{ loan.payment_method.name }}</div>
+                </div>
+                {% if loan.transaction_id %}
+                <div class="detail-row">
+                    <div class="detail-label">Transaction ID:</div>
+                    <div class="detail-value">{{ loan.transaction_id }}</div>
+                </div>
+                {% endif %}
+                {% if loan.payment_reference %}
+                <div class="detail-row">
+                    <div class="detail-label">Payment Reference:</div>
+                    <div class="detail-value">{{ loan.payment_reference }}</div>
+                </div>
+                {% endif %}
+                {% if payment_details and payment_details.verified %}
+                <div class="detail-row">
+                    <div class="detail-label">Payment Status:</div>
+                    <div class="detail-value">
+                        <span class="verification-status verified">✅ Verified</span>
+                    </div>
+                </div>
+                {% elif payment_details %}
+                <div class="detail-row">
+                    <div class="detail-label">Payment Status:</div>
+                    <div class="detail-value">
+                        <span class="verification-status pending">⏳ Pending Verification</span>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            
+            <div class="info-box">
+                <h4><i class="fas fa-info-circle"></i> Next Steps</h4>
+                <ul style="margin: 10px 0 0 20px;">
+                    {% if loan.status == 'pending_payment' %}
+                        <li>Complete the 10% deposit payment using the selected method</li>
+                        <li>Keep your transaction ID/receipt for reference</li>
+                        <li>Our team will verify your payment within 24-48 hours</li>
+                    {% elif loan.status == 'under_review' %}
+                        <li>Our team is reviewing your application and documents</li>
+                        <li>You will be notified once verification is complete</li>
+                        <li>Check back here for status updates</li>
+                    {% elif loan.status == 'approved' %}
+                        <li>Funds will be disbursed to your account shortly</li>
+                        <li>Check your account balance for the deposit</li>
+                        <li>You can view the transaction in your transaction history</li>
+                    {% endif %}
+                    <li>You can track your application status from your dashboard</li>
+                    <li>Contact support if you have any questions</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="{% url 'dashboard' %}" class="btn btn-back">
+                    <i class="fas fa-home"></i> Back to Dashboard
+                </a>
+                <a href="{% url 'dashboard' %}" class="btn btn-success">
+                     <i class="fas fa-eye"></i> View Application Status
+</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

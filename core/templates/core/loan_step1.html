@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application - Step 1 | TrustBank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #0066cc, #00aaff);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 0 20px;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #0066cc;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .step.completed .step-number {
+            background: #28a745;
+        }
+        
+        .step.active .step-number {
+            background: #00aaff;
+            box-shadow: 0 0 0 4px rgba(0,102,204,0.2);
+        }
+        
+        .step.active .step-text {
+            color: #0066cc;
+            font-weight: bold;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+        }
+        
+        .form-section h3 {
+            color: #0066cc;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e1e5eb;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #dc3545;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5eb;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0,102,204,0.1);
+        }
+        
+        .upload-area {
+            border: 2px dashed #0066cc;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .upload-area:hover {
+            background: #e8f4fe;
+        }
+        
+        .upload-area i {
+            font-size: 48px;
+            color: #0066cc;
+            margin-bottom: 15px;
+        }
+        
+        .upload-area p {
+            margin: 10px 0;
+            color: #666;
+        }
+        
+        .file-types {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .btn-upload {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .file-preview {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e1e5eb;
+        }
+        
+        .preview-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .preview-content i {
+            font-size: 32px;
+            color: #0066cc;
+        }
+        
+        .file-info {
+            flex-grow: 1;
+        }
+        
+        .btn-remove {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(90deg, #0066cc, #00aaff);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,102,204,0.2);
+        }
+        
+        .btn-next {
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .btn-back {
+            background: #6c757d;
+            margin-right: 15px;
+        }
+        
+        .error {
+            background: #fee;
+            color: #c00;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c00;
+        }
+        
+        .info-box {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-hand-holding-usd"></i> Personal Information</h1>
+            <p>Step 1: Fill in your personal details and upload documents</p>
+        </div>
+        
+        <div class="step-indicator">
+            <div class="step active">
+                <div class="step-number">1</div>
+                <div class="step-text">Personal Info</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text">Loan Details</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text">Confirmation</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            {% if error %}
+                <div class="error">
+                    <i class="fas fa-exclamation-circle"></i> {{ error }}
+                </div>
+            {% endif %}
+            
+            <div class="info-box">
+                <i class="fas fa-info-circle"></i> 
+                <strong>Note:</strong> All fields marked with * are required. Your information is securely encrypted.
+            </div>
+            
+            <form method="POST" enctype="multipart/form-data" id="loanForm" action="{% url 'loan_step1' %}">
+                {% csrf_token %}
+                
+                <div class="form-grid">
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Basic Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="full_name" class="required">Full Name</label>
+                            <input type="text" id="full_name" name="full_name" value="{{ user.get_full_name }}" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required">Email Address</label>
+                            <input type="email" id="email" name="email" value="{{ user.email }}" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="required">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" 
+                                   placeholder="+1 (555) 123-4567" required>
+                            <div class="error-message" id="phoneError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location" class="required">City/State</label>
+                            <input type="text" id="location" name="location" 
+                                   placeholder="e.g., New York, NY" required>
+                            <div class="error-message" id="locationError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="full_address" class="required">Full Home Address</label>
+                            <textarea id="full_address" name="full_address" 
+                                      rows="3" placeholder="Street address, apartment number, city, state, ZIP code" 
+                                      required></textarea>
+                            <div class="error-message" id="addressError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date_of_birth" class="required">Date of Birth</label>
+                            <input type="date" id="date_of_birth" name="date_of_birth" required>
+                            <div class="error-message" id="dobError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3><i class="fas fa-shield-alt"></i> Security & Documents</h3>
+                        
+                        <div class="form-group">
+                            <label for="security_question" class="required">Security Question</label>
+                            <input type="text" id="security_question" name="security_question" 
+                                   placeholder="e.g., What was your first pet's name?" required>
+                            <div class="error-message" id="securityQuestionError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="security_answer" class="required">Security Answer</label>
+                            <input type="text" id="security_answer" name="security_answer" 
+                                   placeholder="Your answer to the security question" required>
+                            <div class="error-message" id="securityAnswerError"></div>
+                        </div>
+                        
+                        <!-- Selfie Upload -->
+                        <div class="form-group">
+                            <label class="required">Selfie Photo</label>
+                            <div class="upload-area" id="selfieUploadArea" onclick="document.getElementById('selfie').click()">
+                                <i class="fas fa-camera"></i>
+                                <p>Click to upload a selfie photo</p>
+                                <p class="file-types">Accepted: JPG, PNG (Max: 5MB)</p>
+                                <input type="file" id="selfie" name="selfie" 
+                                       accept=".jpg,.jpeg,.png,.webp" style="display: none;">
+                            </div>
+                            <div id="selfiePreview" class="file-preview" style="display: none;">
+                                <div class="preview-content">
+                                    <i class="fas fa-image"></i>
+                                    <div class="file-info">
+                                        <strong id="selfieFileName"></strong>
+                                        <button type="button" class="btn-remove" onclick="removeFile('selfie')">
+                                            <i class="fas fa-times"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="error-message" id="selfieError"></div>
+                        </div>
+                        
+                        <!-- ID Document Upload -->
+                        <div class="form-group">
+                            <label class="required">ID Document</label>
+                            <div class="upload-area" id="idUploadArea" onclick="document.getElementById('id_document').click()">
+                                <i class="fas fa-id-card"></i>
+                                <p>Click to upload ID (Driver's License, Passport)</p>
+                                <p class="file-types">Accepted: JPG, PNG, PDF (Max: 5MB)</p>
+                                <input type="file" id="id_document" name="id_document" 
+                                       accept=".jpg,.jpeg,.png,.pdf,.webp" style="display: none;">
+                            </div>
+                            <div id="idPreview" class="file-preview" style="display: none;">
+                                <div class="preview-content">
+                                    <i class="fas fa-file"></i>
+                                    <div class="file-info">
+                                        <strong id="idFileName"></strong>
+                                        <button type="button" class="btn-remove" onclick="removeFile('id_document')">
+                                            <i class="fas fa-times"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="error-message" id="idDocumentError"></div>
+                        </div>
+                        
+                        <!-- Address Proof Upload -->
+                        <div class="form-group">
+                            <label class="required">Address Proof</label>
+                            <div class="upload-area" id="addressUploadArea" onclick="document.getElementById('address_proof').click()">
+                                <i class="fas fa-home"></i>
+                                <p>Click to upload address proof (Utility Bill, Bank Statement)</p>
+                                <p class="file-types">Accepted: JPG, PNG, PDF (Max: 5MB)</p>
+                                <input type="file" id="address_proof" name="address_proof" 
+                                       accept=".jpg,.jpeg,.png,.pdf,.webp" style="display: none;">
+                            </div>
+                            <div id="addressPreview" class="file-preview" style="display: none;">
+                                <div class="preview-content">
+                                    <i class="fas fa-file"></i>
+                                    <div class="file-info">
+                                        <strong id="addressFileName"></strong>
+                                        <button type="button" class="btn-remove" onclick="removeFile('address_proof')">
+                                            <i class="fas fa-times"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="error-message" id="addressProofError"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-box" style="margin-top: 30px;">
+                    <i class="fas fa-lock"></i> 
+                    <strong>Security Notice:</strong> Your documents are encrypted and stored securely. 
+                    We never share your personal information with third parties.
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="{% url 'dashboard' %}" class="btn btn-back">
+                        <i class="fas fa-times"></i> Cancel
+                    </a>
+                    <button type="submit" class="btn btn-next" id="submitBtn">
+                        Continue to Loan Details <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // File upload preview functions
+        function previewFile(inputId, previewId, fileNameId, areaId) {
+            const fileInput = document.getElementById(inputId);
+            const filePreview = document.getElementById(previewId);
+            const fileName = document.getElementById(fileNameId);
+            
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+                
+                // Check file size
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size exceeds 5MB limit. Please choose a smaller file.');
+                    fileInput.value = '';
+                    return;
+                }
+                
+                // Set file info
+                fileName.textContent = `${file.name} (${fileSizeMB} MB)`;
+                
+                // Show preview
+                filePreview.style.display = 'block';
+                
+                // Update upload area text
+                document.querySelector(`#${areaId} p`).textContent = 'File selected. Click to change.';
+            }
+        }
+        
+        function removeFile(inputId) {
+            const fileInput = document.getElementById(inputId);
+            const previewId = inputId + 'Preview';
+            const fileNameId = inputId + 'FileName';
+            const areaId = inputId + 'UploadArea';
+            
+            fileInput.value = '';
+            document.getElementById(previewId).style.display = 'none';
+            document.getElementById(fileNameId).textContent = '';
+            document.querySelector(`#${areaId} p`).textContent = 'Click to upload file';
+        }
+        
+        // Event listeners for file inputs
+        document.getElementById('selfie').addEventListener('change', function() {
+            previewFile('selfie', 'selfiePreview', 'selfieFileName', 'selfieUploadArea');
+        });
+        
+        document.getElementById('id_document').addEventListener('change', function() {
+            previewFile('id_document', 'idPreview', 'idFileName', 'idUploadArea');
+        });
+        
+        document.getElementById('address_proof').addEventListener('change', function() {
+            previewFile('address_proof', 'addressPreview', 'addressFileName', 'addressUploadArea');
+        });
+        
+        // Form validation
+        document.getElementById('loanForm').addEventListener('submit', function(e) {
+            let isValid = true;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.style.display = 'none';
+                el.textContent = '';
+            });
+            
+            // Validate required fields
+            const requiredFields = [
+                { id: 'full_name', name: 'Full Name' },
+                { id: 'email', name: 'Email' },
+                { id: 'phone', name: 'Phone Number' },
+                { id: 'location', name: 'City/State' },
+                { id: 'full_address', name: 'Full Address' },
+                { id: 'date_of_birth', name: 'Date of Birth' },
+                { id: 'security_question', name: 'Security Question' },
+                { id: 'security_answer', name: 'Security Answer' }
+            ];
+            
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field.id);
+                const errorElement = document.getElementById(field.id + 'Error');
+                
+                if (!element.value.trim()) {
+                    isValid = false;
+                    errorElement.textContent = `${field.name} is required`;
+                    errorElement.style.display = 'block';
+                }
+            });
+            
+            // Validate file uploads
+            const fileFields = [
+                { id: 'selfie', name: 'Selfie Photo' },
+                { id: 'id_document', name: 'ID Document' },
+                { id: 'address_proof', name: 'Address Proof' }
+            ];
+            
+            fileFields.forEach(field => {
+                const fileInput = document.getElementById(field.id);
+                const errorElement = document.getElementById(field.id + 'Error');
+                
+                if (fileInput.files.length === 0) {
+                    isValid = false;
+                    errorElement.textContent = `${field.name} is required`;
+                    errorElement.style.display = 'block';
+                }
+            });
+            
+            if (!isValid) {
+                e.preventDefault();
+                alert('Please fill in all required fields and upload all documents.');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.disabled = true;
+        });
+        
+        // Set max date for date of birth (minimum 18 years old)
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+            document.getElementById('date_of_birth').max = maxDate.toISOString().split('T')[0];
+        });
+    </script>
+</body>
+</html>
