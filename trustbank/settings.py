@@ -1,3 +1,5 @@
+import os
+import dj_database_url
 """
 Django settings for trustbank project.
 """
@@ -14,7 +16,7 @@ SECRET_KEY = 'django-insecure-your-secret-key-here'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -231,3 +233,4 @@ if DEBUG:
     import mimetypes
     mimetypes.add_type("text/css", ".css", True)
     mimetypes.add_type("text/javascript", ".js", True)
+
